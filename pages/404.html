@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Lost Narrative — Inkwell Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        surface: 'var(--surface)',
+                        'surface-container': 'var(--surface-container)',
+                        'surface-dim': 'var(--surface-dim)',
+                        'surface-low': 'var(--surface-low)',
+                        primary: 'var(--primary)',
+                        'on-primary': 'var(--on-primary)',
+                        secondary: 'var(--secondary)',
+                        'on-surface': 'var(--on-surface)',
+                        'on-surface-variant': 'var(--on-surface-variant)',
+                        'outline-variant': 'var(--outline-variant)',
+                    },
+                    fontFamily: {
+                        newsreader: ['Newsreader', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        editorial: '-0.02em',
+                    },
+                    borderRadius: {
+                        DEFAULT: '0px',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-surface text-on-surface font-inter overflow-hidden">
+
+    <main class="min-h-screen flex flex-col items-center justify-center p-6">
+        <div class="text-center space-y-12 max-w-4xl">
+            <span class="text-secondary font-bold uppercase tracking-[0.2em] text-xs">Error 404</span>
+            
+            <h1 class="font-newsreader text-[10rem] md:text-[15rem] font-bold tracking-editorial leading-none opacity-10">
+                404.
+            </h1>
+            
+            <div class="space-y-6 -mt-20 md:-mt-32">
+                <h2 class="font-newsreader text-4xl md:text-6xl font-bold italic">Lost Narrative.</h2>
+                <p class="text-on-surface-variant text-lg md:text-xl font-newsreader leading-relaxed max-w-lg mx-auto italic">
+                    The coordinates you've provided don't exist in our records. The needle has strayed from the stencil.
+                </p>
+            </div>
+
+            <div class="pt-12 flex flex-col md:flex-row items-center justify-center gap-8">
+                <a href="../index.html" class="bg-secondary text-white px-12 py-5 text-xs font-bold uppercase tracking-widest transition-all btn-sheen hover:scale-105 shadow-2xl">Return to Home</a>
+                <a href="portfolio.html" class="text-xs font-bold uppercase tracking-widest border-b-2 border-outline-variant pb-2 hover:border-secondary transition-all">Browse Exhibition</a>
+            </div>
+        </div>
+
+        <!-- Decorative Element -->
+        <div class="absolute bottom-0 right-0 p-12 opacity-5 pointer-events-none">
+            <div class="font-newsreader text-9xl font-bold">INK</div>
+        </div>
+    </main>
+
+    <!-- Core Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <!-- ========== FOOTER ========== -->
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-surface pt-16 pb-12 border-t border-outline-variant mt-auto">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-16 lg:gap-24 mb-16">
+                <!-- Brand -->
+                <div class="space-y-6">
+                    <a href="../index.html" class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</a>
+                    <p
+                        class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant leading-relaxed opacity-70">
+                        Editorial Tattooing & <br> Narrative Illustration.
+                    </p>
+                    <div class="flex space-x-5">
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Twitter">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Vimeo">
+                            <i data-lucide="video" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exhibition -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Exhibition</h4>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
+                        <li><a href="portfolio.html" class="hover:text-secondary transition-colors">The Portfolio</a></li>
+                        <li><a href="about.html" class="hover:text-secondary transition-colors">Our Story</a></li>
+                        <li><a href="aftercare.html" class="hover:text-secondary transition-colors">Preservation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Access -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Access</h4>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
+                        <li><a href="consultation.html" class="hover:text-secondary transition-colors">Consultation</a></li>
+                        <li><a href="login.html" class="hover:text-secondary transition-colors">Client Workspace</a></li>
+                        <li><a href="contact.html" class="hover:text-secondary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ledger -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">The Digital Ledger</h4>
+                    <div class="space-y-4">
+                        <p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed">Enroll for private <br> exhibition updates.</p>
+                        <form class="relative group">
+                            <input type="email" placeholder="EMAIL ADDRESS"
+                                class="w-full bg-transparent border-b border-outline-variant focus:border-secondary transition-colors outline-none py-3 text-[10px] font-bold tracking-widest placeholder:opacity-30">
+                            <button type="submit"
+                                class="absolute right-0 bottom-3 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary hover:translate-x-1 transition-transform">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="pt-8 border-t border-outline-variant/30 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.3em] text-on-surface-variant opacity-50">
+                <p>© 2024 Inkwell Studio London</p>
+                <p>Digital Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

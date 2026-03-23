@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Consultation Process — Inkwell Studio</title>
+    <meta name="description" content="Understand the digital-first consultation process at Inkwell Studio. From design brief submission to your final tattoo session.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        surface: 'var(--surface)',
+                        'surface-container': 'var(--surface-container)',
+                        'surface-dim': 'var(--surface-dim)',
+                        'surface-low': 'var(--surface-low)',
+                        primary: 'var(--primary)',
+                        'on-primary': 'var(--on-primary)',
+                        secondary: 'var(--secondary)',
+                        'on-surface': 'var(--on-surface)',
+                        'on-surface-variant': 'var(--on-surface-variant)',
+                        'outline-variant': 'var(--outline-variant)',
+                    },
+                    fontFamily: {
+                        newsreader: ['Newsreader', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        editorial: '-0.02em',
+                    },
+                    borderRadius: {
+                        DEFAULT: '0px',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-surface text-on-surface font-inter">
+
+            <!-- ========== NAVIGATION ========== -->
+    <!-- ========== NAVIGATION ========== -->
+    <nav id="main-nav"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 nav-transparent">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../index.html" class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <!-- Home Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="flex items-center space-x-1 font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">
+                        <span>Home</span>
+                        <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-surface-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl border border-outline-variant">
+                        <a href="../index.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors">Home
+                            1 (Minimalist)</a>
+                        <a href="home-2.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Home
+                            2 (Contemporary)</a>
+                    </div>
+                </div>
+
+                <a href="portfolio.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">Portfolio</a>
+                <a href="services.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">Services</a>
+                <a href="about.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">About</a>
+                <a href="contact.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">Contact</a>
+
+                <!-- Dashboard Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="flex items-center space-x-1 font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">
+                        <span>Dashboard</span>
+                        <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-surface-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl border border-outline-variant">
+                        <a href="user-dashboard.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors">User
+                            Workspace</a>
+                        <a href="admin-dashboard.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Admin
+                            Suite</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-8">
+                <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors"
+                    aria-label="Toggle Dark Mode">
+                    <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                        </path>
+                    </svg>
+                    <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                </button>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="consultation.html"
+                        class="px-8 py-3 text-xs font-bold uppercase tracking-[0.08em] border border-outline-variant hover:border-secondary transition-all">Book
+                        Now</a>
+                    <a href="login.html"
+                        class="bg-secondary text-white px-8 py-3 text-xs font-bold uppercase tracking-[0.08em] hover:brightness-110 transition-all btn-sheen">Login</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden p-2" aria-label="Open Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+
+            <!-- Mobile Menu Overlay -->
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-surface translate-x-full transition-transform duration-500 flex flex-col p-12">
+        <button id="close-mobile-menu" class="absolute top-8 right-8 p-2" aria-label="Close Menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="mt-20 flex flex-col space-y-8">
+            <div class="space-y-4">
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Home Selection</span>
+                <div class="flex flex-col space-y-4 pl-4 border-l border-outline-variant">
+                    <a href="../index.html" class="font-newsreader text-3xl font-bold italic">Home 1: Minimalist</a>
+                    <a href="home-2.html" class="font-newsreader text-3xl font-bold italic">Home 2: Contemporary</a>
+                </div>
+            </div>
+            <a href="portfolio.html" class="font-newsreader text-4xl font-bold">Portfolio</a>
+            <a href="services.html" class="font-newsreader text-4xl font-bold">Services</a>
+            <a href="about.html" class="font-newsreader text-4xl font-bold">About</a>
+            <a href="contact.html" class="font-newsreader text-4xl font-bold">Contact</a>
+
+            <div class="py-8 border-t border-outline-variant space-y-4">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Dashboards</span>
+                <div class="flex flex-col space-y-6">
+                    <a href="user-dashboard.html" class="font-newsreader text-3xl font-bold">User Workspace</a>
+                    <a href="admin-dashboard.html" class="font-newsreader text-3xl font-bold">Admin Suite</a>
+                </div>
+            </div>
+
+            <a href="login.html"
+                class="block w-full text-center bg-secondary text-white py-6 text-sm font-bold uppercase tracking-[0.1em] mt-auto">Login</a>
+            <a href="consultation.html"
+                class="block w-full text-center border border-secondary text-secondary py-6 text-sm font-bold uppercase tracking-[0.1em] mt-4">Book
+                Now</a>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- ========== HERO SECTION ========== -->
+        <section class="bg-surface-dim pt-24 pb-12 border-b border-outline-variant/10">
+            <div class="max-w-7xl mx-auto px-6 w-full space-y-12">
+                <span class="text-secondary font-bold uppercase tracking-[0.3em] text-[10px] block italic opacity-60">The Digital Frontier</span>
+                <h1 class="font-newsreader text-5xl md:text-8xl font-bold tracking-editorial leading-none max-w-5xl">
+                    Evolution of <br> the Inquiry.
+                </h1>
+                <div class="grid lg:grid-cols-2 gap-16 items-end">
+                    <p class="text-on-surface-variant text-xl md:text-2xl font-newsreader italic leading-relaxed opacity-80">
+                        We've digitized the pre-appointment paperwork. No travel is required for your consultation—everything from design brief to deposit happens in your private dashboard.
+                    </p>
+                    <div class="flex flex-col space-y-4">
+                        <span class="text-[9px] font-black uppercase tracking-[0.4em] text-secondary">Timeline</span>
+                        <p class="text-[10px] font-black uppercase tracking-widest leading-loose opacity-60">Inquiry to Session • 4 — 12 Weeks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PROCESS STEPS ========== -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-6 space-y-20">
+                <!-- Step 1 -->
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="space-y-8">
+                        <span class="font-newsreader text-8xl font-bold text-outline-variant opacity-30">01</span>
+                        <h2 class="font-newsreader text-4xl font-bold">Create Your Account</h2>
+                        <p class="text-on-surface-variant leading-relaxed max-w-md">Every client project begins with a secure account. This becomes your project's command center—where you'll manage designs, payments, and aftercare.</p>
+                        <a href="signup.html" class="inline-block border-b-2 border-secondary pb-1 text-xs font-bold uppercase tracking-widest">Sign Up Now</a>
+                    </div>
+                    <div class="aspect-video bg-surface-container grayscale overflow-hidden group">
+                        <img src="../assets/images/portfolio/work-5.png" alt="Portal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-40">
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="lg:order-last space-y-8">
+                        <span class="font-newsreader text-8xl font-bold text-outline-variant opacity-30">02</span>
+                        <h2 class="font-newsreader text-4xl font-bold">Submit Your Brief</h2>
+                        <p class="text-on-surface-variant leading-relaxed max-w-md">Our multi-step form guides you through defining the architectural layout of your piece. Upload reference images and select body placements through our interactive SVG map.</p>
+                    </div>
+                    <div class="aspect-video bg-surface-container grayscale overflow-hidden group">
+                        <img src="../assets/images/portfolio/work-2.png" alt="Brief" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-40">
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="space-y-8">
+                        <span class="font-newsreader text-8xl font-bold text-outline-variant opacity-30">03</span>
+                        <h2 class="font-newsreader text-4xl font-bold">Design Collaboration</h2>
+                        <p class="text-on-surface-variant leading-relaxed max-w-md">Communicate directly with your artist. Review stencils, request revisions, and finalize the narrative depth before ever stepping into the studio.</p>
+                    </div>
+                    <div class="aspect-video bg-surface-container grayscale overflow-hidden group">
+                        <img src="../assets/images/portfolio/work-1.png" alt="Collaboration" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-40">
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="grid lg:grid-cols-2 gap-20 items-center border-t border-outline-variant/10 pt-10">
+                    <div class="lg:col-span-12 text-center space-y-8">
+                        <h2 class="font-newsreader text-3xl md:text-5xl font-bold">Ready to be written?</h2>
+                        <div class="flex flex-wrap justify-center gap-6">
+                            <a href="signup.html" class="bg-secondary text-white px-12 py-5 text-sm font-bold uppercase tracking-[0.1em] transition-all btn-sheen">Open Your Portal</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+            <!-- ========== FOOTER ========== -->
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-surface pt-16 pb-12 border-t border-outline-variant">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-16 lg:gap-24 mb-16">
+                <!-- Brand -->
+                <div class="space-y-6">
+                    <a href="../index.html" class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</a>
+                    <p
+                        class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant leading-relaxed opacity-70">
+                        Editorial Tattooing & <br> Narrative Illustration.
+                    </p>
+                    <div class="flex space-x-5">
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Twitter">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Vimeo">
+                            <i data-lucide="video" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exhibition -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Exhibition</h4>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
+                        <li><a href="portfolio.html" class="hover:text-secondary transition-colors">The Portfolio</a></li>
+                        <li><a href="about.html" class="hover:text-secondary transition-colors">Our Story</a></li>
+                        <li><a href="aftercare.html" class="hover:text-secondary transition-colors">Preservation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Access -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Access</h4>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
+                        <li><a href="consultation.html" class="hover:text-secondary transition-colors">Consultation</a></li>
+                        <li><a href="login.html" class="hover:text-secondary transition-colors">Client Workspace</a></li>
+                        <li><a href="contact.html" class="hover:text-secondary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ledger -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">The Digital Ledger</h4>
+                    <div class="space-y-4">
+                        <p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed">Enroll for private <br> exhibition updates.</p>
+                        <form class="relative group">
+                            <input type="email" placeholder="EMAIL ADDRESS"
+                                class="w-full bg-transparent border-b border-outline-variant focus:border-secondary transition-colors outline-none py-3 text-[10px] font-bold tracking-widest placeholder:opacity-30">
+                            <button type="submit"
+                                class="absolute right-0 bottom-3 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary hover:translate-x-1 transition-transform">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="pt-8 border-t border-outline-variant/30 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.3em] text-on-surface-variant opacity-50">
+                <p>© 2024 Inkwell Studio London</p>
+                <p>Digital Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Core Scripts -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

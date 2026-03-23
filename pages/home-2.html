@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Collective — Inkwell Studio</title>
+    <meta name="description" content="Explore the Inkwell Studio portfolio. A curated collection of fine-line, blackwork, and neo-traditional tattoo art.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        surface: 'var(--surface)',
+                        'surface-container': 'var(--surface-container)',
+                        'surface-dim': 'var(--surface-dim)',
+                        'surface-low': 'var(--surface-low)',
+                        primary: 'var(--primary)',
+                        'on-primary': 'var(--on-primary)',
+                        secondary: 'var(--secondary)',
+                        'on-surface': 'var(--on-surface)',
+                        'on-surface-variant': 'var(--on-surface-variant)',
+                        'outline-variant': 'var(--outline-variant)',
+                    },
+                    fontFamily: {
+                        newsreader: ['Newsreader', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        editorial: '-0.02em',
+                    },
+                    borderRadius: {
+                        DEFAULT: '0px',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-surface text-on-surface font-inter">
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav id="main-nav"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 nav-transparent backdrop-blur-sm border-b border-outline-variant/10 nav-dark-hero">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../index.html" class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <!-- Home Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="flex items-center space-x-1 font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">
+                        <span>Home</span>
+                        <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-surface-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl border border-outline-variant">
+                        <a href="../index.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors">Home
+                            1 (Minimalist)</a>
+                        <a href="home-2.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Home
+                            2 (Contemporary)</a>
+                    </div>
+                </div>
+
+                <a href="portfolio.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">Portfolio</a>
+                <a href="services.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">Services</a>
+                <a href="about.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">About</a>
+                <a href="contact.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">Contact</a>
+
+                <!-- Dashboard Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="flex items-center space-x-1 font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">
+                        <span>Dashboard</span>
+                        <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-surface-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl border border-outline-variant">
+                        <a href="user-dashboard.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors">User
+                            Workspace</a>
+                        <a href="admin-dashboard.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Admin
+                            Suite</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-8">
+                <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors"
+                    aria-label="Toggle Dark Mode">
+                    <!-- Sun/Moon icons handled in CSS/JS if needed, using text for now -->
+                    <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                        </path>
+                    </svg>
+                    <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                </button>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="consultation.html"
+                        class="px-8 py-3 text-xs font-bold uppercase tracking-[0.08em] border border-outline-variant hover:border-secondary transition-all">Book
+                        Now</a>
+                    <a href="login.html"
+                        class="bg-secondary text-white px-8 py-3 text-xs font-bold uppercase tracking-[0.08em] hover:brightness-110 transition-all btn-sheen">Login</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden p-2" aria-label="Open Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-surface translate-x-full transition-transform duration-500 flex flex-col p-12">
+        <button id="close-mobile-menu" class="absolute top-8 right-8 p-2" aria-label="Close Menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="mt-20 flex flex-col space-y-8">
+            <div class="space-y-4">
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Home Selection</span>
+                <div class="flex flex-col space-y-4 pl-4 border-l border-outline-variant">
+                    <a href="../index.html" class="font-newsreader text-3xl font-bold italic">Home 1: Minimalist</a>
+                    <a href="home-2.html" class="font-newsreader text-3xl font-bold italic text-secondary">Home 2: Contemporary</a>
+                </div>
+            </div>
+            <a href="portfolio.html" class="font-newsreader text-4xl font-bold">Portfolio</a>
+            <a href="services.html" class="font-newsreader text-4xl font-bold">Services</a>
+            <a href="about.html" class="font-newsreader text-4xl font-bold">About</a>
+            <a href="contact.html" class="font-newsreader text-4xl font-bold">Contact</a>
+
+            <div class="py-8 border-t border-outline-variant space-y-4">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Dashboards</span>
+                <div class="flex flex-col space-y-6">
+                    <a href="user-dashboard.html" class="font-newsreader text-3xl font-bold">User Workspace</a>
+                    <a href="admin-dashboard.html" class="font-newsreader text-3xl font-bold">Admin Suite</a>
+                </div>
+            </div>
+
+            <a href="login.html"
+                class="block w-full text-center bg-secondary text-white py-6 text-sm font-bold uppercase tracking-[0.1em] mt-auto">Login</a>
+            <a href="consultation.html"
+                class="block w-full text-center border border-outline-variant py-6 text-sm font-bold uppercase tracking-[0.1em] mt-4">Book
+                Now</a>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- ========== IMMERSIVE EDITORIAL HERO ========== -->
+        <section class="h-screen relative flex items-center overflow-hidden bg-surface-dim">
+            <!-- Full Screen Background Image -->
+            <div class="absolute inset-0 overflow-hidden">
+                <img src="../assets/images/ui/hero_editorial_v3.png" alt="Editorial Studio Vision" 
+                    class="w-full h-full object-cover brightness-60 contrast-125 transition-transform duration-[10s] scale-110 group-hover:scale-100">
+                <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-15"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-6 w-full relative z-10 pt-32 md:pt-40">
+                <div class="space-y-16">
+                    <div class="space-y-8">
+                        <h1 class="font-newsreader text-6xl md:text-8xl lg:text-[9rem] font-bold tracking-editorial leading-[0.85] italic text-white opacity-95">
+                            A Body <br> of <span class="text-secondary">Work.</span>
+                        </h1>
+                    </div>
+                    
+                    <div class="flex flex-col md:flex-row items-end gap-12">
+                        <div class="space-y-8">
+                            <p class="text-white/70 max-w-md text-lg md:text-xl font-newsreader leading-relaxed italic">
+                                Forging permanent narratives through architectural precision and fine-line mastery in a contemporary London sanctuary.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========== MODERN MANIFESTO ========== -->
+        <section class="py-16 bg-surface relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 text-center space-y-16">
+                <div class="space-y-4">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-secondary opacity-60">The Inkwell Ethos</span>
+                    <h2 class="font-newsreader text-4xl md:text-6xl font-bold tracking-editorial leading-tight italic">
+                        "We believe in tattoos that breathe with the individual—architectural, permanent, and deeply personal."
+                    </h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-12 text-left">
+                    <div class="space-y-4 border-l border-outline-variant pl-8 py-4">
+                        <span class="text-[10px] font-black italic text-secondary">01/ Precision</span>
+                        <p class="text-xs uppercase tracking-widest font-bold leading-relaxed opacity-60">Every line is calculated for longevity and visual impact.</p>
+                    </div>
+                    <div class="space-y-4 border-l border-outline-variant pl-8 py-4">
+                        <span class="text-[10px] font-black italic text-secondary">02/ Narrative</span>
+                        <p class="text-xs uppercase tracking-widest font-bold leading-relaxed opacity-60">Your story, interpreted through our contemporary lens.</p>
+                    </div>
+                    <div class="space-y-4 border-l border-outline-variant pl-8 py-4">
+                        <span class="text-[10px] font-black italic text-secondary">03/ Evolution</span>
+                        <p class="text-xs uppercase tracking-widest font-bold leading-relaxed opacity-60">Art that evolves with the silhouette over a lifetime.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== THE COLLECTION (Editorial Catalog) ========== -->
+        <section id="collection" class="py-16 bg-surface-dim border-y border-outline-variant relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Section Header (Refined Sync with index.html) -->
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+                    <div class="space-y-6">
+                        <h2 class="font-newsreader text-5xl md:text-7xl font-bold tracking-tight">The <span class="italic text-secondary">Collection.</span></h2>
+                    </div>
+                    <a href="portfolio.html" class="group flex items-center space-x-3 font-bold uppercase tracking-[0.1em] text-[10px] border-b-2 border-outline-variant pb-2 hover:border-secondary transition-all">
+                        <span>Browse Full Archive</span>
+                        <svg class="w-3 h-3 text-secondary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 3-Column Editorial Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
+                    
+                    <!-- Catalog Item 01 (Diagonal Start) -->
+                    <div class="group space-y-8 lg:-mt-8">
+                        <div class="aspect-[3/4] bg-surface overflow-hidden relative cursor-pointer border border-outline-variant/30">
+                            <img src="../assets/images/portfolio/work-1.png" alt="Architectural Spine" 
+                                class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0">
+                            <div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+                                <div>
+                                    <span class="block text-[8px] font-bold uppercase tracking-[0.3em] text-secondary mb-1">Archive ID: 24/01</span>
+                                    <h4 class="font-newsreader text-2xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Architectural Spine</h4>
+                                </div>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.1em] opacity-40 italic">Fine Line</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Catalog Item 02 (Diagonal Center) -->
+                    <div class="group space-y-8">
+                        <div class="aspect-[3/4] bg-surface overflow-hidden relative cursor-pointer border border-outline-variant/30">
+                            <img src="../assets/images/portfolio/work-2.png" alt="Portrait Study" 
+                                class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0">
+                            <div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+                                <div>
+                                    <span class="block text-[8px] font-bold uppercase tracking-[0.3em] text-secondary mb-1">Archive ID: 24/02</span>
+                                    <h4 class="font-newsreader text-2xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Portrait Study</h4>
+                                </div>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.1em] opacity-40 italic">Conceptual</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Catalog Item 03 (Diagonal End) -->
+                    <div class="group space-y-8 lg:mt-8">
+                        <div class="aspect-[3/4] bg-surface overflow-hidden relative cursor-pointer border border-outline-variant/30">
+                            <img src="../assets/images/portfolio/work-3.png" alt="Geometric Fluidity" 
+                                class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0">
+                            <div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+                                <div>
+                                    <span class="block text-[8px] font-bold uppercase tracking-[0.3em] text-secondary mb-1">Archive ID: 24/03</span>
+                                    <h4 class="font-newsreader text-2xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Geometric Fluidity</h4>
+                                </div>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.1em] opacity-40 italic">Minimalist</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Catalog Item 04 (Vertical Offset) -->
+                    <div class="group space-y-8 lg:-mt-8">
+                        <div class="aspect-[3/4] bg-surface overflow-hidden relative cursor-pointer border border-outline-variant/30">
+                            <img src="../assets/images/portfolio/work-4.png" alt="Organic Flow" 
+                                class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0">
+                            <div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+                                <div>
+                                    <span class="block text-[8px] font-bold uppercase tracking-[0.3em] text-secondary mb-1">Archive ID: 24/04</span>
+                                    <h4 class="font-newsreader text-2xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Organic Flow</h4>
+                                </div>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.1em] opacity-40 italic">Botanical</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Catalog Item 05 -->
+                    <div class="group space-y-8">
+                        <div class="aspect-[3/4] bg-surface overflow-hidden relative cursor-pointer border border-outline-variant/30">
+                            <img src="../assets/images/portfolio/work-5.png" alt="Typography Mural" 
+                                class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0">
+                            <div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+                                <div>
+                                    <span class="block text-[8px] font-bold uppercase tracking-[0.3em] text-secondary mb-1">Archive ID: 24/05</span>
+                                    <h4 class="font-newsreader text-2xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Typography Mural</h4>
+                                </div>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.1em] opacity-40 italic">Fine Line</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Catalog Item 06 (Vertical Offset) -->
+                    <div class="group space-y-8 lg:mt-8">
+                        <div class="aspect-[3/4] bg-surface overflow-hidden relative cursor-pointer border border-outline-variant/30">
+                            <img src="../assets/images/portfolio/work-6.png" alt="Abstract Identity" 
+                                class="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0">
+                            <div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-start border-b border-outline-variant/30 pb-4">
+                                <div>
+                                    <span class="block text-[8px] font-bold uppercase tracking-[0.3em] text-secondary mb-1">Archive ID: 24/06</span>
+                                    <h4 class="font-newsreader text-2xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Abstract Identity</h4>
+                                </div>
+                                <span class="text-[9px] font-bold uppercase tracking-[0.1em] opacity-40 italic">Conceptual</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== STUDIO ENVIRONMENT (Immersive) ========== -->
+        <section class="h-[80vh] relative flex items-center bg-surface overflow-hidden">
+            <img src="../assets/images/ui/hero.png" alt="The Studio" class="absolute inset-0 w-full h-full object-cover grayscale brightness-[0.3]">
+            <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+                <div class="lg:w-1/2 space-y-10">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.4em] text-white opacity-60">The Environment</span>
+                    <h2 class="font-newsreader text-5xl md:text-7xl font-bold text-white tracking-editorial italic">A Private <br> Sanctuary.</h2>
+                    <p class="text-white/70 max-w-sm text-lg md:text-xl font-newsreader leading-relaxed italic">
+                        Escape the clinical. Our central London studio is designed as a sanctuary for collaborative creation and artistic depth.
+                    </p>
+                    <a href="about.html" class="inline-block bg-secondary text-white px-12 py-5 text-xs font-bold uppercase tracking-[0.2em] transition-all btn-sheen hover:scale-105 shadow-2xl">Explore the Space</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PROCESS & CRAFT (Architectural Workflow) ========== -->
+        <section id="process" class="py-16 bg-surface relative overflow-hidden">
+            <!-- Background Blueprint Elements -->
+            <div class="absolute inset-0 pointer-events-none opacity-[0.03]">
+                <div class="absolute top-1/2 left-0 w-full h-[1px] bg-on-surface"></div>
+                <div class="absolute top-0 left-1/4 w-[1px] h-full bg-on-surface"></div>
+                <div class="absolute top-0 left-3/4 w-[1px] h-full bg-on-surface"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <!-- Section Header (Sync with Editorial Style) -->
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+                    <div class="space-y-3">
+                        <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px] flex items-center space-x-3">
+                            <span class="w-8 h-[1px] bg-secondary"></span>
+                            <span>Methodology & Logic</span>
+                        </span>
+                        <h2 class="font-newsreader text-4xl md:text-5xl font-bold italic tracking-editorial leading-[0.9]">
+                            Structural <span class="text-on-surface-variant/40">Continuity.</span>
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- 3-Column Horizontal Workflow -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Step 01: Structural Mapping -->
+                    <div class="group relative p-8 border border-outline-variant bg-surface-dim backdrop-blur-sm transition-all duration-500 hover:border-secondary hover:translate-y-[-4px] flex flex-col h-full">
+                        <div class="absolute top-4 right-6 opacity-10 group-hover:opacity-20 transition-opacity text-secondary">
+                            <span class="font-newsreader text-7xl font-black italic">01</span>
+                        </div>
+                        <div class="space-y-6 relative z-10 flex-grow">
+                            <!-- Simple Box with SVG -->
+                            <div class="w-12 h-12 flex flex-col items-center justify-center border border-secondary text-secondary relative overflow-hidden group-hover:bg-secondary/5 transition-colors">
+                                <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                <span class="text-[6px] font-mono uppercase tracking-tighter opacity-70">ST-01</span>
+                                <div class="absolute top-0 left-0 w-full h-[1px] bg-secondary/20 -translate-y-full group-hover:animate-scan"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="font-newsreader text-2xl font-bold italic">Structural Mapping</h3>
+                                <p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant opacity-70 leading-relaxed">
+                                    Every project begins with a deep-bore analysis of individual anatomy and narrative intent. 
+                                    <span class="block mt-4 text-[8px] text-secondary/50 font-mono tracking-normal">[ COORDS: 51.5471° N, 0.0585° W ]</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Blueprint Accent -->
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700"></div>
+                    </div>
+
+                    <!-- Step 02: Architectural Logic -->
+                    <div class="group relative p-8 border border-outline-variant bg-surface-dim backdrop-blur-sm transition-all duration-500 hover:border-secondary hover:translate-y-[-4px] flex flex-col h-full">
+                        <div class="absolute top-4 right-6 opacity-10 group-hover:opacity-20 transition-opacity text-secondary">
+                            <span class="font-newsreader text-7xl font-black italic">02</span>
+                        </div>
+                        <div class="space-y-6 relative z-10 flex-grow">
+                            <div class="w-12 h-12 flex flex-col items-center justify-center border border-secondary text-secondary relative overflow-hidden group-hover:bg-secondary/5 transition-colors">
+                                <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                                <span class="text-[6px] font-mono uppercase tracking-tighter opacity-70">ST-02</span>
+                                <div class="absolute top-0 left-0 w-full h-[1px] bg-secondary/20 -translate-y-full group-hover:animate-scan"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="font-newsreader text-2xl font-bold italic">Architectural Logic</h3>
+                                <p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant opacity-70 leading-relaxed">
+                                    We iterate on silhouettes that respect the natural mechanics of the body's movement.
+                                    <span class="block mt-4 text-[8px] text-secondary/50 font-mono tracking-normal">[ LATENCY: 0.04 MS — ITERATION V.09 ]</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700"></div>
+                    </div>
+
+                    <!-- Step 03: Eternal Precision -->
+                    <div class="group relative p-8 border border-outline-variant bg-surface-dim backdrop-blur-sm transition-all duration-500 hover:border-secondary hover:translate-y-[-4px] flex flex-col h-full">
+                        <div class="absolute top-4 right-6 opacity-10 group-hover:opacity-20 transition-opacity text-secondary">
+                            <span class="font-newsreader text-7xl font-black italic">03</span>
+                        </div>
+                        <div class="space-y-6 relative z-10 flex-grow">
+                            <div class="w-12 h-12 flex flex-col items-center justify-center border border-secondary text-secondary relative overflow-hidden group-hover:bg-secondary/5 transition-colors">
+                                <svg class="w-4 h-4 mb-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                <span class="text-[6px] font-mono uppercase tracking-tighter opacity-70">ST-03</span>
+                                <div class="absolute top-0 left-0 w-full h-[1px] bg-secondary/20 -translate-y-full group-hover:animate-scan"></div>
+                            </div>
+                            <div class="space-y-3">
+                                <h3 class="font-newsreader text-2xl font-bold italic">Eternal Precision</h3>
+                                <p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant opacity-70 leading-relaxed">
+                                    Surgical execution meets fine-line artistry for a result that ages with quiet dignity.
+                                    <span class="block mt-4 text-[8px] text-secondary/50 font-mono tracking-normal">[ DEPTH: CRITICAL — PIGMENT: HIGH-DENSITY ]</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== REDESIGNED BOOKING CTA (Editorial Layout) ========== -->
+        <section class="py-16 bg-surface-dim border-y border-outline-variant relative overflow-hidden">
+           
+
+            <!-- Atmospheric 'Blueprint' Text Layer -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center opacity-[0.03] pointer-events-none select-none z-0">
+                <span class="text-[25vw] font-black uppercase tracking-tighter text-outline leading-none font-mono">STUDIO</span>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Left: Editorial Narrative -->
+                    <div class="space-y-8 max-w-2xl">
+                        <div class="space-y-4">
+                            <span class="text-secondary font-bold uppercase tracking-[0.5em] text-[10px] flex items-center space-x-3">
+                                <span class="w-8 h-[1px] bg-secondary"></span>
+                                <span>The Final Gateway</span>
+                            </span>
+                            <h2 class="font-newsreader text-5xl md:text-7xl font-bold tracking-editorial italic leading-[0.9]">
+                                Claim Your <br> <span class="text-on-surface-variant/40">Permanent Space.</span>
+                            </h2>
+                        </div>
+                        <p class="text-on-surface-variant text-lg md:text-xl font-newsreader italic leading-relaxed opacity-80">
+                            Our quarterly schedule is currently open for complex narrative commissions. Secure your consultation to begin the architectural mapping of your vision.
+                        </p>
+                    </div>
+
+                    <!-- Right: Direct Interaction & Studio Status -->
+                    <div class="flex flex-col items-center lg:items-end space-y-10 pt-12 lg:pt-0">
+                        <!-- Studio Readiness Badge -->
+                        <div class="space-y-4 text-center lg:text-right font-newsreader">
+                            <div class="flex items-center justify-center lg:justify-end space-x-3">
+                                <span class="relative flex h-2 w-2">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+                                </span>
+                                <span class="text-[9px] font-black uppercase tracking-[0.4em] text-secondary font-sans leading-none">RESIDENCY: LONDON STUDIO</span>
+                            </div>
+                            <p class="text-[10px] uppercase font-bold tracking-[0.3em] text-on-surface-variant opacity-60 font-sans leading-relaxed">
+                                Currently accepting private commissions for <br> 
+                                <span class="text-on-surface opacity-100">Large-Scale Narrative Projects.</span>
+                            </p>
+                            <p class="text-[9px] font-mono tracking-tighter text-secondary/70 uppercase">
+                                [ Status: Selective Enrollment ]
+                            </p>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-center justify-center lg:justify-end gap-6 w-full">
+                            <a href="consultation.html" class="w-full sm:w-auto bg-secondary text-white px-8 py-4 text-[11px] font-black uppercase tracking-[0.2em] shadow-2xl transition-all btn-sheen hover:scale-105 active:scale-95 leading-none text-center">
+                                Book Consultation
+                            </a>
+                            <a href="portfolio.html" class="w-full sm:w-auto group flex items-center justify-center space-x-3 text-[9px] font-black uppercase tracking-[0.3em] border border-outline-variant px-8 py-4 hover:border-secondary hover:text-secondary transition-all">
+                                <span>Browse Archive</span>
+                                <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+            <!-- ========== FOOTER ========== -->
+    <footer class="bg-surface pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-16 lg:gap-24 mb-16">
+                <!-- Brand -->
+                <div class="space-y-6">
+                    <a href="../index.html" class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</a>
+                    <p
+                        class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant leading-relaxed opacity-70">
+                        Editorial Tattooing & <br> Narrative Illustration.
+                    </p>
+                    <div class="flex space-x-5">
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Twitter">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Vimeo">
+                            <i data-lucide="video" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exhibition -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Exhibition</h4>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
+                        <li><a href="portfolio.html" class="hover:text-secondary transition-colors">The Portfolio</a></li>
+                        <li><a href="about.html" class="hover:text-secondary transition-colors">Our Story</a></li>
+                        <li><a href="aftercare.html" class="hover:text-secondary transition-colors">Preservation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Access -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Access</h4>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
+                        <li><a href="consultation.html" class="hover:text-secondary transition-colors">Consultation</a></li>
+                        <li><a href="login.html" class="hover:text-secondary transition-colors">Client Workspace</a></li>
+                        <li><a href="contact.html" class="hover:text-secondary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ledger -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">The Digital Ledger</h4>
+                    <div class="space-y-4">
+                        <p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed">Enroll for private <br> exhibition updates.</p>
+                        <form class="relative group">
+                            <input type="email" placeholder="EMAIL ADDRESS"
+                                class="w-full bg-transparent border-b border-outline-variant focus:border-secondary transition-colors outline-none py-3 text-[10px] font-bold tracking-widest placeholder:opacity-30">
+                            <button type="submit"
+                                class="absolute right-0 bottom-3 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary hover:translate-x-1 transition-transform">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="pt-8 border-t border-outline-variant/30 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.3em] text-on-surface-variant opacity-50">
+                <p>© 2024 Inkwell Studio London</p>
+                <p>Digital Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Core Scripts -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

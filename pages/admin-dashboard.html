@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Suite — Inkwell Studio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        surface: 'var(--surface)',
+                        'surface-container': 'var(--surface-container)',
+                        'surface-dim': 'var(--surface-dim)',
+                        'surface-low': 'var(--surface-low)',
+                        primary: 'var(--primary)',
+                        'on-primary': 'var(--on-primary)',
+                        secondary: 'var(--secondary)',
+                        'on-surface': 'var(--on-surface)',
+                        'on-surface-variant': 'var(--on-surface-variant)',
+                        'outline-variant': 'var(--outline-variant)',
+                    },
+                    fontFamily: {
+                        newsreader: ['Newsreader', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: '0px',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-surface text-on-surface font-inter min-h-screen flex flex-col">
+    <!-- ========== SIDEBAR ========== -->
+    <aside id="sidebar" class="fixed top-0 bottom-0 left-0 z-50 w-64 bg-surface border-r border-outline-variant transition-transform duration-300 transform lg:translate-x-0 -translate-x-full">
+        <div class="h-20 flex items-center px-8 border-b border-outline-variant">
+            <a href="../index.html" class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</a>
+        </div>
+        
+        <nav class="p-6 space-y-6">
+            <div class="space-y-1">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-4">Management</span>
+                <a href="javascript:void(0)" id="overview-link" onclick="showSection('overview')" class="flex items-center space-x-4 px-4 py-2.5 bg-surface-container text-secondary font-bold text-xs uppercase tracking-widest border-l-2 border-secondary">
+                    <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="javascript:void(0)" id="requests-link" onclick="showSection('requests')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                    <i data-lucide="clipboard-list" class="w-4 h-4"></i>
+                    <span>Design Requests</span>
+                </a>
+                <a href="javascript:void(0)" id="clients-link" onclick="showSection('clients')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    <span>Clients</span>
+                </a>
+            </div>
+
+            <div class="space-y-1">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-4">Operations</span>
+                <a href="javascript:void(0)" id="calendar-link" onclick="showSection('calendar')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Master Calendar</span>
+                </a>
+                <a href="javascript:void(0)" id="messages-link" onclick="showSection('messages')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <span>Studio Inbox</span>
+                </a>
+                <a href="javascript:void(0)" id="revenue-link" onclick="showSection('revenue')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                    <i data-lucide="banknote" class="w-4 h-4"></i>
+                    <span>Financial Ledger</span>
+                </a>
+            </div>
+
+            <div class="space-y-1 pt-6 border-t border-outline-variant">
+                <a href="javascript:void(0)" id="settings-link" onclick="showSection('settings')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                    <i data-lucide="settings" class="w-4 h-4"></i>
+                    <span>Configuration</span>
+                </a>
+                <a href="login.html" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                    <i data-lucide="log-out" class="w-4 h-4"></i>
+                    <span>Sign Out</span>
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="flex-1 lg:ml-64 min-h-screen flex flex-col pt-0 bg-surface">
+        
+        <!-- Header -->
+        <header class="h-20 bg-surface border-b border-outline-variant px-8 flex items-center justify-between sticky top-0 z-40">
+            <div class="flex items-center space-x-6">
+                <button id="sidebar-toggle" class="lg:hidden p-2 hover:bg-surface-container transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <div class="space-y-1 hidden md:block">
+                    <h2 id="section-title" class="text-xs font-bold uppercase tracking-[0.3em] text-secondary">Studio Admin</h2>
+                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-20">Inkwell Studio Management Console</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-3 pr-6 border-r border-outline-variant">
+                    <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group" aria-label="Toggle Theme">
+                        <i data-lucide="sun" class="w-5 h-5 opacity-40 group-hover:opacity-100 dark:block hidden"></i>
+                        <i data-lucide="moon" class="w-5 h-5 opacity-40 group-hover:opacity-100 block dark:hidden"></i>
+                    </button>
+                    <button class="relative p-2 hover:bg-surface-container transition-colors group">
+                        <i data-lucide="bell" class="w-5 h-5 opacity-40 group-hover:opacity-100"></i>
+                        <span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                    </button>
+                </div>
+                
+                <div class="flex items-center space-x-6 pl-2">
+                    <div class="text-right hidden sm:block">
+                        <p class="text-xs font-bold uppercase tracking-widest leading-none mb-1">Studio Administrator</p>
+                        <p class="text-[10px] uppercase tracking-widest opacity-40">System Overseer #0001</p>
+                    </div>
+                    <div class="w-12 h-12 bg-surface-container border border-outline-variant p-1">
+                        <img src="../assets/images/admin-portrait.png" alt="Admin Profile" class="w-full h-full object-cover grayscale opacity-60">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <div id="content-area" class="flex-1 relative overflow-y-auto">
+            
+            <!-- SECTION: OVERVIEW -->
+            <section id="overview-section" class="p-8 md:p-12 space-y-16">
+                <!-- Stat Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Stat Card: Revenue -->
+                    <div class="bg-surface-container p-12 space-y-6 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative shadow-sm">
+                        <div class="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-10 transition-opacity">
+                            <i data-lucide="trending-up" class="w-16 h-16 text-secondary"></i>
+                        </div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Inbound Analytics</p>
+                        <div class="space-y-2">
+                            <span class="font-newsreader text-5xl font-bold italic tracking-tighter block">£1,242</span>
+                            <span class="text-[8px] text-green-500 font-bold uppercase tracking-widest opacity-60">+14.2% Growth Index</span>
+                        </div>
+                    </div>
+                    <!-- Stat Card: Projects -->
+                    <div class="bg-surface-container p-12 space-y-6 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative shadow-sm">
+                        <div class="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-10 transition-opacity">
+                            <i data-lucide="clipboard-list" class="w-16 h-16 text-secondary"></i>
+                        </div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Active Narratives</p>
+                        <div class="space-y-2">
+                            <span class="font-newsreader text-5xl font-bold italic tracking-tighter block">28</span>
+                            <span class="text-[8px] font-bold uppercase tracking-widest opacity-40">+03 Priority Inbound</span>
+                        </div>
+                    </div>
+                    <!-- Stat Card: Stencils -->
+                    <div class="bg-surface-container p-12 space-y-6 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative shadow-sm">
+                        <div class="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-10 transition-opacity">
+                            <i data-lucide="pen-tool" class="w-16 h-16 text-secondary"></i>
+                        </div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Stencil Protocols</p>
+                        <div class="space-y-2">
+                            <span class="font-newsreader text-5xl font-bold italic tracking-tighter block">09</span>
+                            <span class="text-[8px] font-bold uppercase tracking-widest opacity-40">Scheduled for Today</span>
+                        </div>
+                    </div>
+                    <!-- Stat Card: Yield -->
+                    <div class="bg-surface-container p-12 space-y-6 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative shadow-sm">
+                        <div class="absolute top-0 right-0 p-6 opacity-[0.05] group-hover:opacity-10 transition-opacity">
+                            <i data-lucide="users" class="w-16 h-16 text-secondary"></i>
+                        </div>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Lifetime Value</p>
+                        <div class="space-y-2">
+                            <span class="font-newsreader text-5xl font-bold italic tracking-tighter block">£650</span>
+                            <span class="text-[8px] font-bold uppercase tracking-widest opacity-40">Average Patron Yield</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-12 pt-20">
+                    <div class="lg:col-span-2 space-y-12">
+                        <div class="flex items-end justify-between border-b border-outline-variant pb-8">
+                            <h3 class="font-newsreader text-3xl font-bold italic tracking-tight uppercase">Inbound Journal</h3>
+                            <button onclick="showSection('requests')" class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition-opacity border-b-2 border-secondary pb-1">Queue Archives</button>
+                        </div>
+                        <div class="space-y-4">
+                            <!-- Quick Row: Client -->
+                            <div class="p-10 bg-surface-container border border-outline-variant flex justify-between items-center group cursor-pointer hover:border-secondary transition-all relative">
+                                <div class="space-y-3">
+                                    <h4 class="font-newsreader text-3xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Julian Pierce</h4>
+                                    <div class="flex items-center space-x-4">
+                                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] opacity-40">Neo-Japanese Backpiece</span>
+                                        <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-secondary">£2,400.00</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-8">
+                                    <div class="text-right flex flex-col items-end">
+                                        <span class="text-[8px] font-bold uppercase tracking-[0.3em] text-secondary mb-1">New Inbound</span>
+                                        <span class="text-[7px] font-bold uppercase tracking-widest opacity-20">2 Hours Ago</span>
+                                    </div>
+                                    <i data-lucide="chevron-right" class="w-5 h-5 opacity-20 group-hover:opacity-100 group-hover:text-secondary transition-all transform group-hover:translate-x-2"></i>
+                                </div>
+                            </div>
+                            <div class="p-10 bg-surface-container border border-outline-variant flex justify-between items-center group cursor-pointer hover:border-secondary transition-all relative">
+                                <div class="space-y-3">
+                                    <h4 class="font-newsreader text-3xl font-bold italic tracking-tight group-hover:text-secondary transition-colors opacity-60">Sarah Vance</h4>
+                                    <div class="flex items-center space-x-4">
+                                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] opacity-40">Fine Line Anatomy</span>
+                                        <span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+                                        <span class="text-[9px] font-bold uppercase tracking-[0.2em] opacity-20">£450.00</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-8">
+                                    <div class="text-right flex flex-col items-end">
+                                        <span class="text-[8px] font-bold uppercase tracking-[0.3em] opacity-40 mb-1">Technician Review</span>
+                                        <span class="text-[7px] font-bold uppercase tracking-widest opacity-20">Yesterday</span>
+                                    </div>
+                                    <i data-lucide="chevron-right" class="w-5 h-5 opacity-20 group-hover:opacity-100 group-hover:text-secondary transition-all transform group-hover:translate-x-2"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container p-12 border border-outline-variant space-y-12 flex flex-col justify-between">
+                        <div class="space-y-12">
+                            <h3 class="font-newsreader text-3xl font-bold italic tracking-tight text-secondary border-b border-outline-variant pb-6 uppercase">Daily Manifesto</h3>
+                            <div class="space-y-10">
+                                <div class="flex space-x-6 border-l-2 border-secondary pl-8 py-2 relative">
+                                    <div class="absolute -left-[2px] top-0 w-[2px] h-full bg-secondary shadow-[0_0_15px_rgba(var(--secondary-rgb),0.5)]"></div>
+                                    <div class="space-y-3">
+                                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary flex items-center">
+                                            <span class="w-1.5 h-1.5 bg-secondary rounded-full mr-3 animate-pulse"></span>
+                                            10:00 — 14:00
+                                        </p>
+                                        <p class="font-newsreader text-2xl font-bold italic tracking-tight">Marcus Reed</p>
+                                        <p class="text-[9px] font-bold uppercase tracking-widest opacity-40">Botanical Sleeve • Studio 01</p>
+                                    </div>
+                                </div>
+                                <div class="flex space-x-6 border-l-2 border-outline-variant pl-8 py-2 opacity-30">
+                                    <div class="space-y-3">
+                                        <p class="text-[10px] font-bold uppercase tracking-[0.3em]">15:00 — 18:00</p>
+                                        <p class="font-newsreader text-2xl font-bold italic tracking-tight">Open Block</p>
+                                        <p class="text-[9px] font-bold uppercase tracking-widest">Available for Consultation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105 mt-12 w-full">Launch Master Calendar</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: DESIGN REQUESTS -->
+            <section id="requests-section" class="hidden p-8 md:p-12 space-y-16">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-outline-variant pb-12">
+                    <div class="space-y-4 flex-1">
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tighter whitespace-nowrap">Inquiries. <span class="italic text-secondary opacity-20 not-italic text-on-surface">Queue.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-40">Biological Intake & Project Feasibility Ledger</p>
+                    </div>
+                    <div class="flex space-x-4 relative">
+                        <select class="bg-surface-container border border-outline-variant px-8 py-3 text-[10px] font-bold uppercase tracking-widest focus:outline-none focus:border-secondary transition-colors appearance-none pr-12 cursor-pointer">
+                            <option>Filter: All Requests</option>
+                            <option>Filter: New Inbound</option>
+                            <option>Filter: In Review</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="w-3 h-3 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none opacity-40"></i>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <!-- Julian Pierce -->
+                    <div class="bg-surface-container p-10 grid lg:grid-cols-12 gap-8 items-center border-b border-outline-variant hover:bg-surface-dim transition-all group">
+                        <div class="lg:col-span-3 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Principal Client</p>
+                            <p class="font-newsreader text-2xl font-bold italic tracking-tight">Julian Pierce</p>
+                        </div>
+                        <div class="lg:col-span-4 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Project Manifesto</p>
+                            <p class="text-xs font-bold uppercase tracking-[0.1em]">Neo-Japanese Backpiece</p>
+                        </div>
+                        <div class="lg:col-span-2 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Estimated Value</p>
+                            <p class="text-xs font-bold uppercase tracking-[0.1em] text-secondary">£2,400.00</p>
+                        </div>
+                        <div class="lg:col-span-2">
+                            <span class="bg-secondary/10 text-secondary border border-secondary/20 px-4 py-2 text-[8px] font-bold uppercase tracking-[0.2em]">Stencil Review</span>
+                        </div>
+                        <div class="lg:col-span-1 text-right">
+                            <button class="p-4 bg-surface-dim hover:bg-secondary hover:text-white transition-all">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Elena Rossi -->
+                    <div class="bg-surface-container p-10 grid lg:grid-cols-12 gap-8 items-center border-b border-outline-variant hover:bg-surface-dim transition-all group">
+                        <div class="lg:col-span-3 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Principal Client</p>
+                            <p class="font-newsreader text-2xl font-bold italic tracking-tight">Elena Rossi</p>
+                        </div>
+                        <div class="lg:col-span-4 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Project Manifesto</p>
+                            <p class="text-xs font-bold uppercase tracking-[0.1em]">Micro-Realism Anatomy</p>
+                        </div>
+                        <div class="lg:col-span-2 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Estimated Value</p>
+                            <p class="text-xs font-bold uppercase tracking-[0.1em] text-secondary">£750.00</p>
+                        </div>
+                        <div class="lg:col-span-2">
+                            <span class="bg-secondary/10 text-secondary border border-secondary/20 px-4 py-2 text-[8px] font-bold uppercase tracking-[0.2em]">New Inbound</span>
+                        </div>
+                        <div class="lg:col-span-1 text-right">
+                            <button class="p-4 bg-surface-dim hover:bg-secondary hover:text-white transition-all">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Marcus Thorne -->
+                    <div class="bg-surface-container p-10 grid lg:grid-cols-12 gap-8 items-center border-b border-outline-variant hover:bg-surface-dim transition-all group opacity-60">
+                        <div class="lg:col-span-3 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Principal Client</p>
+                            <p class="font-newsreader text-2xl font-bold italic tracking-tight">Marcus Thorne</p>
+                        </div>
+                        <div class="lg:col-span-4 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Project Manifesto</p>
+                            <p class="text-xs font-bold uppercase tracking-[0.1em]">Cyber-Sigilism Sleeve</p>
+                        </div>
+                        <div class="lg:col-span-2 space-y-2">
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Estimated Value</p>
+                            <p class="text-xs font-bold uppercase tracking-[0.1em]">£1,800.00</p>
+                        </div>
+                        <div class="lg:col-span-2">
+                            <span class="bg-surface-dim text-white/40 border border-outline-variant px-4 py-2 text-[8px] font-bold uppercase tracking-[0.2em]">Rejected</span>
+                        </div>
+                        <div class="lg:col-span-1 text-right">
+                            <button class="p-4 bg-surface-dim hover:bg-secondary hover:text-white transition-all">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CLIENTS -->
+            <section id="clients-section" class="hidden p-8 md:p-12 space-y-16 max-w-7xl mx-auto w-full">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-outline-variant pb-12">
+                    <div class="space-y-4">
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tighter">Patrons. <span class="italic text-secondary opacity-20 not-italic text-on-surface">Archive.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-40">Comprehensive Biological Records & Collective Portfolio Ledger</p>
+                    </div>
+                    <div class="flex space-x-4">
+                        <input type="text" placeholder="Search Master Index..." class="bg-surface-container border border-outline-variant px-8 py-3 text-[10px] font-bold uppercase tracking-widest focus:outline-none focus:border-secondary transition-all w-80">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <!-- Julian Pierce -->
+                    <div class="bg-surface-container p-12 border border-outline-variant hover:border-secondary transition-all space-y-10 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
+                            <i data-lucide="user" class="w-24 h-24"></i>
+                        </div>
+                        <div class="flex items-center space-x-8">
+                            <div class="w-20 h-20 bg-surface-dim border border-outline-variant flex items-center justify-center font-bold text-2xl font-newsreader italic text-secondary">JP</div>
+                            <div class="space-y-1">
+                                <h3 class="font-newsreader text-3xl font-bold italic tracking-tight uppercase">Julian Pierce</h3>
+                                <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-20">Patron ID: #INK-8821</p>
+                            </div>
+                        </div>
+                        <div class="space-y-6 pt-8 border-t border-outline-variant">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Artworks Collected</span>
+                                <span class="text-xs font-bold uppercase">04 Sessions</span>
+                            </div>
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Lifetime Value</span>
+                                <span class="text-lg font-newsreader font-bold italic text-secondary">£5,200.00</span>
+                            </div>
+                        </div>
+                        <button class="w-full border border-outline-variant px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all hover:bg-secondary hover:text-white hover:scale-105">Open Dossier</button>
+                    </div>
+                    <!-- Sarah Vance -->
+                    <div class="bg-surface-container p-12 border border-outline-variant hover:border-secondary transition-all space-y-10 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
+                            <i data-lucide="user" class="w-24 h-24"></i>
+                        </div>
+                        <div class="flex items-center space-x-8">
+                            <div class="w-20 h-20 bg-surface-dim border border-outline-variant flex items-center justify-center font-bold text-2xl font-newsreader italic text-secondary">SV</div>
+                            <div class="space-y-1">
+                                <h3 class="font-newsreader text-3xl font-bold italic tracking-tight uppercase">Sarah Vance</h3>
+                                <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-20">Patron ID: #INK-4429</p>
+                            </div>
+                        </div>
+                        <div class="space-y-6 pt-8 border-t border-outline-variant">
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Artworks Collected</span>
+                                <span class="text-xs font-bold uppercase">01 Session</span>
+                            </div>
+                            <div class="flex justify-between items-baseline">
+                                <span class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Lifetime Value</span>
+                                <span class="text-lg font-newsreader font-bold italic text-secondary">£450.00</span>
+                            </div>
+                        </div>
+                        <button class="w-full border border-outline-variant px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all hover:bg-secondary hover:text-white hover:scale-105">Open Dossier</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: FINANCIAL LEDGER -->
+            <section id="revenue-section" class="hidden p-8 md:p-12 space-y-20 max-w-7xl mx-auto w-full">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-outline-variant pb-12">
+                    <div class="space-y-4">
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Revenue. <span class="italic text-secondary opacity-20 not-italic text-on-surface">Ledger.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-40">Financial Analytics & Secure Transaction Protocol</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="p-12 bg-surface-container border border-outline-variant space-y-6 group hover:border-secondary transition-all">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Gross Inbound</span>
+                        <p class="font-newsreader text-6xl font-bold italic tracking-tighter">£42,850</p>
+                    </div>
+                    <div class="p-12 bg-surface-container border border-outline-variant space-y-6 group hover:border-secondary transition-all">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Locked Deposits</span>
+                        <p class="font-newsreader text-6xl font-bold italic tracking-tighter text-secondary">£2,450</p>
+                        <p class="text-[10px] font-bold uppercase opacity-40 tracking-widest">Across 18 Projects</p>
+                    </div>
+                </div>
+
+                <div class="space-y-12">
+                    <div class="flex items-center justify-between">
+                        <h2 class="font-newsreader text-3xl font-bold italic tracking-tight">Financial Protocol History</h2>
+                        <button class="border border-outline-variant px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all hover:bg-secondary hover:text-white hover:scale-105">Export Statement</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-20 border-b border-outline-variant">
+                                    <th class="py-6">Transaction ID</th>
+                                    <th class="py-6">Principal Patron</th>
+                                    <th class="py-6 text-right">Credit Value</th>
+                                    <th class="py-6 text-right">Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-xs font-bold uppercase tracking-[0.1em]">
+                                <tr class="border-b border-outline-variant group hover:bg-surface-container transition-colors">
+                                    <td class="py-8 opacity-40 font-mono tracking-tighter">INK-T-99201</td>
+                                    <td class="py-8 font-newsreader text-2xl font-bold italic normal-case tracking-tight text-on-surface group-hover:text-secondary transition-colors">Julianne Vance</td>
+                                    <td class="py-8 text-right text-secondary">+£150.00</td>
+                                    <td class="py-8 text-right opacity-20">18.03.2024</td>
+                                </tr>
+                                <tr class="border-b border-outline-variant group hover:bg-surface-container transition-colors">
+                                    <td class="py-8 opacity-40 font-mono tracking-tighter">INK-T-99188</td>
+                                    <td class="py-8 font-newsreader text-2xl font-bold italic normal-case tracking-tight text-on-surface group-hover:text-secondary transition-colors">Marcus Reed</td>
+                                    <td class="py-8 text-right text-secondary">+£2,400.00</td>
+                                    <td class="py-8 text-right opacity-20">15.03.2024</td>
+                                </tr>
+                                <tr class="border-b border-outline-variant group hover:bg-surface-container transition-colors opacity-50">
+                                    <td class="py-8 opacity-40 font-mono tracking-tighter">INK-T-99150</td>
+                                    <td class="py-8 font-newsreader text-2xl font-bold italic normal-case tracking-tight text-on-surface group-hover:text-secondary transition-colors">Elena Rossi</td>
+                                    <td class="py-8 text-right text-red-500">-£75.00</td>
+                                    <td class="py-8 text-right opacity-20">10.03.2024</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CALENDAR -->
+            <section id="calendar-section" class="hidden h-full flex flex-col overflow-hidden min-h-[700px]">
+                <div class="p-10 border-b border-outline-variant flex justify-between items-center bg-surface-dim">
+                    <div class="flex items-center space-x-12">
+                        <h2 class="font-newsreader text-4xl font-bold italic tracking-tight">August <span class="not-italic opacity-20">2024</span></h2>
+                        <div class="flex space-x-4">
+                            <button class="p-3 border border-outline-variant hover:bg-surface-container transition-colors"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                            <button class="p-3 border border-outline-variant hover:bg-surface-container transition-colors"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                    <button class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Schedule Block</button>
+                </div>
+                <div class="flex-1 grid grid-cols-7 bg-surface-dim text-[10px] font-bold uppercase tracking-[0.4em] border-b border-outline-variant">
+                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Monday</div>
+                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Tuesday</div>
+                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Wednesday</div>
+                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Thursday</div>
+                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Friday</div>
+                    <div class="p-6 border-r border-outline-variant text-center opacity-20 text-secondary">Saturday</div>
+                    <div class="p-6 text-center opacity-20 text-secondary">Sunday</div>
+                </div>
+                <div id="calendar-grid" class="flex-1 grid grid-cols-7 bg-surface">
+                    <!-- JS Injected Days -->
+                </div>
+            </section>
+
+            <!-- SECTION: STUDIO INBOX -->
+            <section id="messages-section" class="hidden h-full flex flex-col overflow-hidden min-h-[700px]">
+                <div class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+                    <!-- Inquiry Sidebar -->
+                    <div class="w-full lg:w-[400px] border-r border-outline-variant flex flex-col bg-surface">
+                        <div class="p-12 border-b border-outline-variant flex justify-between items-end">
+                            <div class="space-y-2">
+                                <h2 class="font-newsreader text-3xl font-bold italic tracking-tight">Narrative Inbound</h2>
+                                <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Secure Conversations</p>
+                            </div>
+                            <span class="bg-secondary text-white text-[8px] font-bold tracking-[0.2em] px-3 py-1.5">12 PENDING</span>
+                        </div>
+                        <div class="flex-1 overflow-y-auto">
+                            <div class="space-y-px">
+                                <!-- Message Preview 1 -->
+                                <div class="p-10 bg-surface-container border-l-4 border-secondary cursor-pointer transition-all">
+                                    <div class="flex justify-between items-baseline mb-3">
+                                        <span class="font-newsreader text-xl font-bold italic tracking-tight text-secondary">Julianne Vance</span>
+                                        <span class="text-[8px] font-bold uppercase opacity-20">10:42 AM</span>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <p class="font-newsreader text-sm italic opacity-40 line-clamp-2 leading-relaxed">"Is it possible to shift the session start time by 30 minutes? I have a medical prior..."</p>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                                            <span class="text-[8px] font-bold uppercase tracking-widest text-secondary">Priority Client</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Message Preview 2 -->
+                                <div class="p-10 hover:bg-surface-container transition-all cursor-pointer group border-b border-outline-variant">
+                                    <div class="flex justify-between items-baseline mb-3">
+                                        <span class="font-newsreader text-xl font-bold italic tracking-tight opacity-100 group-hover:text-secondary transition-colors text-on-surface">Elena Rossi</span>
+                                        <span class="text-[8px] font-bold uppercase opacity-20">09:15 AM</span>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <p class="font-newsreader text-sm italic opacity-40 line-clamp-2 leading-relaxed">"I have just uploaded the color palette references for my sleeve project. Please let me know..."</p>
+                                        <div class="flex items-center space-x-3">
+                                            <span class="text-[8px] font-bold uppercase tracking-widest text-on-surface opacity-40">Assets Uploaded</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Message Preview 3 -->
+                                <div class="p-10 hover:bg-surface-container transition-all cursor-pointer group border-b border-outline-variant">
+                                    <div class="flex justify-between items-baseline mb-3">
+                                        <span class="font-newsreader text-xl font-bold italic tracking-tight opacity-100 group-hover:text-secondary transition-colors text-on-surface">Marcus Thorne</span>
+                                        <span class="text-[8px] font-bold uppercase opacity-20">Yesterday</span>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <p class="font-newsreader text-sm italic opacity-40 line-clamp-2 leading-relaxed">"Regarding the quote for the backpiece: is it possible to split the payment into..."</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Interface -->
+                    <div class="flex-1 flex flex-col pt-0 bg-surface">
+                        <header class="p-8 border-b border-outline-variant flex items-center justify-between bg-surface z-10">
+                            <div class="flex items-center space-x-6">
+                                <div class="w-12 h-12 bg-secondary flex items-center justify-center text-xs font-bold text-white font-newsreader italic shadow-lg shadow-secondary/20">JV</div>
+                                <div class="space-y-1">
+                                    <h3 class="text-xs font-bold uppercase tracking-[0.2em]">Julianne Vance</h3>
+                                    <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Project: Narrative Fine Line</p>
+                                </div>
+                            </div>
+                            <div class="flex space-x-4">
+                                <button class="p-3 border border-outline-variant hover:bg-surface-container transition-colors"><i data-lucide="phone" class="w-4 h-4"></i></button>
+                                <button class="p-3 border border-outline-variant hover:bg-surface-container transition-colors"><i data-lucide="more-vertical" class="w-4 h-4"></i></button>
+                            </div>
+                        </header>
+                        
+                        <div class="flex-1 overflow-y-auto p-12 space-y-12 pb-32">
+                            <!-- Incoming Message -->
+                            <div class="flex gap-8 max-w-4xl">
+                                <div class="w-10 h-10 bg-surface-dim border border-outline-variant flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-secondary font-newsreader italic">JV</div>
+                                <div class="space-y-4">
+                                    <div class="bg-surface-container p-8 border border-outline-variant italic font-newsreader text-base leading-relaxed opacity-80">
+                                        "Is it possible to shift the session start time by 30 minutes? I have a medical prior that might run slightly over, and I want to ensure we have the full dedicated block for the stencil placement."
+                                    </div>
+                                    <span class="text-[8px] font-bold uppercase tracking-widest opacity-20">Delivered • 10:42 AM</span>
+                                </div>
+                            </div>
+
+                            <!-- Outgoing Placeholder -->
+                            <div class="flex gap-8 max-w-4xl ml-auto flex-row-reverse">
+                                <div class="w-10 h-10 bg-secondary flex-shrink-0 flex items-center justify-center text-[10px] font-bold text-white font-newsreader italic">A</div>
+                                <div class="space-y-4 flex flex-col items-end">
+                                    <div class="bg-secondary text-white p-8 italic font-newsreader text-base leading-relaxed">
+                                        "Certainly, Julianne. We have adjusted your block to 10:30 AM. Looking forward to our session."
+                                    </div>
+                                    <span class="text-[8px] font-bold uppercase tracking-widest text-secondary">Message Sent</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="p-8 bg-surface-dim border-t border-outline-variant">
+                            <div class="flex items-center space-x-6">
+                                <input type="text" placeholder="Type protocol response..." class="flex-1 bg-surface border border-outline-variant px-8 py-5 text-[10px] font-bold uppercase tracking-widest focus:outline-none focus:border-secondary transition-all">
+                                <button class="bg-secondary text-white p-5 hover:brightness-110 transition-all shadow-lg shadow-secondary/20">
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: STUDIO SETTINGS -->
+            <section id="settings-section" class="hidden p-8 md:p-12 space-y-16 max-w-7xl mx-auto w-full">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-outline-variant pb-12">
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tighter">Studio. <span class="italic text-secondary opacity-20 not-italic text-on-surface">Manifesto.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-40">Operational Protocols & System Metadata Configurations</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    <div class="p-10 bg-surface-container border border-outline-variant space-y-8 group hover:border-secondary transition-all">
+                        <div class="flex items-center space-x-4 opacity-40">
+                            <i data-lucide="shield" class="w-4 h-4 text-secondary"></i>
+                            <h2 class="text-[10px] font-bold uppercase tracking-[0.2em]">Deposit Protocol</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="font-newsreader text-5xl font-bold italic tracking-tight text-on-surface">£150.00</p>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-20 leading-relaxed italic">Minimum required credit to confirm high-fidelity booking slot.</p>
+                        </div>
+                        <button class="w-full border border-outline-variant px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all hover:bg-secondary hover:text-white hover:scale-105">Adjust Parameter</button>
+                    </div>
+
+                    <div class="p-10 bg-surface-container border border-outline-variant space-y-8 group hover:border-secondary transition-all">
+                        <div class="flex items-center space-x-4 opacity-40">
+                            <i data-lucide="clock" class="w-4 h-4 text-secondary"></i>
+                            <h2 class="text-[10px] font-bold uppercase tracking-[0.2em]">Session Duration Default</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="font-newsreader text-5xl font-bold italic tracking-tight text-on-surface">04 <span class="text-2xl not-italic opacity-20">Hours</span></p>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-20 leading-relaxed italic">Standard allocation for principal backpiece & sleeve projects.</p>
+                        </div>
+                        <button class="w-full py-4 border border-outline-variant text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-secondary hover:text-white transition-all uppercase">Adjust Parameter</button>
+                    </div>
+
+                    <div class="p-10 bg-surface-container border border-outline-variant space-y-8 group hover:border-secondary transition-all">
+                        <div class="flex items-center space-x-4 opacity-40">
+                            <i data-lucide="calendar-days" class="w-4 h-4 text-secondary"></i>
+                            <h2 class="text-[10px] font-bold uppercase tracking-[0.2em]">Studio Availability</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <p class="font-newsreader text-5xl font-bold italic tracking-tight text-on-surface">04 <span class="text-2xl not-italic opacity-20">Days / Week</span></p>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-20 leading-relaxed italic">Operational cycle for principal curate-led tattoo sessions.</p>
+                        </div>
+                        <button class="w-full py-4 border border-outline-variant text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-secondary hover:text-white transition-all uppercase">Sync Schedule</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Core Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Section Switching Logic
+        const sections = ['overview', 'requests', 'clients', 'revenue', 'calendar', 'messages', 'settings'];
+        const sectionTitle = document.getElementById('section-title');
+
+        function showSection(sectionId) {
+            sections.forEach(id => {
+                const el = document.getElementById(`${id}-section`);
+                if (el) el.classList.add('hidden');
+                
+                // Update sidebar link styles
+                const link = document.getElementById(`${id}-link`);
+                if (link) {
+                    if (id === sectionId) {
+                        link.classList.add('bg-surface-container', 'text-secondary', 'font-bold', 'border-l-2', 'border-secondary');
+                        link.classList.remove('opacity-60', 'hover:opacity-100');
+                    } else {
+                        link.classList.remove('bg-surface-container', 'text-secondary', 'font-bold', 'border-l-2', 'border-secondary');
+                        link.classList.add('opacity-60', 'hover:opacity-100');
+                    }
+                }
+            });
+
+            const activeSection = document.getElementById(`${sectionId}-section`);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+                
+                // Dynamic Header Logic
+                if (sectionId === 'overview') {
+                    sectionTitle.innerText = "Studio Admin";
+                } else {
+                    sectionTitle.innerText = sectionId.charAt(0).toUpperCase() + sectionId.slice(1).replace('-', ' ');
+                }
+                if(sectionId === 'calendar') renderCalendar();
+            }
+
+            // Close sidebar on mobile
+            if (window.innerWidth < 1024) {
+                document.getElementById('sidebar').classList.add('-translate-x-full');
+            }
+
+            // Reset scroll position to top (Hardened)
+            const contentArea = document.getElementById('content-area');
+            if (contentArea) contentArea.scrollTop = 0;
+            window.scrollTo(0, 0);
+        }
+
+        // Calendar Rendering
+        function renderCalendar() {
+            const grid = document.getElementById('calendar-grid');
+            if(!grid || grid.children.length > 0) return;
+            
+            for(let i=1; i<=35; i++) {
+                const day = document.createElement('div');
+                day.className = `border-r border-b border-outline-variant p-4 hover:bg-surface-dim transition-colors relative min-h-[120px]`;
+                const date = i - 2;
+                if(date > 0 && date <= 31) {
+                    day.innerHTML = `<span class="text-[10px] font-bold uppercase opacity-20">${date}</span>`;
+                    
+                    // Add some mock events
+                    if(date === 12) {
+                        day.innerHTML += `
+                            <div class="mt-4 p-2 bg-secondary/10 border-l-2 border-secondary group cursor-pointer">
+                                <span class="text-[8px] font-bold uppercase block text-secondary">Botanical II</span>
+                                <span class="text-[7px] font-bold uppercase block opacity-20">Marcus R.</span>
+                            </div>`;
+                    }
+                    if(date === 18) {
+                        day.innerHTML += `
+                            <div class="mt-4 p-2 bg-surface-dim border-l-2 border-outline-variant group cursor-pointer">
+                                <span class="text-[8px] font-bold uppercase block opacity-60">Stencil Prep</span>
+                                <span class="text-[7px] font-bold uppercase block opacity-20">Elena R.</span>
+                            </div>`;
+                    }
+                    if(date === 24) {
+                        day.innerHTML += `
+                            <div class="mt-4 p-2 bg-secondary/10 border-l-2 border-secondary group cursor-pointer">
+                                <span class="text-[8px] font-bold uppercase block text-secondary">Backpiece IV</span>
+                                <span class="text-[7px] font-bold uppercase block opacity-20">Julian P.</span>
+                            </div>`;
+                    }
+                } else {
+                    day.classList.add('bg-surface-dim/20');
+                }
+                grid.appendChild(day);
+            }
+        }
+
+        // Sidebar Toggle for Mobile
+        const sidebar = document.getElementById('sidebar');
+        const toggle = document.getElementById('sidebar-toggle');
+        
+        if (toggle && sidebar) {
+            toggle.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+        }
+
+        window.onload = () => {
+            showSection('overview');
+            lucide.createIcons();
+        };
+
+        // Re-init icons when switching sections
+        const originalShowSection = showSection;
+        showSection = function(sectionId) {
+            originalShowSection(sectionId);
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

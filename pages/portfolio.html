@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Gallery — Inkwell Studio</title>
+    <meta name="description"
+        content="A filtered exhibition of fine-line, blackwork, and narrative tattoo art by Inkwell Studio. Browse our latest projects and find your inspiration.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        surface: 'var(--surface)',
+                        'surface-container': 'var(--surface-container)',
+                        'surface-dim': 'var(--surface-dim)',
+                        'surface-low': 'var(--surface-low)',
+                        primary: 'var(--primary)',
+                        'on-primary': 'var(--on-primary)',
+                        secondary: 'var(--secondary)',
+                        'on-surface': 'var(--on-surface)',
+                        'on-surface-variant': 'var(--on-surface-variant)',
+                        'outline-variant': 'var(--outline-variant)',
+                    },
+                    fontFamily: {
+                        newsreader: ['Newsreader', 'serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        editorial: '-0.02em',
+                    },
+                    borderRadius: {
+                        DEFAULT: '0px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body class="bg-surface text-on-surface font-inter transition-colors duration-300">
+
+    <!-- ========== NAVIGATION ========== -->
+    <!-- ========== NAVIGATION ========== -->
+    <nav id="main-nav"
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 nav-transparent backdrop-blur-sm border-b border-outline-variant/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../index.html" class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <!-- Home Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="flex items-center space-x-1 font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">
+                        <span>Home</span>
+                        <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-surface-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl border border-outline-variant">
+                        <a href="../index.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors">Home
+                            1 (Minimalist)</a>
+                        <a href="home-2.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Home
+                            2 (Contemporary)</a>
+                    </div>
+                </div>
+
+                <a href="portfolio.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors text-secondary">Portfolio</a>
+                <a href="services.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">Services</a>
+                <a href="about.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">About</a>
+                <a href="contact.html"
+                    class="font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">Contact</a>
+
+                <!-- Dashboard Dropdown -->
+                <div class="relative group">
+                    <button
+                        class="flex items-center space-x-1 font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">
+                        <span>Dashboard</span>
+                        <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-48 bg-surface-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl border border-outline-variant">
+                        <a href="user-dashboard.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors">User
+                            Workspace</a>
+                        <a href="admin-dashboard.html"
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Admin
+                            Suite</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center space-x-8">
+                <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors"
+                    aria-label="Toggle Dark Mode">
+                    <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                        </path>
+                    </svg>
+                    <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                </button>
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="consultation.html"
+                        class="px-8 py-3 text-xs font-bold uppercase tracking-[0.08em] border border-outline-variant hover:border-secondary transition-all">Book
+                        Now</a>
+                    <a href="login.html"
+                        class="bg-secondary text-white px-8 py-3 text-xs font-bold uppercase tracking-[0.08em] hover:brightness-110 transition-all btn-sheen">Login</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden p-2" aria-label="Open Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Mobile Menu Overlay -->
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-surface translate-x-full transition-transform duration-500 flex flex-col p-12">
+        <button id="close-mobile-menu" class="absolute top-8 right-8 p-2" aria-label="Close Menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="mt-20 flex flex-col space-y-8">
+            <div class="space-y-4">
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Home Selection</span>
+                <div class="flex flex-col space-y-4 pl-4 border-l border-outline-variant">
+                    <a href="../index.html" class="font-newsreader text-3xl font-bold italic">Home 1: Minimalist</a>
+                    <a href="home-2.html" class="font-newsreader text-3xl font-bold italic">Home 2: Contemporary</a>
+                </div>
+            </div>
+            <a href="portfolio.html"
+                class="font-newsreader text-4xl font-bold text-secondary border-b border-secondary pb-1 w-fit">Portfolio</a>
+            <a href="services.html" class="font-newsreader text-4xl font-bold">Services</a>
+            <a href="about.html" class="font-newsreader text-4xl font-bold">About</a>
+            <a href="contact.html" class="font-newsreader text-4xl font-bold">Contact</a>
+
+            <div class="py-8 border-t border-outline-variant space-y-4">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Dashboards</span>
+                <div class="flex flex-col space-y-6">
+                    <a href="user-dashboard.html" class="font-newsreader text-3xl font-bold">User Workspace</a>
+                    <a href="admin-dashboard.html" class="font-newsreader text-3xl font-bold">Admin Suite</a>
+                </div>
+            </div>
+
+            <a href="login.html"
+                class="block w-full text-center bg-secondary text-white py-6 text-sm font-bold uppercase tracking-[0.1em] mt-auto">Login</a>
+            <a href="consultation.html"
+                class="block w-full text-center border border-outline-variant py-6 text-sm font-bold uppercase tracking-[0.1em] mt-4">Book
+                Now</a>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- ========== THE GALLERY ENTRANCE (Immersive Editorial Hero) ========== -->
+        <section
+            class="relative h-[85vh] flex items-center justify-center overflow-hidden bg-surface-dim transition-colors duration-500">
+
+
+            <!-- Central Editorial Label -->
+            <div class="relative z-10 text-center space-y-8 px-6 pt-16">
+                <h1
+                    class="font-newsreader text-8xl md:text-[10rem] font-bold tracking-editorial leading-none text-on-surface opacity-95 overflow-hidden">
+                    <span class="block animate-slide-up">The <span class="italic text-secondary/40">Vault.</span></span>
+                </h1>
+                <p
+                    class="text-[11px] font-bold uppercase tracking-[0.4em] text-on-surface-variant max-w-sm mx-auto leading-relaxed italic opacity-80">
+                    A clinical curation of persistent narratives and structural fine-line excellence.
+                </p>
+            </div>
+        </section>
+
+        <!-- ========== THE GALLERY (Semantic Layout) ========== -->
+        <div class="bg-surface text-on-surface relative border-t border-outline-variant/10">
+            <div class="max-w-7xl mx-auto px-6 pt-16 pb-8">
+
+                <!-- Minimalist Editorial Filter Bar -->
+                <div class="flex flex-col items-center mb-12 space-y-8" id="portfolio-filters">
+                    <span class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Categorical
+                        Index</span>
+                    <div class="flex flex-wrap justify-center gap-x-12 gap-y-6">
+                        <button data-filter="all"
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] transition-all active-filter text-secondary border-b border-secondary pb-1">All
+                            Exhibits</button>
+                        <button data-filter="fine-line"
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition-all hover:text-secondary">Fine
+                            Line</button>
+                        <button data-filter="blackwork"
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition-all hover:text-secondary">Blackwork</button>
+                        <button data-filter="japanese"
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition-all hover:text-secondary">Japanese</button>
+                        <button data-filter="neo-traditional"
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 hover:opacity-100 transition-all hover:text-secondary">Neo-Trad</button>
+                    </div>
+                </div>
+
+                <!-- Staggered Content Grid -->
+                <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-4" id="portfolio-grid">
+                    <!-- Exhibits continue here -->
+
+                    <!-- Exhibit 01: Botanical -->
+                    <div class="portfolio-item break-inside-avoid group" data-category="fine-line">
+                        <div
+                            class="relative overflow-hidden bg-surface-container border border-outline-variant/30 group-hover:border-secondary/30 transition-colors">
+                            <!-- Image Container with Aspect Ratio Variety -->
+                            <div class="aspect-[3/4] overflow-hidden">
+                                <img src="../assets/images/portfolio/work-1.png" alt="Botanical Narrative"
+                                    class="w-full h-full object-cover grayscale brightness-90 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100">
+                            </div>
+
+                        </div>
+                        <!-- Exhibit Metadata Below -->
+                        <div class="mt-2 pb-4 space-y-1">
+                            <span class="text-[8px] font-bold uppercase tracking-[0.3em] text-secondary">ID:
+                                24/01</span>
+                            <h3 class="font-newsreader text-2xl font-bold italic text-on-surface">Botanical Narrative I
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Exhibit 02: Geometric -->
+                    <div class="portfolio-item break-inside-avoid group" data-category="blackwork">
+                        <div
+                            class="relative overflow-hidden bg-surface-container border border-outline-variant/30 group-hover:border-secondary/30 transition-colors">
+                            <div class="aspect-[4/5] overflow-hidden">
+                                <img src="../assets/images/portfolio/work-2.png" alt="Structural Geometry"
+                                    class="w-full h-full object-cover grayscale brightness-90 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100">
+                            </div>
+                        </div>
+                        <div class="mt-4 pb-8 space-y-1">
+                            <span class="text-[8px] font-bold uppercase tracking-[0.3em] text-secondary">ID:
+                                23/84</span>
+                            <h3 class="font-newsreader text-2xl font-bold italic text-on-surface">Structural Geometry
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Exhibit 03: Japanese -->
+                    <div class="portfolio-item break-inside-avoid group md:mt-12" data-category="japanese">
+                        <div
+                            class="relative overflow-hidden bg-surface-container border border-outline-variant/30 group-hover:border-secondary/30 transition-colors">
+                            <div class="aspect-[2/3] overflow-hidden">
+                                <img src="../assets/images/portfolio/work-6.png" alt="Tidal Narrative"
+                                    class="w-full h-full object-cover grayscale brightness-90 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100">
+                            </div>
+
+                        </div>
+                        <div class="mt-4 pb-8 space-y-1">
+                            <span class="text-[8px] font-bold uppercase tracking-[0.3em] text-secondary">ID:
+                                24/12</span>
+                            <h3 class="font-newsreader text-2xl font-bold italic text-on-surface">Tidal Wave Narrative
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Exhibit 04: Blackwork -->
+                    <div class="portfolio-item break-inside-avoid group" data-category="blackwork">
+                        <div
+                            class="relative overflow-hidden bg-surface-container border border-outline-variant/30 group-hover:border-secondary/30 transition-colors">
+                            <div class="aspect-[4/5] overflow-hidden">
+                                <img src="../assets/images/portfolio/work-4.png" alt="Abstract Spine"
+                                    class="w-full h-full object-cover grayscale brightness-90 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100">
+                            </div>
+                        </div>
+                        <div class="mt-4 pb-8 space-y-1">
+                            <span class="text-[8px] font-bold uppercase tracking-[0.3em] text-secondary">ID:
+                                24/04</span>
+                            <h3 class="font-newsreader text-2xl font-bold italic text-on-surface">Abstract Spine</h3>
+                        </div>
+                    </div>
+
+                    <!-- Exhibit 05: Neo-Traditional -->
+                    <div class="portfolio-item break-inside-avoid group md:-mt-12" data-category="neo-traditional">
+                        <div
+                            class="relative overflow-hidden bg-surface-container border border-outline-variant/30 group-hover:border-secondary/30 transition-colors">
+                            <div class="aspect-[3/4] overflow-hidden">
+                                <img src="../assets/images/portfolio/work-3.png" alt="Legacy Portrait"
+                                    class="w-full h-full object-cover grayscale brightness-90 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100">
+                            </div>
+                        </div>
+                        <div class="mt-4 pb-8 space-y-1">
+                            <span class="text-[8px] font-bold uppercase tracking-[0.3em] text-secondary">ID:
+                                24/09</span>
+                            <h3 class="font-newsreader text-2xl font-bold italic text-on-surface">Legacy Portrait II
+                            </h3>
+                        </div>
+                    </div>
+
+                    <!-- Exhibit 06: Fine Line -->
+                    <div class="portfolio-item break-inside-avoid group" data-category="fine-line">
+                        <div
+                            class="relative overflow-hidden bg-surface-container border border-outline-variant/30 group-hover:border-secondary/30 transition-colors">
+                            <div class="aspect-[4/5] overflow-hidden">
+                                <img src="../assets/images/portfolio/work-5.png" alt="Serif Typography"
+                                    class="w-full h-full object-cover grayscale brightness-90 transition-all duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100">
+                            </div>
+                        </div>
+                        <div class="mt-4 pb-8 space-y-1">
+                            <span class="text-[8px] font-bold uppercase tracking-[0.3em] text-secondary">ID:
+                                23/12</span>
+                            <h3 class="font-newsreader text-2xl font-bold italic text-on-surface">Serif Typography</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div> 
+        </div> 
+
+        <!-- ========== THE CURATOR'S NOTE (Semantic Style) ========== -->
+        <section
+            class="py-16 bg-surface-dim border-y border-outline-variant/30 relative overflow-hidden text-on-surface">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-4 space-y-8">
+                        <span
+                            class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px] block">Philosophical
+                            Core</span>
+                        <h2 class="font-newsreader text-5xl md:text-7xl font-bold leading-[0.9] tracking-editorial">
+                            Beyond the <br> <span class="italic text-on-surface-variant/40">Canvas of Skin.</span></h2>
+                        <div class="w-12 h-[1px] bg-secondary opacity-50"></div>
+                    </div>
+                    <div class="lg:col-span-8 lg:pl-12">
+                        <blockquote
+                            class="font-newsreader text-3xl md:text-4xl text-on-surface-variant leading-relaxed italic">
+                            "We do not merely apply ink; we archive identities. Every structural line is a deliberate
+                            choice—a persistence of memory translated into architectural precision. Our exhibition is a
+                            testament to the permanence of narrative."
+                        </blockquote>
+                        <div class="mt-12 flex items-center space-x-6">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border border-outline-variant">
+                                <img src="../assets/images/ui/lead_curator.png"
+                                    alt="Lead Curator" class="w-full h-full object-cover grayscale contrast-125">
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Elias Thorne
+                                </p>
+                                <p class="text-[9px] uppercase tracking-[0.2em] text-secondary">Founding Architect &
+                                    Curator</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== EXHIBITION METHODOLOGY (Semantic Style) ========== -->
+        <section class="py-16 bg-surface text-on-surface">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-12 space-y-6">
+                    <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">The Registry</span>
+                    <h2 class="font-newsreader text-5xl md:text-6xl font-bold">Narrative <span
+                            class="italic">Methodology.</span></h2>
+                    <p
+                        class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant opacity-60 max-w-xl mx-auto leading-relaxed">
+                        A structured approach to custom commissions, ensuring every exhibit meets the architectural
+                        standards of the studio.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
+                    <!-- Step 01 -->
+                    <div
+                        class="space-y-8 p-12 bg-surface-dim border border-outline-variant/30 hover:border-secondary/30 transition-colors group">
+                        <span
+                            class="font-newsreader text-6xl font-bold italic text-secondary/10 group-hover:text-secondary/20 transition-colors">01.</span>
+                        <div class="space-y-4">
+                            <h3 class="font-newsreader text-2xl font-bold">Conceptual Audit</h3>
+                            <p
+                                class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant opacity-60 leading-relaxed">
+                                We begin with a deep dive into your narrative—examining the structural logic and
+                                emotional resonance of the proposed commission.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 02 -->
+                    <div
+                        class="space-y-8 p-12 bg-surface-dim border border-outline-variant/30 hover:border-secondary/30 transition-colors group md:mt-12">
+                        <span
+                            class="font-newsreader text-6xl font-bold italic text-secondary/10 group-hover:text-secondary/20 transition-colors">02.</span>
+                        <div class="space-y-4">
+                            <h3 class="font-newsreader text-2xl font-bold">Architectural Blueprint</h3>
+                            <p
+                                class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant opacity-60 leading-relaxed">
+                                Translating narrative into form. We develop high-fidelity technical blueprints that
+                                respect the anatomy and flow of the canvas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 03 -->
+                    <div
+                        class="space-y-8 p-12 bg-surface-dim border border-outline-variant/30 hover:border-secondary/30 transition-colors group">
+                        <span
+                            class="font-newsreader text-6xl font-bold italic text-secondary/10 group-hover:text-secondary/20 transition-colors">03.</span>
+                        <div class="space-y-4">
+                            <h3 class="font-newsreader text-2xl font-bold">Dermal Archiving</h3>
+                            <p
+                                class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant opacity-60 leading-relaxed">
+                                The execution. Using medical-grade precision and a refined stylistic approach to
+                                finalize the narrative archive on skin.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FINAL BOOKING CTA (Semantic Style) ========== -->
+        <section class="py-16 bg-surface-dim border-t border-outline-variant relative overflow-hidden text-on-surface">
+            <!-- Background Accent -->
+            <div class="absolute bottom-0 right-0 opacity-[0.03] text-on-surface translate-x-1/4 translate-y-1/4">
+                <svg class="w-[40vw] h-[40vw]" viewBox="0 0 100 100" fill="currentColor">
+                    <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="0.5" fill="none" />
+                    <line x1="50" y1="0" x2="50" y2="100" stroke="currentColor" stroke-width="0.5" />
+                    <line x1="0" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="0.5" />
+                </svg>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="max-w-4xl space-y-12">
+                    <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">Commission
+                        Registry</span>
+                    <h2 class="font-newsreader text-6xl md:text-8xl font-bold leading-[0.8]">Begin Your <br> <span
+                            class="italic text-on-surface-variant/40">Narrative Archive.</span></h2>
+
+                    <div class="flex flex-col md:flex-row gap-8 items-start md:items-center">
+                        <a href="consultation.html"
+                            class="px-12 py-5 bg-secondary text-white text-xs font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen shadow-2xl">
+                            Schedule Audit
+                        </a>
+                        <div class="space-y-3 font-newsreader">
+                            <div class="flex items-center space-x-3">
+                                <span class="relative flex h-2 w-2">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
+                                </span>
+                                <span
+                                    class="text-[9px] font-black uppercase tracking-[0.4em] text-secondary font-sans leading-none">Status:
+                                    85% Capacity</span>
+                            </div>
+                            <p
+                                class="text-[10px] uppercase font-bold tracking-[0.3em] text-on-surface-variant opacity-60 font-sans leading-relaxed">
+                                Currently accepting private commissions for <br>
+                                <span class="text-on-surface opacity-100 italic">Large-Scale Narrative Projects.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-surface pt-16 pb-12 border-t border-outline-variant text-on-surface">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-16 lg:gap-24 mb-16">
+                <!-- Brand -->
+                <div class="space-y-6">
+                    <a href="../index.html" class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</a>
+                    <p
+                        class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant leading-relaxed opacity-70">
+                        Editorial Tattooing & <br> Narrative Illustration.
+                    </p>
+                    <div class="flex space-x-5">
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Twitter">
+                            <i data-lucide="twitter" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                            aria-label="Vimeo">
+                            <i data-lucide="video" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Exhibition -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Exhibition</h4>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
+                        <li><a href="portfolio.html" class="hover:text-secondary transition-colors">The Portfolio</a>
+                        </li>
+                        <li><a href="about.html" class="hover:text-secondary transition-colors">Our Story</a></li>
+                        <li><a href="aftercare.html" class="hover:text-secondary transition-colors">Preservation</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Access -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Access</h4>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
+                        <li><a href="consultation.html" class="hover:text-secondary transition-colors">Consultation</a>
+                        </li>
+                        <li><a href="login.html" class="hover:text-secondary transition-colors">Client Workspace</a>
+                        </li>
+                        <li><a href="contact.html" class="hover:text-secondary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ledger -->
+                <div class="space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">The Digital Ledger</h4>
+                    <div class="space-y-4">
+                        <p
+                            class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed">
+                            Enroll for private <br> exhibition updates.</p>
+                        <form class="relative group">
+                            <input type="email" placeholder="EMAIL ADDRESS"
+                                class="w-full bg-transparent border-b border-outline-variant focus:border-secondary transition-colors outline-none py-3 text-[10px] font-bold tracking-widest placeholder:opacity-30">
+                            <button type="submit"
+                                class="absolute right-0 bottom-3 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary hover:translate-x-1 transition-transform">
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="pt-8 border-t border-outline-variant/30 flex justify-between items-center text-[9px] font-bold uppercase tracking-[0.3em] text-on-surface-variant opacity-50">
+                <p>© 2024 Inkwell Studio London</p>
+                <p>Digital Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Core Scripts -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

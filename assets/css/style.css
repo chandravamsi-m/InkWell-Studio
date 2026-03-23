@@ -1,0 +1,347 @@
+/* 
+  Inkwell Studio — Core Design System Tokens
+  "Ink & Iron" Visual Style: Sharp, editorial-grade, dark-first.
+*/
+
+:root {
+  /* LIGHT MODE (Default Tailwind Fallback) */
+  --surface-rgb: 252, 249, 248;
+  --surface-container-rgb: 246, 243, 242;
+  --surface-dim-rgb: 220, 217, 217;
+  --surface-low-rgb: 255, 255, 255;
+  --primary-rgb: 0, 0, 0;
+  --on-primary-rgb: 255, 255, 255;
+  --secondary-rgb: 181, 38, 25; /* Blood Red */
+  --on-surface-rgb: 28, 27, 27;
+  --on-surface-variant-rgb: 68, 71, 72;
+  --outline-variant-rgb: 196, 199, 199;
+
+  /* Legacy Hex fallbacks for direct var() usage */
+  --surface: rgb(var(--surface-rgb));
+  --surface-container: rgb(var(--surface-container-rgb));
+  --surface-dim: rgb(var(--surface-dim-rgb));
+  --surface-low: rgb(var(--surface-low-rgb));
+  --primary: rgb(var(--primary-rgb));
+  --on-primary: rgb(var(--on-primary-rgb));
+  --secondary: rgb(var(--secondary-rgb));
+  --on-surface: rgb(var(--on-surface-rgb));
+  --on-surface-variant: rgb(var(--on-surface-variant-rgb));
+  --outline-variant: rgb(var(--outline-variant-rgb));
+}
+
+.dark {
+  /* DARK MODE (Standard) */
+  --surface-rgb: 28, 27, 27;
+  --surface-container-rgb: 42, 41, 41;
+  --surface-dim-rgb: 17, 16, 16;
+  --surface-low-rgb: 36, 35, 35;
+  --primary-rgb: 255, 255, 255;
+  --on-primary-rgb: 0, 0, 0;
+  --secondary-rgb: 181, 38, 25; /* Blood Red remains consistent */
+  --on-surface-rgb: 240, 237, 236;
+  --on-surface-variant-rgb: 196, 199, 199;
+  --outline-variant-rgb: 196, 199, 199;
+}
+
+/* Base Styles */
+* {
+  border-radius: 0 !important; /* Force zero rounded corners everywhere */
+}
+
+body {
+  background-color: rgb(var(--surface-rgb));
+  color: rgb(var(--on-surface-rgb));
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, .editorial {
+  font-family: 'Newsreader', serif;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Fallback for Navbar & Overlays */
+.glass {
+  background: rgba(var(--surface), 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Button Sheen Gradient (Applied to primary black buttons) */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 45%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 55%,
+    transparent 100%
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.btn-sheen:hover::after {
+  left: 150%;
+  top: 150%;
+}
+
+/* Scroll-aware Navbar States */
+#main-nav {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#main-nav.scrolled {
+  background-color: var(--surface-container);
+  border-bottom: 1px solid var(--outline-variant);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+#main-nav.scrolled .font-newsreader {
+  color: var(--on-surface) !important;
+}
+
+/* Ensure nav colors are absolutely consistent and don't shift on scroll */
+#main-nav.scrolled a:not(.text-secondary):not(.bg-secondary), 
+#main-nav.scrolled button:not(.text-secondary):not(.bg-secondary) {
+  color: var(--on-surface) !important;
+  opacity: 1; /* Remove the fade to maintain absolute parity */
+}
+
+#main-nav.scrolled a:hover:not(.bg-secondary), 
+#main-nav.scrolled button:hover:not(.bg-secondary) {
+  opacity: 1;
+  color: var(--secondary) !important;
+}
+
+/* Mobile Menu Dropdowns */
+.mobile-dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  opacity: 0;
+}
+
+.mobile-dropdown-content.active {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-icon.active {
+  transform: rotate(180deg);
+}
+
+#main-nav.nav-transparent:not(.scrolled) {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Transparent Nav Overrides (Theme-Aware) */
+#main-nav.nav-transparent:not(.scrolled) a,
+#main-nav.nav-transparent:not(.scrolled) button:not(.bg-secondary),
+#main-nav.nav-transparent:not(.scrolled) .font-newsreader {
+  /* Default: Theme-aware color */
+  color: var(--on-surface-variant) !important;
+  opacity: 0.8;
+}
+
+/* Hard-Override for Immersive Dark Heroes (like Index-2 and Portfolio) */
+#main-nav.nav-transparent:not(.scrolled).nav-dark-hero a,
+#main-nav.nav-transparent:not(.scrolled).nav-dark-hero button:not(.bg-secondary),
+#main-nav.nav-transparent:not(.scrolled).nav-dark-hero .font-newsreader {
+  color: rgba(255, 255, 255, 0.9) !important;
+  opacity: 1;
+}
+
+.dark #main-nav.nav-transparent:not(.scrolled) a,
+.dark #main-nav.nav-transparent:not(.scrolled) button:not(.bg-secondary),
+.dark #main-nav.nav-transparent:not(.scrolled) .font-newsreader {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+#main-nav.nav-transparent:not(.scrolled) .font-newsreader {
+  color: var(--on-surface) !important;
+}
+
+.dark #main-nav.nav-transparent:not(.scrolled) .font-newsreader {
+  color: #ffffff !important;
+}
+
+/* Ensure dropdown links inside transparent nav remain legible */
+#main-nav.nav-transparent:not(.scrolled) .group-hover\:visible a {
+  color: var(--on-surface-variant) !important;
+}
+
+#main-nav.nav-transparent:not(.scrolled) .group-hover\:visible {
+  background-color: var(--surface-container) !important;
+  border-color: var(--outline-variant) !important;
+}
+
+/* Mobile Sidebars/Bottom Sheets */
+.mobile-bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--surface-low);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+}
+
+.mobile-bottom-sheet.open {
+  transform: translateY(0);
+}
+
+/* Bi-Directional Support (RTL/LTR) */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .ml-auto {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+/* Flip Icons and directional elements */
+[dir="rtl"] .lucide-chevron-right,
+[dir="rtl"] .lucide-arrow-right {
+  transform: rotate(180deg);
+}
+
+[dir="rtl"] .lucide-chevron-left,
+[dir="rtl"] .lucide-arrow-left {
+  transform: rotate(180deg);
+}
+
+/* Specific layout overrides */
+[dir="rtl"] .fixed.top-0.left-0 {
+  left: auto !important;
+  right: 0 !important;
+}
+
+[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+/* Premium Direction Toggle (Pill Style) */
+#dir-toggle {
+  direction: ltr !important; /* Force internal LTR to avoid label swapping in RTL mode */
+}
+
+#dir-toggle[data-dir="ltr"] .dir-knob {
+  transform: translateX(0);
+}
+
+#dir-toggle[data-dir="rtl"] .dir-knob {
+  transform: translateX(40px); /* Symmetrical displacement for 40px knob in 80px track */
+}
+
+#dir-toggle[data-dir="ltr"] .ltr-label {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+#dir-toggle[data-dir="ltr"] .rtl-label {
+  color: inherit;
+  opacity: 0.4 !important;
+}
+
+#dir-toggle[data-dir="rtl"] .rtl-label {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+#dir-toggle[data-dir="rtl"] .ltr-label {
+  color: inherit;
+  opacity: 0.4 !important;
+}
+
+.dark #dir-toggle[data-dir="ltr"] .rtl-label,
+.dark #dir-toggle[data-dir="rtl"] .ltr-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Symmetrical Mobile Menu (RTL/LTR Support) */
+#mobile-menu {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 80vw;
+  max-width: 400px;
+  z-index: 60;
+  background-color: var(--surface);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Default LTR (Right-anchored) */
+  right: 0 !important;
+  left: auto !important;
+  transform: translateX(101%);
+  border-left: 1px solid rgba(var(--outline-variant-rgb), 0.2);
+  border-right: none;
+}
+
+#mobile-menu.active {
+  transform: translateX(0) !important;
+}
+
+/* RTL Override (Left-anchored) */
+[dir="rtl"] #mobile-menu {
+  right: auto !important;
+  left: 0 !important;
+  transform: translateX(-101%);
+  border-left: none;
+  border-right: 1px solid rgba(var(--outline-variant-rgb), 0.2);
+}
+
+[dir="rtl"] #mobile-menu.active {
+  transform: translateX(0) !important;
+}
+
+@keyframes scroll-hint {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
