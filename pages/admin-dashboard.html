@@ -113,6 +113,17 @@
                     <i data-lucide="settings" class="w-4 h-4"></i>
                     <span>Configuration</span>
                 </a>
+
+                <!-- Mobile-only Direction Toggle -->
+                <div class="lg:hidden py-4 border-t border-outline-variant/30 mt-4">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-4 block mb-2">Direction</span>
+                    <div id="mobile-dir-toggle" class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300 mx-4" data-dir="ltr">
+                        <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
+                        <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
+                        <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+                    </div>
+                </div>
+
                 <a href="login.html" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
                     <i data-lucide="log-out" class="w-4 h-4"></i>
                     <span>Sign Out</span>
@@ -138,7 +149,7 @@
             
             <div class="flex items-center space-x-6">
                 <div class="flex items-center space-x-6 pr-6 border-r border-outline-variant">
-                <div id="dir-toggle" class="relative bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300 flex" data-dir="ltr">
+                <div id="dir-toggle" class="hidden lg:flex relative bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300" data-dir="ltr">
                     <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
                     <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
                     <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>

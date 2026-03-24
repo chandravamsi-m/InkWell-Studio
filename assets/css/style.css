@@ -227,7 +227,6 @@ h1, h2, h3, h4, h5, h6, .editorial {
 /* Premium Direction Toggle (Pill Style) */
 #dir-toggle, #mobile-dir-toggle {
   direction: ltr !important; /* Force internal LTR to avoid label swapping in RTL mode */
-  display: flex !important;
   justify-content: flex-start;
   transition: all 0.3s ease;
   position: relative;
