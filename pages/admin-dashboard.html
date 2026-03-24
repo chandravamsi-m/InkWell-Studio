@@ -13,7 +13,7 @@
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.400.0"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -530,17 +530,22 @@
                     </div>
                     <button class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Schedule Block</button>
                 </div>
-                <div class="flex-1 grid grid-cols-7 bg-surface-dim text-[10px] font-bold uppercase tracking-[0.4em] border-b border-outline-variant">
-                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Monday</div>
-                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Tuesday</div>
-                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Wednesday</div>
-                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Thursday</div>
-                    <div class="p-6 border-r border-outline-variant text-center opacity-20">Friday</div>
-                    <div class="p-6 border-r border-outline-variant text-center opacity-20 text-secondary">Saturday</div>
-                    <div class="p-6 text-center opacity-20 text-secondary">Sunday</div>
-                </div>
-                <div id="calendar-grid" class="flex-1 grid grid-cols-7 bg-surface">
-                    <!-- JS Injected Days -->
+                
+                <div class="flex-1 overflow-x-auto custom-scrollbar">
+                    <div class="min-w-[800px] lg:min-w-full h-full flex flex-col">
+                        <div class="grid grid-cols-7 bg-surface-dim text-[10px] font-bold uppercase tracking-[0.4em] border-b border-outline-variant">
+                            <div class="p-6 border-r border-outline-variant text-center opacity-20">Monday</div>
+                            <div class="p-6 border-r border-outline-variant text-center opacity-20">Tuesday</div>
+                            <div class="p-6 border-r border-outline-variant text-center opacity-20">Wednesday</div>
+                            <div class="p-6 border-r border-outline-variant text-center opacity-20">Thursday</div>
+                            <div class="p-6 border-r border-outline-variant text-center opacity-20">Friday</div>
+                            <div class="p-6 border-r border-outline-variant text-center opacity-20 text-secondary">Saturday</div>
+                            <div class="p-6 text-center opacity-20 text-secondary">Sunday</div>
+                        </div>
+                        <div id="calendar-grid" class="flex-1 grid grid-cols-7 bg-surface">
+                            <!-- JS Injected Days -->
+                        </div>
+                    </div>
                 </div>
             </section>
 
