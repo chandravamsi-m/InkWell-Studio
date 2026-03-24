@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Workspace — Inkwell Studio</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -20,16 +23,16 @@
             theme: {
                 extend: {
                     colors: {
-                        surface: 'var(--surface)',
-                        'surface-container': 'var(--surface-container)',
-                        'surface-dim': 'var(--surface-dim)',
-                        'surface-low': 'var(--surface-low)',
-                        primary: 'var(--primary)',
-                        'on-primary': 'var(--on-primary)',
-                        secondary: 'var(--secondary)',
-                        'on-surface': 'var(--on-surface)',
-                        'on-surface-variant': 'var(--on-surface-variant)',
-                        'outline-variant': 'var(--outline-variant)',
+                        surface: 'rgba(var(--surface-rgb), <alpha-value>)',
+                        'surface-container': 'rgba(var(--surface-container-rgb), <alpha-value>)',
+                        'surface-dim': 'rgba(var(--surface-dim-rgb), <alpha-value>)',
+                        'surface-low': 'rgba(var(--surface-low-rgb), <alpha-value>)',
+                        primary: 'rgba(var(--primary-rgb), <alpha-value>)',
+                        'on-primary': 'rgba(var(--on-primary-rgb), <alpha-value>)',
+                        secondary: 'rgba(var(--secondary-rgb), <alpha-value>)',
+                        'on-surface': 'rgba(var(--on-surface-rgb), <alpha-value>)',
+                        'on-surface-variant': 'rgba(var(--on-surface-variant-rgb), <alpha-value>)',
+                        'outline-variant': 'rgba(var(--outline-variant-rgb), <alpha-value>)',
                     },
                     fontFamily: {
                         newsreader: ['Newsreader', 'serif'],
@@ -42,30 +45,32 @@
             }
         }
     </script>
-    
+
     <!-- Custom Style -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dark-mode.css">
     <link rel="stylesheet" href="../assets/css/rtl.css">
     <link rel="icon" type="image/svg+xml" href="../assets/images/logo-icon.svg">
-    
+
     <!-- Custom Script -->
     <script>
-        // Immediate theme application to prevent flash
-        (function() {
-            const storedTheme = localStorage.getItem('inkwell-theme-mode');
-            if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-            }
-            
-            const storedDir = localStorage.getItem('inkwell-studio-direction') || 'ltr';
-            document.documentElement.setAttribute('dir', storedDir);
-        })();
+            // Immediate theme application to prevent flash
+            (function () {
+                const storedTheme = localStorage.getItem('inkwell-theme-mode');
+                if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                }
+
+                const storedDir = localStorage.getItem('inkwell-studio-direction') || 'ltr';
+                document.documentElement.setAttribute('dir', storedDir);
+            })();
     </script>
 </head>
+
 <body class="bg-surface text-on-surface font-inter min-h-screen flex flex-col">
     <!-- ========== SIDEBAR ========== -->
-    <aside id="sidebar" class="fixed top-0 bottom-0 left-0 z-50 w-72 bg-surface border-r border-outline-variant transition-transform duration-300 transform lg:translate-x-0 -translate-x-full">
+    <aside id="sidebar"
+        class="fixed top-0 bottom-0 left-0 z-50 w-72 bg-surface border-r border-outline-variant transition-transform duration-300 transform lg:translate-x-0 -translate-x-full">
         <div class="h-20 flex items-center justify-between px-8 border-b border-outline-variant">
             <a href="../index.html" class="flex items-center transition-opacity hover:opacity-80">
                 <div class="relative flex items-center justify-center mr-2">
@@ -74,23 +79,27 @@
                 <span class="font-newsreader text-xl font-bold tracking-tight text-on-surface">Inkwell Studio</span>
             </a>
             <!-- Close Button (Mobile Only) -->
-            <button id="close-sidebar" class="lg:hidden p-2 hover:bg-surface-container transition-colors" aria-label="Close Sidebar">
+            <button id="close-sidebar" class="lg:hidden p-2 hover:bg-surface-container transition-colors"
+                aria-label="Close Sidebar">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
         </div>
-        
+
         <nav class="p-6 space-y-6">
             <div class="space-y-1">
                 <span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-4">Workspace</span>
-                <a href="javascript:void(0)" id="overview-link" onclick="showSection('overview')" class="flex items-center space-x-4 px-4 py-2.5 bg-surface-container text-secondary font-bold text-xs uppercase tracking-widest border-l-2 border-secondary">
+                <a href="javascript:void(0)" id="overview-link" onclick="showSection('overview')"
+                    class="flex items-center space-x-4 px-4 py-2.5 bg-surface-container text-secondary font-bold text-xs uppercase tracking-widest border-l-2 border-secondary">
                     <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
                     <span>Overview</span>
                 </a>
-                <a href="javascript:void(0)" id="new-request-link" onclick="showSection('new-request')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                <a href="javascript:void(0)" id="new-request-link" onclick="showSection('new-request')"
+                    class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
                     <i data-lucide="plus-circle" class="w-4 h-4"></i>
                     <span>Submit Design</span>
                 </a>
-                <a href="javascript:void(0)" id="requests-link" onclick="showSection('requests')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                <a href="javascript:void(0)" id="requests-link" onclick="showSection('requests')"
+                    class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
                     <i data-lucide="clipboard-list" class="w-4 h-4"></i>
                     <span>Request Archive</span>
                 </a>
@@ -98,7 +107,8 @@
 
             <div class="space-y-1">
                 <span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-4">Financials</span>
-                <a href="javascript:void(0)" id="payments-link" onclick="showSection('payments')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                <a href="javascript:void(0)" id="payments-link" onclick="showSection('payments')"
+                    class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
                     <i data-lucide="banknote" class="w-4 h-4"></i>
                     <span>Deposit Ledger</span>
                 </a>
@@ -106,65 +116,78 @@
 
             <div class="space-y-1">
                 <span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-4">Resources</span>
-                <a href="javascript:void(0)" id="aftercare-link" onclick="showSection('aftercare')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                <a href="javascript:void(0)" id="aftercare-link" onclick="showSection('aftercare')"
+                    class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
                     <i data-lucide="shield-check" class="w-4 h-4"></i>
                     <span>Aftercare Guide</span>
                 </a>
             </div>
 
-                <!-- Direction Toggle (Sidebar End) -->
-                <div class="px-6 py-4 border-t border-outline-variant/30 mt-auto">
-                    <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface/50">Direction</span>
-                        <div id="mobile-dir-toggle" class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300" data-dir="ltr">
-                            <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
-                            <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                            <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+            <!-- Direction Toggle (Sidebar End) -->
+            <div class="px-6 py-4 border-t border-outline-variant/30 mt-auto">
+                <div class="flex items-center justify-between">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface/50">Direction</span>
+                    <div id="mobile-dir-toggle"
+                        class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300"
+                        data-dir="ltr">
+                        <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
+                        <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
+                        <div
+                            class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <a href="login.html" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
-                    <i data-lucide="log-out" class="w-4 h-4"></i>
-                    <span>Sign Out</span>
-                </a>
+            <a href="login.html"
+                class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                <i data-lucide="log-out" class="w-4 h-4"></i>
+                <span>Sign Out</span>
+            </a>
             </div>
         </nav>
     </aside>
-    <div id="sidebar-overlay" class="fixed inset-0 bg-black/60 z-40 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
+    <div id="sidebar-overlay"
+        class="fixed inset-0 bg-black/60 z-40 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
 
 
     <!-- ========== MAIN CONTENT ========== -->
     <main class="flex-1 lg:ml-72 min-h-screen flex flex-col pt-0 bg-surface">
-        
+
         <!-- Header / Topbar -->
-        <header class="h-20 bg-surface border-b border-outline-variant px-4 md:px-8 flex items-center justify-between sticky top-0 z-40">
+        <header
+            class="h-20 bg-surface border-b border-outline-variant px-4 md:px-8 flex items-center justify-between sticky top-0 z-40">
             <div class="flex items-center space-x-4 md:space-x-6">
-                <button id="sidebar-toggle" class="lg:hidden p-2 hover:bg-surface-container transition-colors" aria-label="Toggle Navigation">
+                <button id="sidebar-toggle" class="lg:hidden p-2 hover:bg-surface-container transition-colors"
+                    aria-label="Toggle Navigation">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
                 <div class="space-y-0.5">
-                    <h2 id="section-title" class="text-xs font-bold uppercase tracking-[0.3em] text-secondary">Studio Client</h2>
-                    <p class="text-[9px] md:text-[10px] font-bold uppercase tracking-widest opacity-40">Private Client Workspace</p>
+                    <h2 id="section-title" class="text-xs font-bold uppercase tracking-[0.3em] text-secondary">Studio
+                        Client</h2>
+                    <p class="text-[9px] md:text-[10px] font-bold uppercase tracking-widest opacity-40">Private Client
+                        Workspace</p>
                 </div>
             </div>
-            
+
             <div class="flex items-center space-x-6">
                 <!-- Theme Toggle (Header) -->
                 <div class="flex items-center space-x-3 md:pr-6 md:border-r border-outline-variant">
-                    <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group" aria-label="Toggle Theme">
+                    <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group"
+                        aria-label="Toggle Theme">
                         <i data-lucide="sun" class="w-5 h-5 opacity-40 group-hover:opacity-100 dark:block hidden"></i>
                         <i data-lucide="moon" class="w-5 h-5 opacity-40 group-hover:opacity-100 block dark:hidden"></i>
                     </button>
                 </div>
-                
+
                 <div class="hidden md:flex items-center space-x-6 pl-2">
                     <div class="text-right hidden sm:block">
                         <p class="text-xs font-bold uppercase tracking-widest leading-none mb-1">Elias Thorne</p>
                         <p class="text-[10px] uppercase tracking-widest opacity-20">Principal Patron #7042</p>
                     </div>
                     <div class="w-12 h-12 bg-surface-container border border-outline-variant p-1">
-                        <img src="../assets/images/portrait.png" alt="Profile" class="w-full h-full object-cover grayscale opacity-60">
+                        <img src="../assets/images/portrait.png" alt="Profile"
+                            class="w-full h-full object-cover grayscale opacity-60">
                     </div>
                 </div>
             </div>
@@ -172,49 +195,64 @@
 
         <!-- Dynamic Content Area -->
         <div id="content-area" class="flex-1 relative overflow-y-auto">
-            
+
             <!-- SECTION: OVERVIEW -->
             <section id="overview-section" class="p-8 md:p-12 space-y-20 max-w-7xl mx-auto w-full">
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
+                <div
+                    class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
                     <div class="space-y-4">
-                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Elias. <span class="italic text-secondary opacity-40 not-italic text-on-surface">Thorne.</span></h1>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface flex items-center opacity-60">
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Elias. <span
+                                class="italic text-secondary opacity-40 not-italic text-on-surface">Thorne.</span></h1>
+                        <p
+                            class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface flex items-center opacity-60">
                             <span class="w-8 h-[1px] bg-secondary mr-6"></span>
                             Active Narrative Cycle: Phase II Development
                         </p>
                     </div>
-                    <button onclick="showSection('new-request')" class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Start New Project</button>
+                    <button onclick="showSection('new-request')"
+                        class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Start
+                        New Project</button>
                 </div>
 
                 <!-- Stats Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                    <div class="bg-surface-container p-12 space-y-8 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative">
-                        <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.08] transition-opacity">
+                    <div
+                        class="bg-surface-container p-12 space-y-8 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative">
+                        <div
+                            class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.08] transition-opacity">
                             <i data-lucide="layers" class="w-24 h-24"></i>
                         </div>
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Active Project Queue</p>
                         <div class="flex items-baseline space-x-4">
                             <span class="font-newsreader text-6xl font-bold italic">02</span>
-                            <span class="text-[10px] uppercase tracking-[0.2em] opacity-40 font-bold italic">Active Inquiries</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] opacity-40 font-bold italic">Active
+                                Inquiries</span>
                         </div>
                     </div>
-                    <div class="bg-surface-container p-12 space-y-8 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative">
-                        <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.08] transition-opacity">
+                    <div
+                        class="bg-surface-container p-12 space-y-8 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative">
+                        <div
+                            class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.08] transition-opacity">
                             <i data-lucide="credit-card" class="w-24 h-24"></i>
                         </div>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Pending Commitment</p>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Pending Commitment
+                        </p>
                         <div class="flex items-baseline space-x-4">
                             <span class="font-newsreader text-6xl font-bold italic">£450</span>
-                            <span class="text-[10px] uppercase tracking-[0.2em] opacity-60 font-bold italic">GBP Ledger</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] opacity-60 font-bold italic">GBP
+                                Ledger</span>
                         </div>
                     </div>
-                    <div class="bg-surface-container p-12 space-y-8 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative">
-                        <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.08] transition-opacity">
+                    <div
+                        class="bg-surface-container p-12 space-y-8 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative">
+                        <div
+                            class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.08] transition-opacity">
                             <i data-lucide="calendar" class="w-24 h-24"></i>
                         </div>
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Next Studio Session</p>
                         <div class="flex items-baseline space-x-4">
-                            <span class="font-newsreader text-4xl font-bold italic tracking-tight uppercase">12 Oct <span class="not-italic opacity-40 font-newsreader">2024</span></span>
+                            <span class="font-newsreader text-4xl font-bold italic tracking-tight uppercase">12 Oct
+                                <span class="not-italic opacity-40 font-newsreader">2024</span></span>
                         </div>
                     </div>
                 </div>
@@ -222,22 +260,31 @@
 
             <!-- SECTION: MY REQUESTS -->
             <section id="requests-section" class="hidden p-8 md:p-12 space-y-20 max-w-7xl mx-auto w-full">
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
+                <div
+                    class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
                     <div class="space-y-4">
-                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Request <span class="italic text-secondary opacity-20 not-italic text-on-surface">Archive.</span></h1>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-40">Design Development & Feasibility Tracker</p>
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Request <span
+                                class="italic text-secondary opacity-20 not-italic text-on-surface">Archive.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-40">Design
+                            Development & Feasibility Tracker</p>
                     </div>
-                    <button onclick="showSection('new-request')" class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Propose New Narrative</button>
+                    <button onclick="showSection('new-request')"
+                        class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Propose
+                        New Narrative</button>
                 </div>
 
                 <div class="space-y-1">
-                    <div class="bg-surface-container p-12 grid lg:grid-cols-12 gap-8 items-center border border-outline-variant hover:border-secondary transition-all group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
+                    <div
+                        class="bg-surface-container p-12 grid lg:grid-cols-12 gap-8 items-center border border-outline-variant hover:border-secondary transition-all group relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
                             <i data-lucide="clipboard-list" class="w-24 h-24"></i>
                         </div>
                         <div class="lg:col-span-4 space-y-2">
                             <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Reference ID: #2041</p>
-                            <h3 class="font-newsreader text-3xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Botanical Sleeve II</h3>
+                            <h3
+                                class="font-newsreader text-3xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">
+                                Botanical Sleeve II</h3>
                         </div>
                         <div class="lg:col-span-3 space-y-2">
                             <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Principal Artist</p>
@@ -245,7 +292,9 @@
                         </div>
                         <div class="lg:col-span-3 space-y-2">
                             <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Current Development</p>
-                            <span class="w-fit text-[8px] font-bold uppercase tracking-[0.2em] bg-secondary/10 text-secondary border border-secondary/20 px-4 py-2">Stencil Phase</span>
+                            <span
+                                class="w-fit text-[8px] font-bold uppercase tracking-[0.2em] bg-secondary/10 text-secondary border border-secondary/20 px-4 py-2">Stencil
+                                Phase</span>
                         </div>
                         <div class="lg:col-span-2 text-right">
                             <button class="p-4 bg-surface-dim hover:bg-secondary hover:text-white transition-all">
@@ -261,17 +310,23 @@
                 <!-- Step Indicators -->
                 <div class="flex justify-between items-center relative">
                     <div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant z-0"></div>
-                    
+
                     <div class="relative z-10 flex flex-col items-center bg-surface px-4">
-                        <div class="w-8 h-8 bg-secondary text-white flex items-center justify-center font-bold text-[10px] mb-3">01</div>
+                        <div
+                            class="w-8 h-8 bg-secondary text-white flex items-center justify-center font-bold text-[10px] mb-3">
+                            01</div>
                         <span class="text-[8px] font-bold uppercase tracking-widest text-secondary">Aesthetics</span>
                     </div>
                     <div class="relative z-10 flex flex-col items-center bg-surface px-4 opacity-40">
-                        <div class="w-8 h-8 bg-surface-container flex items-center justify-center font-bold text-[10px] mb-3">02</div>
+                        <div
+                            class="w-8 h-8 bg-surface-container flex items-center justify-center font-bold text-[10px] mb-3">
+                            02</div>
                         <span class="text-[8px] font-bold uppercase tracking-widest">Structure</span>
                     </div>
                     <div class="relative z-10 flex flex-col items-center bg-surface px-4 opacity-40">
-                        <div class="w-8 h-8 bg-surface-container flex items-center justify-center font-bold text-[10px] mb-3">03</div>
+                        <div
+                            class="w-8 h-8 bg-surface-container flex items-center justify-center font-bold text-[10px] mb-3">
+                            03</div>
                         <span class="text-[8px] font-bold uppercase tracking-widest">Guideline</span>
                     </div>
                 </div>
@@ -281,90 +336,126 @@
                     <div class="space-y-12">
                         <div class="space-y-4">
                             <h1 class="font-newsreader text-4xl md:text-5xl font-bold">Define Your Narrative.</h1>
-                            <p class="text-on-surface-variant text-sm italic font-newsreader leading-relaxed">Choose the primary stylistic direction for this project.</p>
+                            <p class="text-on-surface-variant text-sm italic font-newsreader leading-relaxed">Choose the
+                                primary stylistic direction for this project.</p>
                         </div>
 
                         <div class="grid md:grid-cols-2 gap-8">
-                            <label class="group relative cursor-pointer border-2 border-outline-variant p-8 hover:border-secondary transition-all">
-                                <input type="radio" name="style" class="absolute inset-0 opacity-0 cursor-pointer" required>
+                            <label
+                                class="group relative cursor-pointer border-2 border-outline-variant p-8 hover:border-secondary transition-all">
+                                <input type="radio" name="style" class="absolute inset-0 opacity-0 cursor-pointer"
+                                    required>
                                 <div class="space-y-6">
                                     <div class="w-12 h-[1px] bg-secondary"></div>
                                     <h3 class="font-newsreader text-2xl font-bold">Fine Line Editorial</h3>
-                                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-relaxed">Single needle technique. Delicate, botanical, anatomical, or typographic focus.</p>
+                                    <p
+                                        class="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-relaxed">
+                                        Single needle technique. Delicate, botanical, anatomical, or typographic focus.
+                                    </p>
                                 </div>
                             </label>
-                            <label class="group relative cursor-pointer border-2 border-outline-variant p-8 hover:border-secondary transition-all">
+                            <label
+                                class="group relative cursor-pointer border-2 border-outline-variant p-8 hover:border-secondary transition-all">
                                 <input type="radio" name="style" class="absolute inset-0 opacity-0 cursor-pointer">
                                 <div class="space-y-6">
                                     <div class="w-12 h-[1px] bg-secondary"></div>
                                     <h3 class="font-newsreader text-2xl font-bold">Monumental Blackwork</h3>
-                                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-relaxed">High saturation. Architectural, geometric, or solid-form silhouettes.</p>
+                                    <p
+                                        class="text-[10px] font-bold uppercase tracking-widest opacity-40 leading-relaxed">
+                                        High saturation. Architectural, geometric, or solid-form silhouettes.</p>
                                 </div>
                             </label>
                         </div>
 
                         <div class="space-y-8">
-                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-4">Core Inspiration (Reference URLs or Brief)</label>
-                            <textarea rows="4" class="w-full bg-surface-container border-b-2 border-outline-variant focus:border-secondary outline-none p-6 text-sm transition-all resize-none italic font-newsreader" placeholder="Describe the abstract concept or the physical objects you wish to see rendered..."></textarea>
+                            <label
+                                class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-4">Core
+                                Inspiration (Reference URLs or Brief)</label>
+                            <textarea rows="4"
+                                class="w-full bg-surface-container border-b-2 border-outline-variant focus:border-secondary outline-none p-6 text-sm transition-all resize-none italic font-newsreader"
+                                placeholder="Describe the abstract concept or the physical objects you wish to see rendered..."></textarea>
                         </div>
 
                         <div class="space-y-8">
-                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-4">Reference Material (Upload Assets)</label>
-                            <div class="border-2 border-dashed border-outline-variant p-12 text-center hover:border-secondary transition-all cursor-pointer group">
+                            <label
+                                class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant block mb-4">Reference
+                                Material (Upload Assets)</label>
+                            <div
+                                class="border-2 border-dashed border-outline-variant p-12 text-center hover:border-secondary transition-all cursor-pointer group">
                                 <input type="file" class="hidden" id="asset-upload" multiple>
                                 <label for="asset-upload" class="cursor-pointer space-y-4">
-                                    <i data-lucide="upload-cloud" class="w-8 h-8 mx-auto opacity-20 group-hover:opacity-100 transition-opacity"></i>
-                                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-40">Select digital assets or drag to upload</p>
-                                    <p class="text-[8px] font-bold uppercase tracking-[0.2em] opacity-20 italic">Supported formats: JPG, PNG, PDF (Max 10MB)</p>
+                                    <i data-lucide="upload-cloud"
+                                        class="w-8 h-8 mx-auto opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-40">Select digital
+                                        assets or drag to upload</p>
+                                    <p class="text-[8px] font-bold uppercase tracking-[0.2em] opacity-20 italic">
+                                        Supported formats: JPG, PNG, PDF (Max 10MB)</p>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex justify-between items-center pt-12 border-t border-outline-variant">
-                        <button type="button" onclick="showSection('overview')" class="text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Discard</button>
-                        <button type="submit" class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Propose Structural Phase</button>
+                        <button type="button" onclick="showSection('overview')"
+                            class="text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Discard</button>
+                        <button type="submit"
+                            class="bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Propose
+                            Structural Phase</button>
                     </div>
                 </form>
             </section>
 
             <!-- SECTION: PAYMENTS -->
             <section id="payments-section" class="hidden p-8 md:p-12 space-y-20 max-w-7xl mx-auto w-full">
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
+                <div
+                    class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
                     <div class="space-y-4">
-                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Deposit <span class="italic text-secondary opacity-40 not-italic text-on-surface">Ledger.</span></h1>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-60">Financial Engagement & Session Deposit Management</p>
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Deposit <span
+                                class="italic text-secondary opacity-40 not-italic text-on-surface">Ledger.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-60">Financial
+                            Engagement & Session Deposit Management</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-                    <div class="p-8 md:p-10 bg-surface-container border border-outline-variant space-y-6 group hover:border-secondary transition-all relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
+                    <div
+                        class="p-8 md:p-10 bg-surface-container border border-outline-variant space-y-6 group hover:border-secondary transition-all relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
                             <i data-lucide="banknote" class="w-16 h-16 md:w-20 md:h-20"></i>
                         </div>
-                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Total Contribution</span>
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Total
+                            Contribution</span>
                         <p class="font-newsreader text-4xl md:text-5xl font-bold italic tracking-tight">£2,450.00</p>
                         <div class="w-full h-[1px] bg-outline-variant/20"></div>
-                        <p class="text-[8px] font-bold uppercase tracking-widest opacity-40 italic">Validated across 04 Narrative Cycles</p>
+                        <p class="text-[8px] font-bold uppercase tracking-widest opacity-40 italic">Validated across 04
+                            Narrative Cycles</p>
                     </div>
-                    <div class="p-8 md:p-10 bg-surface-container border border-secondary shadow-2xl shadow-secondary/5 space-y-8 relative overflow-hidden group">
-                        <div class="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-[0.1] transition-opacity">
+                    <div
+                        class="p-8 md:p-10 bg-surface-container border border-secondary shadow-2xl shadow-secondary/5 space-y-8 relative overflow-hidden group">
+                        <div
+                            class="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-[0.1] transition-opacity">
                             <i data-lucide="alert-circle" class="w-24 h-24 text-secondary"></i>
                         </div>
                         <div class="space-y-1">
-                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Pending Commitment</span>
+                            <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Pending
+                                Commitment</span>
                             <p class="font-newsreader text-5xl font-bold italic tracking-tight">£150.00</p>
                         </div>
-                        <button class="w-full bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Finalize Deposit</button>
+                        <button
+                            class="w-full bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105">Finalize
+                            Deposit</button>
                     </div>
                 </div>
 
                 <div class="space-y-12">
-                    <h2 class="font-newsreader text-3xl font-bold italic tracking-tight opacity-40">Transaction Documentation</h2>
+                    <h2 class="font-newsreader text-3xl font-bold italic tracking-tight opacity-40">Transaction
+                        Documentation</h2>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left">
                             <thead>
-                                <tr class="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40 border-b border-outline-variant">
+                                <tr
+                                    class="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40 border-b border-outline-variant">
                                     <th class="py-6">Project Protocol</th>
                                     <th class="py-6">Type</th>
                                     <th class="py-6 text-right">Value</th>
@@ -372,16 +463,23 @@
                                 </tr>
                             </thead>
                             <tbody class="text-xs font-bold uppercase tracking-[0.1em]">
-                                <tr class="border-b border-outline-variant group hover:bg-surface-container transition-colors">
-                                    <td class="py-8 font-newsreader text-2xl font-bold italic normal-case tracking-tight group-hover:text-secondary transition-colors">Botanical Sleeve II</td>
+                                <tr
+                                    class="border-b border-outline-variant group hover:bg-surface-container transition-colors">
+                                    <td
+                                        class="py-8 font-newsreader text-2xl font-bold italic normal-case tracking-tight group-hover:text-secondary transition-colors">
+                                        Botanical Sleeve II</td>
                                     <td class="py-8 opacity-40 leading-relaxed italic">Creative Session Deposit</td>
                                     <td class="py-8 text-right font-mono tracking-tighter text-secondary">£150.00</td>
                                     <td class="py-8 text-right">
-                                        <span class="text-[8px] border border-secondary/40 text-secondary px-3 py-1 tracking-[0.2em]">WAITING</span>
+                                        <span
+                                            class="text-[8px] border border-secondary/40 text-secondary px-3 py-1 tracking-[0.2em]">WAITING</span>
                                     </td>
                                 </tr>
-                                <tr class="border-b border-outline-variant group hover:bg-surface-container transition-colors opacity-60">
-                                    <td class="py-8 font-newsreader text-2xl font-bold italic normal-case tracking-tight group-hover:text-secondary transition-colors">Minimalist Script</td>
+                                <tr
+                                    class="border-b border-outline-variant group hover:bg-surface-container transition-colors opacity-60">
+                                    <td
+                                        class="py-8 font-newsreader text-2xl font-bold italic normal-case tracking-tight group-hover:text-secondary transition-colors">
+                                        Minimalist Script</td>
                                     <td class="py-8 opacity-40 leading-relaxed italic">Phase Completion Settlement</td>
                                     <td class="py-8 text-right font-mono tracking-tighter">£450.00</td>
                                     <td class="py-8 text-right">
@@ -396,10 +494,13 @@
 
             <!-- SECTION: AFTERCARE -->
             <section id="aftercare-section" class="hidden p-8 md:p-12 space-y-20 max-w-7xl mx-auto w-full">
-                <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
+                <div
+                    class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
                     <div class="space-y-4">
-                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Aftercare <span class="italic text-secondary opacity-40 not-italic text-on-surface">Guide.</span></h1>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-60">Biological Preservation & Narrative Care Protocol</p>
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Aftercare <span
+                                class="italic text-secondary opacity-40 not-italic text-on-surface">Guide.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-60">
+                            Biological Preservation & Narrative Care Protocol</p>
                     </div>
                 </div>
 
@@ -409,17 +510,27 @@
                             <i data-lucide="shield" class="w-64 h-64"></i>
                         </div>
                         <div class="space-y-6 relative z-10">
-                            <h2 class="font-newsreader text-4xl font-bold italic tracking-tight">The Initial Phase (0-48 Hours)</h2>
+                            <h2 class="font-newsreader text-4xl font-bold italic tracking-tight">The Initial Phase (0-48
+                                Hours)</h2>
                             <div class="w-12 h-[1px] bg-secondary"></div>
-                            <p class="text-xs leading-relaxed opacity-60 font-bold uppercase tracking-[0.15em]">Leave the medical-grade dressing on for at least 24 hours. Once removed, cleanse gently with non-perfumed, neutral pH soap.</p>
+                            <p class="text-xs leading-relaxed opacity-60 font-bold uppercase tracking-[0.15em]">Leave
+                                the medical-grade dressing on for at least 24 hours. Once removed, cleanse gently with
+                                non-perfumed, neutral pH soap.</p>
                         </div>
                         <div class="space-y-6 relative z-10">
-                            <h2 class="font-newsreader text-4xl font-bold italic tracking-tight">Regenerative Care (Day 3-14)</h2>
+                            <h2 class="font-newsreader text-4xl font-bold italic tracking-tight">Regenerative Care (Day
+                                3-14)</h2>
                             <div class="w-12 h-[1px] bg-secondary"></div>
                             <ul class="space-y-6 text-[10px] font-bold uppercase tracking-widest opacity-60">
-                                <li class="flex items-center space-x-6"><i data-lucide="check-circle" class="w-5 h-5 text-secondary"></i><span>Apply thin layer of Studio Balm 3x daily</span></li>
-                                <li class="flex items-center space-x-6"><i data-lucide="slash" class="w-5 h-5 text-secondary/40"></i><span>Avoid direct sunlight or submersion</span></li>
-                                <li class="flex items-center space-x-6"><i data-lucide="check-circle" class="w-5 h-5 text-secondary"></i><span>Wear loose, breathable natural fabrics</span></li>
+                                <li class="flex items-center space-x-6"><i data-lucide="check-circle"
+                                        class="w-5 h-5 text-secondary"></i><span>Apply thin layer of Studio Balm 3x
+                                        daily</span></li>
+                                <li class="flex items-center space-x-6"><i data-lucide="slash"
+                                        class="w-5 h-5 text-secondary/40"></i><span>Avoid direct sunlight or
+                                        submersion</span></li>
+                                <li class="flex items-center space-x-6"><i data-lucide="check-circle"
+                                        class="w-5 h-5 text-secondary"></i><span>Wear loose, breathable natural
+                                        fabrics</span></li>
                             </ul>
                         </div>
                     </div>
@@ -427,9 +538,13 @@
                         <div class="space-y-4">
                             <i data-lucide="help-circle" class="w-12 h-12 text-secondary opacity-40"></i>
                             <h3 class="font-newsreader text-2xl font-bold italic">Critical Assistance</h3>
-                            <p class="text-xs leading-relaxed opacity-60 italic font-newsreader">If you experience excessive swelling, localized heat, or persistent discharge beyond the 72-hour mark, dispatch an immediate message to the studio.</p>
+                            <p class="text-xs leading-relaxed opacity-60 italic font-newsreader">If you experience
+                                excessive swelling, localized heat, or persistent discharge beyond the 72-hour mark,
+                                dispatch an immediate message to the studio.</p>
                         </div>
-                        <button class="w-full border border-outline-variant px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all hover:bg-secondary hover:text-white hover:scale-105">Contact Specialist</button>
+                        <button
+                            class="w-full border border-outline-variant px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all hover:bg-secondary hover:text-white hover:scale-105">Contact
+                            Specialist</button>
                     </div>
                 </div>
             </section>
@@ -448,7 +563,7 @@
             sections.forEach(id => {
                 const el = document.getElementById(`${id}-section`);
                 if (el) el.classList.add('hidden');
-                
+
                 // Update sidebar link styles
                 const link = document.getElementById(`${id}-link`);
                 if (link) {
@@ -465,7 +580,7 @@
             const activeSection = document.getElementById(`${sectionId}-section`);
             if (activeSection) {
                 activeSection.classList.remove('hidden');
-                
+
                 // Dynamic Header Logic
                 if (sectionId === 'overview') {
                     sectionTitle.innerText = "Studio Client";
@@ -489,7 +604,7 @@
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('sidebar-overlay');
         const toggle = document.getElementById('sidebar-toggle');
-        
+
         const openSidebar = () => {
             sidebar.classList.remove('-translate-x-full');
             overlay.classList.remove('hidden');
@@ -516,7 +631,7 @@
             });
 
             overlay.addEventListener('click', closeSidebar);
-            
+
             const closeBtnSidebar = document.getElementById('close-sidebar');
             if (closeBtnSidebar) closeBtnSidebar.addEventListener('click', closeSidebar);
         }
@@ -530,7 +645,7 @@
 
         // Re-init icons when switching sections
         const originalShowSection = showSection;
-        showSection = function(sectionId) {
+        showSection = function (sectionId) {
             originalShowSection(sectionId);
             if (window.lucide) lucide.createIcons();
             // Auto-close sidebar on mobile after selection
@@ -548,4 +663,5 @@
     <!-- Core Logic -->
     <script src="../assets/js/main.js"></script>
 </body>
+
 </html>

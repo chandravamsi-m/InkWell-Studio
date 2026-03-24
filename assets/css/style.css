@@ -14,7 +14,7 @@
   --secondary-rgb: 200, 35, 20; /* Vibrant Inkwell Red */
   --on-surface-rgb: 28, 27, 27;
   --on-surface-variant-rgb: 68, 71, 72;
-  --outline-variant-rgb: 196, 199, 199;
+  --outline-variant-rgb: 70, 70, 70;
 
   /* Legacy Hex fallbacks for direct var() usage */
   --surface: rgb(var(--surface-rgb));
@@ -160,6 +160,8 @@ h1, h2, h3, h4, h5, h6, .editorial {
 #main-nav.nav-transparent:not(.scrolled).nav-dark-hero > div > div > div > a:not(.bg-secondary):not(.text-secondary), /* Dropdown Parent */
 #main-nav.nav-transparent:not(.scrolled).nav-dark-hero > div > div > div > button:not(.bg-secondary):not(.text-secondary),
 #main-nav.nav-transparent:not(.scrolled).nav-dark-hero .font-newsreader,
+#main-nav.nav-transparent:not(.scrolled).nav-dark-hero .ltr-label,
+#main-nav.nav-transparent:not(.scrolled).nav-dark-hero .rtl-label,
 #main-nav.nav-transparent:not(.scrolled).nav-dark-hero svg:not(.bg-secondary *):not([class*="absolute"] *) {
   color: #ffffff !important;
   stroke: #ffffff;
@@ -250,6 +252,7 @@ h1, h2, h3, h4, h5, h6, .editorial {
   justify-content: center;
   z-index: 10;
   pointer-events: none;
+  color: var(--on-surface); /* theme-aware default color */
 }
 
 .ltr-label { left: 0; }

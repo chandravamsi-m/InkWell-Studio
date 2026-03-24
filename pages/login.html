@@ -24,16 +24,16 @@
             theme: {
                 extend: {
                     colors: {
-                        surface: 'var(--surface)',
-                        'surface-container': 'var(--surface-container)',
-                        'surface-dim': 'var(--surface-dim)',
-                        'surface-low': 'var(--surface-low)',
-                        primary: 'var(--primary)',
-                        'on-primary': 'var(--on-primary)',
-                        secondary: 'var(--secondary)',
-                        'on-surface': 'var(--on-surface)',
-                        'on-surface-variant': 'var(--on-surface-variant)',
-                        'outline-variant': 'var(--outline-variant)',
+                        surface: 'rgba(var(--surface-rgb), <alpha-value>)',
+                        'surface-container': 'rgba(var(--surface-container-rgb), <alpha-value>)',
+                        'surface-dim': 'rgba(var(--surface-dim-rgb), <alpha-value>)',
+                        'surface-low': 'rgba(var(--surface-low-rgb), <alpha-value>)',
+                        primary: 'rgba(var(--primary-rgb), <alpha-value>)',
+                        'on-primary': 'rgba(var(--on-primary-rgb), <alpha-value>)',
+                        secondary: 'rgba(var(--secondary-rgb), <alpha-value>)',
+                        'on-surface': 'rgba(var(--on-surface-rgb), <alpha-value>)',
+                        'on-surface-variant': 'rgba(var(--on-surface-variant-rgb), <alpha-value>)',
+                        'outline-variant': 'rgba(var(--outline-variant-rgb), <alpha-value>)',
                     },
                     fontFamily: {
                         newsreader: ['Newsreader', 'serif'],
@@ -67,7 +67,8 @@
             </div>
             <div class="z-10 space-y-8">
                 <h2 class="font-newsreader text-6xl xl:text-7xl font-bold leading-[0.9] tracking-tighter">Access Your
-                    <br> <span class="italic text-secondary">Narrative.</span></h2>
+                    <br> <span class="italic text-secondary">Narrative.</span>
+                </h2>
                 <p
                     class="text-on-surface-variant text-sm xl:text-base leading-relaxed max-w-xs xl:max-w-sm font-medium opacity-80">
                     Synchronize your design cycles, session guides, and digital aftercare instructions in a secure

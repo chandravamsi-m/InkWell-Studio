@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services & Process — Inkwell Studio</title>
-    <meta name="description" content="Explore our tattoo services, from fine-line mastery to bold blackwork. Understand our digital-first consultation process and pricing philosophy.">
-    
+    <meta name="description"
+        content="Explore our tattoo services, from fine-line mastery to bold blackwork. Understand our digital-first consultation process and pricing philosophy.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap"
+        rel="stylesheet">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@0.400.0"></script>
 
@@ -22,16 +26,16 @@
             theme: {
                 extend: {
                     colors: {
-                        surface: 'var(--surface)',
-                        'surface-container': 'var(--surface-container)',
-                        'surface-dim': 'var(--surface-dim)',
-                        'surface-low': 'var(--surface-low)',
-                        primary: 'var(--primary)',
-                        'on-primary': 'var(--on-primary)',
-                        secondary: 'var(--secondary)',
-                        'on-surface': 'var(--on-surface)',
-                        'on-surface-variant': 'var(--on-surface-variant)',
-                        'outline-variant': 'var(--outline-variant)',
+                        surface: 'rgba(var(--surface-rgb), <alpha-value>)',
+                        'surface-container': 'rgba(var(--surface-container-rgb), <alpha-value>)',
+                        'surface-dim': 'rgba(var(--surface-dim-rgb), <alpha-value>)',
+                        'surface-low': 'rgba(var(--surface-low-rgb), <alpha-value>)',
+                        primary: 'rgba(var(--primary-rgb), <alpha-value>)',
+                        'on-primary': 'rgba(var(--on-primary-rgb), <alpha-value>)',
+                        secondary: 'rgba(var(--secondary-rgb), <alpha-value>)',
+                        'on-surface': 'rgba(var(--on-surface-rgb), <alpha-value>)',
+                        'on-surface-variant': 'rgba(var(--on-surface-variant-rgb), <alpha-value>)',
+                        'outline-variant': 'rgba(var(--outline-variant-rgb), <alpha-value>)',
                     },
                     fontFamily: {
                         newsreader: ['Newsreader', 'serif'],
@@ -47,13 +51,14 @@
             }
         }
     </script>
-    
+
     <!-- Custom Style -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dark-mode.css">
     <link rel="stylesheet" href="../assets/css/rtl.css">
     <link rel="icon" type="image/svg+xml" href="../assets/images/logo-icon.svg">
 </head>
+
 <body class="bg-surface text-on-surface font-inter">
 
     <!-- ========== NAVIGATION ========== -->
@@ -84,9 +89,11 @@
                     <div
                         class="absolute top-full left-0 mt-2 w-40 bg-surface-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl border border-outline-variant">
                         <a href="../index.html"
-                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors">Home 1</a>
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors">Home
+                            1</a>
                         <a href="home-2.html"
-                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Home 2</a>
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Home
+                            2</a>
                     </div>
                 </div>
 
@@ -125,10 +132,14 @@
             <!-- Actions -->
             <div class="flex items-center space-x-3 md:space-x-5">
                 <!-- Direction Toggle -->
-                <div id="dir-toggle" class="hidden md:flex relative bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300" data-dir="ltr">
+                <div id="dir-toggle"
+                    class="hidden md:flex relative bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300"
+                    data-dir="ltr">
                     <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
                     <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                    <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+                    <div
+                        class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
+                    </div>
                 </div>
 
                 <button id="mode-toggle" class="hidden md:block p-2 hover:bg-surface-container transition-colors"
@@ -160,39 +171,53 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="bg-surface/95 backdrop-blur-xl transition-transform duration-500 flex flex-col md:hidden p-6 overflow-y-auto">
+    <div id="mobile-menu"
+        class="bg-surface/95 backdrop-blur-xl transition-transform duration-500 flex flex-col md:hidden p-6 overflow-y-auto">
         <div class="flex items-center justify-between pb-6 border-b border-outline-variant/30">
             <span class="text-3xl font-newsreader font-bold italic text-secondary tracking-tight">Menu</span>
             <button id="close-mobile-menu" class="p-2 -me-2 bg-surface-container rounded-full" aria-label="Close Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12">
+                    </path>
                 </svg>
             </button>
         </div>
         <div class="mt-8 flex flex-col space-y-6">
             <div class="space-y-3">
-                <button class="w-full flex items-center justify-between font-newsreader text-2xl font-bold group" data-dropdown-toggle="home">
+                <button class="w-full flex items-center justify-between font-newsreader text-2xl font-bold group"
+                    data-dropdown-toggle="home">
                     <span>Home</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 dropdown-icon transition-transform"></i>
                 </button>
-                <div id="dropdown-home" class="mobile-dropdown-content space-y-3 ps-4 border-s border-outline-variant/50">
-                    <a href="../index.html" class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home 1</a>
-                    <a href="home-2.html" class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home 2</a>
+                <div id="dropdown-home"
+                    class="mobile-dropdown-content space-y-3 ps-4 border-s border-outline-variant/50">
+                    <a href="../index.html"
+                        class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home
+                        1</a>
+                    <a href="home-2.html"
+                        class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home
+                        2</a>
                 </div>
             </div>
             <a href="portfolio.html" class="font-newsreader text-2xl font-bold">Portfolio</a>
             <a href="services.html" class="font-newsreader text-2xl font-bold text-secondary">Services</a>
             <a href="about.html" class="font-newsreader text-2xl font-bold">About</a>
             <a href="contact.html" class="font-newsreader text-2xl font-bold">Contact</a>
- 
+
             <div class="space-y-6">
-                <button class="w-full flex items-center justify-between font-newsreader text-2xl font-bold group" data-dropdown-toggle="dashboards">
+                <button class="w-full flex items-center justify-between font-newsreader text-2xl font-bold group"
+                    data-dropdown-toggle="dashboards">
                     <span>Dashboards</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 dropdown-icon transition-transform"></i>
                 </button>
-                <div id="dropdown-dashboards" class="mobile-dropdown-content space-y-4 ps-4 border-s border-outline-variant/50">
-                    <a href="user-dashboard.html" class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">User Dashboard</a>
-                    <a href="admin-dashboard.html" class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Admin Dashboard</a>
+                <div id="dropdown-dashboards"
+                    class="mobile-dropdown-content space-y-4 ps-4 border-s border-outline-variant/50">
+                    <a href="user-dashboard.html"
+                        class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">User
+                        Dashboard</a>
+                    <a href="admin-dashboard.html"
+                        class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Admin
+                        Dashboard</a>
                 </div>
             </div>
 
@@ -200,23 +225,31 @@
             <div class="space-y-6 py-6 border-y border-outline-variant/30">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold uppercase tracking-widest opacity-50">Appearence</span>
-                    <button id="mobile-mode-toggle" class="p-2 bg-surface-container rounded-full transition-colors flex items-center gap-2" aria-label="Toggle Dark Mode">
+                    <button id="mobile-mode-toggle"
+                        class="p-2 bg-surface-container rounded-full transition-colors flex items-center gap-2"
+                        aria-label="Toggle Dark Mode">
                         <!-- Moon icon -->
                         <svg class="w-4 h-4 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                       </svg>
-                       <!-- Sun icon -->
-                       <svg class="w-4 h-4 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                           <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
-                       </svg>
-                   </button>
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <!-- Sun icon -->
+                        <svg class="w-4 h-4 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                            </path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold uppercase tracking-widest opacity-50">Direction</span>
-                    <div id="mobile-dir-toggle" class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300" data-dir="ltr">
+                    <div id="mobile-dir-toggle"
+                        class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300"
+                        data-dir="ltr">
                         <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
                         <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                        <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+                        <div
+                            class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -236,18 +269,26 @@
         <!-- ========== HERO SECTION ========== -->
         <section class="pt-32 pb-16 bg-surface-dim relative overflow-hidden transition-colors duration-500">
             <!-- Background Accent -->
-            <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')]"></div>
-            
+            <div
+                class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')]">
+            </div>
+
             <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col items-center text-center space-y-12">
                 <div class="space-y-6">
-                    <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px] block animate-fade-in">Service Registry</span>
-                    <h1 class="font-newsreader text-8xl md:text-[10rem] font-bold tracking-editorial leading-none text-on-surface overflow-hidden">
-                        <span class="block animate-slide-up">The <span class="italic text-secondary/40">Craft.</span></span>
+                    <span
+                        class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px] block animate-fade-in">Service
+                        Registry</span>
+                    <h1
+                        class="font-newsreader text-8xl md:text-[10rem] font-bold tracking-editorial leading-none text-on-surface overflow-hidden">
+                        <span class="block animate-slide-up">The <span
+                                class="italic text-secondary/40">Craft.</span></span>
                     </h1>
                 </div>
-                
-                <p class="text-on-surface-variant text-xl md:text-2xl font-newsreader italic leading-relaxed max-w-3xl mx-auto opacity-80">
-                    "We have abandoned the traditional shop model to focus on an architectural, digital-first consultation pipeline and private dermal archiving sessions."
+
+                <p
+                    class="text-on-surface-variant text-xl md:text-2xl font-newsreader italic leading-relaxed max-w-3xl mx-auto opacity-80">
+                    "We have abandoned the traditional shop model to focus on an architectural, digital-first
+                    consultation pipeline and private dermal archiving sessions."
                 </p>
             </div>
         </section>
@@ -257,10 +298,14 @@
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-12 gap-20 items-start mb-24">
                     <div class="lg:col-span-12 space-y-6 text-center max-w-3xl mx-auto">
-                        <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">Investment Philosophy</span>
-                        <h2 class="font-newsreader text-5xl md:text-7xl font-bold tracking-editorial italic leading-tight">Artistic Valuation.</h2>
+                        <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">Investment
+                            Philosophy</span>
+                        <h2
+                            class="font-newsreader text-5xl md:text-7xl font-bold tracking-editorial italic leading-tight">
+                            Artistic Valuation.</h2>
                         <p class="text-on-surface-variant text-lg leading-relaxed opacity-70">
-                            We do not charge by the hour. Time is a deceptive metric for structural artistry. Every commission is valued based on narrative depth, anatomical complexity, and archival scale.
+                            We do not charge by the hour. Time is a deceptive metric for structural artistry. Every
+                            commission is valued based on narrative depth, anatomical complexity, and archival scale.
                         </p>
                     </div>
                 </div>
@@ -268,14 +313,19 @@
                 <!-- Tiered Valuation Cards -->
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Tier 01: The Blueprint -->
-                    <div class="p-12 bg-surface-dim border border-outline-variant/30 hover:border-secondary/30 transition-all group flex flex-col h-full">
+                    <div
+                        class="p-12 bg-surface-dim border border-outline-variant/30 hover:border-secondary/30 transition-all group flex flex-col h-full">
                         <div class="flex-grow space-y-8">
-                            <span class="font-newsreader text-5xl font-bold italic text-secondary/10 group-hover:text-secondary/20 transition-colors">01.</span>
+                            <span
+                                class="font-newsreader text-5xl font-bold italic text-secondary/10 group-hover:text-secondary/20 transition-colors">01.</span>
                             <div class="space-y-4">
                                 <h3 class="font-newsreader text-3xl font-bold">The Blueprint</h3>
-                                <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-on-surface-variant leading-relaxed opacity-60">Digital Audit & Consultation</p>
+                                <p
+                                    class="text-[11px] font-bold uppercase tracking-[0.3em] text-on-surface-variant leading-relaxed opacity-60">
+                                    Digital Audit & Consultation</p>
                             </div>
-                            <ul class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/70 italic">
+                            <ul
+                                class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/70 italic">
                                 <li>• Narrative Discovery</li>
                                 <li>• Anatomical Mapping</li>
                                 <li>• Technical Feasibility</li>
@@ -287,17 +337,23 @@
                     </div>
 
                     <!-- Tier 02: The Manuscript -->
-                    <div class="p-12 bg-surface-container border-2 border-secondary/20 shadow-2xl lg:scale-105 z-10 relative flex flex-col h-full transform transition-transform hover:translate-y-[-8px]">
+                    <div
+                        class="p-12 bg-surface-container border-2 border-secondary/20 shadow-2xl lg:scale-105 z-10 relative flex flex-col h-full transform transition-transform hover:translate-y-[-8px]">
                         <div class="absolute top-0 right-0 p-6">
-                            <span class="text-[9px] font-black uppercase tracking-widest text-secondary ring-1 ring-secondary/30 px-3 py-1 bg-secondary/5">Active Entry</span>
+                            <span
+                                class="text-[9px] font-black uppercase tracking-widest text-secondary ring-1 ring-secondary/30 px-3 py-1 bg-secondary/5">Active
+                                Entry</span>
                         </div>
                         <div class="flex-grow space-y-8">
                             <span class="font-newsreader text-5xl font-bold italic text-secondary/20">02.</span>
                             <div class="space-y-4">
                                 <h3 class="font-newsreader text-3xl font-bold">The Manuscript</h3>
-                                <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-secondary leading-relaxed font-black">Focused Sessions (2-4h)</p>
+                                <p
+                                    class="text-[11px] font-bold uppercase tracking-[0.3em] text-secondary leading-relaxed font-black">
+                                    Focused Sessions (2-4h)</p>
                             </div>
-                            <ul class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant italic">
+                            <ul
+                                class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant italic">
                                 <li>• Medium Scale Narratives</li>
                                 <li>• High-Fidelity Fine Line</li>
                                 <li>• Specialized Aftercare Pack</li>
@@ -309,14 +365,19 @@
                     </div>
 
                     <!-- Tier 03: The Epic -->
-                    <div class="p-12 bg-surface-dim border border-outline-variant/30 hover:border-secondary/30 transition-all group flex flex-col h-full">
+                    <div
+                        class="p-12 bg-surface-dim border border-outline-variant/30 hover:border-secondary/30 transition-all group flex flex-col h-full">
                         <div class="flex-grow space-y-8">
-                            <span class="font-newsreader text-5xl font-bold italic text-secondary/10 group-hover:text-secondary/20 transition-colors">03.</span>
+                            <span
+                                class="font-newsreader text-5xl font-bold italic text-secondary/10 group-hover:text-secondary/20 transition-colors">03.</span>
                             <div class="space-y-4">
                                 <h3 class="font-newsreader text-3xl font-bold">The Epic</h3>
-                                <p class="text-[11px] font-bold uppercase tracking-[0.3em] text-on-surface-variant leading-relaxed opacity-60">Full Dermal Archive (6-8h)</p>
+                                <p
+                                    class="text-[11px] font-bold uppercase tracking-[0.3em] text-on-surface-variant leading-relaxed opacity-60">
+                                    Full Dermal Archive (6-8h)</p>
                             </div>
-                            <ul class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/70 italic">
+                            <ul
+                                class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/70 italic">
                                 <li>• Large Scale Structural Work</li>
                                 <li>• Complex Anatomical Movement</li>
                                 <li>• Full Preservation Suite</li>
@@ -338,14 +399,17 @@
                     <span class="text-secondary font-bold uppercase tracking-[0.08em] text-xs">Excellence</span>
                     <h2 class="font-newsreader text-4xl md:text-5xl font-bold">Specialized Disciplines</h2>
                 </div>
-                
+
                 <div class="grid md:grid-cols-2 gap-12">
                     <div class="group p-12 border border-outline-variant hover:border-secondary transition-all">
-                        <div class="aspect-video mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div
+                            class="aspect-video mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                             <img src="../assets/images/work-1.png" alt="Fine Line" class="w-full h-full object-cover">
                         </div>
                         <h3 class="font-newsreader text-3xl font-bold mb-4">Fine Line Editorial</h3>
-                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">Specializing in delicate botanical, typographic, and anatomical illustrations. Executed with single-needle precision for a light, permanent aesthetic that ages gracefully.</p>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">Specializing in delicate
+                            botanical, typographic, and anatomical illustrations. Executed with single-needle precision
+                            for a light, permanent aesthetic that ages gracefully.</p>
                         <ul class="text-[10px] font-bold uppercase tracking-widest space-y-2 opacity-60">
                             <li>• Single Needle Mastery</li>
                             <li>• High-Fidelity Detail</li>
@@ -353,11 +417,15 @@
                         </ul>
                     </div>
                     <div class="group p-12 border border-outline-variant hover:border-secondary transition-all">
-                        <div class="aspect-video mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
-                            <img src="../assets/images/work-2.png" alt="Blackwork" class="w-full h-full object-cover text-on-surface">
+                        <div
+                            class="aspect-video mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <img src="../assets/images/work-2.png" alt="Blackwork"
+                                class="w-full h-full object-cover text-on-surface">
                         </div>
                         <h3 class="font-newsreader text-3xl font-bold mb-4">Monumental Blackwork</h3>
-                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">Bold, architectural silhouettes that treat the body as a structural canvas. High-saturation blacks and negative space techniques used to define and enhance natural movement.</p>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">Bold, architectural silhouettes
+                            that treat the body as a structural canvas. High-saturation blacks and negative space
+                            techniques used to define and enhance natural movement.</p>
                         <ul class="text-[10px] font-bold uppercase tracking-widest space-y-2 opacity-60">
                             <li>• Structural Silhouettes</li>
                             <li>• Saturated Blacks</li>
@@ -366,11 +434,15 @@
                     </div>
                     <!-- Added Disciplines -->
                     <div class="group p-12 border border-outline-variant hover:border-secondary transition-all">
-                        <div class="aspect-video mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
-                            <img src="../assets/images/work-3.png" alt="Neo-Traditional" class="w-full h-full object-cover">
+                        <div
+                            class="aspect-video mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                            <img src="../assets/images/work-3.png" alt="Neo-Traditional"
+                                class="w-full h-full object-cover">
                         </div>
                         <h3 class="font-newsreader text-3xl font-bold mb-4">Neo-Traditional Lore</h3>
-                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">A contemporary evolution of traditional motifs. Rich saturated palettes and varied line weights used to create high-impact, illustrative narratives with timeless longevity.</p>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">A contemporary evolution of
+                            traditional motifs. Rich saturated palettes and varied line weights used to create
+                            high-impact, illustrative narratives with timeless longevity.</p>
                         <ul class="text-[10px] font-bold uppercase tracking-widest space-y-2 opacity-60">
                             <li>• Illustrative Depth</li>
                             <li>• Saturated Palettes</li>
@@ -378,11 +450,14 @@
                         </ul>
                     </div>
                     <div class="group p-12 border border-outline-variant hover:border-secondary transition-all">
-                        <div class="aspect-video mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div
+                            class="aspect-video mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
                             <img src="../assets/images/work-5.png" alt="Japanese" class="w-full h-full object-cover">
                         </div>
                         <h3 class="font-newsreader text-3xl font-bold mb-4">Japanese Narrative</h3>
-                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">Architectural Irezumi principles applied to personal storytelling. Large-scale compositions that respect the body's flow, balancing bold motifs with intricate background rhythms.</p>
+                        <p class="text-on-surface-variant text-sm leading-relaxed mb-8">Architectural Irezumi principles
+                            applied to personal storytelling. Large-scale compositions that respect the body's flow,
+                            balancing bold motifs with intricate background rhythms.</p>
                         <ul class="text-[10px] font-bold uppercase tracking-widest space-y-2 opacity-60">
                             <li>• Full Canvas Composition</li>
                             <li>• Flow & Movement</li>
@@ -399,44 +474,60 @@
                 <div class="grid lg:grid-cols-12 gap-20 items-center">
                     <div class="lg:col-span-5 space-y-12">
                         <div class="space-y-4">
-                            <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">The Process</span>
-                            <h2 class="font-newsreader text-5xl md:text-6xl font-bold tracking-editorial leading-tight italic">Technical Pipeline.</h2>
+                            <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">The
+                                Process</span>
+                            <h2
+                                class="font-newsreader text-5xl md:text-6xl font-bold tracking-editorial leading-tight italic">
+                                Technical Pipeline.</h2>
                         </div>
                         <p class="text-on-surface-variant text-lg leading-relaxed opacity-70">
-                            Every commission follows a rigorous digital-first archiving process to ensure technical perfection before the first drop of ink meets the skin.
+                            Every commission follows a rigorous digital-first archiving process to ensure technical
+                            perfection before the first drop of ink meets the skin.
                         </p>
                         <div class="space-y-10">
                             <!-- Step 01 -->
                             <div class="flex items-start space-x-6 group">
-                                <span class="text-xs font-bold text-secondary border border-secondary/30 px-3 py-1 bg-secondary/5">01</span>
+                                <span
+                                    class="text-xs font-bold text-secondary border border-secondary/30 px-3 py-1 bg-secondary/5">01</span>
                                 <div class="space-y-2">
                                     <h4 class="text-[11px] font-bold uppercase tracking-widest">Commission Inquiry</h4>
-                                    <p class="text-xs text-on-surface-variant opacity-60 leading-relaxed">Initiate your narrative through our digital workspace. Upload references and anatomical details.</p>
+                                    <p class="text-xs text-on-surface-variant opacity-60 leading-relaxed">Initiate your
+                                        narrative through our digital workspace. Upload references and anatomical
+                                        details.</p>
                                 </div>
                             </div>
                             <!-- Step 02 -->
                             <div class="flex items-start space-x-6 group">
-                                <span class="text-xs font-bold text-secondary border border-secondary/30 px-3 py-1 bg-secondary/5">02</span>
+                                <span
+                                    class="text-xs font-bold text-secondary border border-secondary/30 px-3 py-1 bg-secondary/5">02</span>
                                 <div class="space-y-2">
                                     <h4 class="text-[11px] font-bold uppercase tracking-widest">Conceptual Audit</h4>
-                                    <p class="text-xs text-on-surface-variant opacity-60 leading-relaxed">A deep-dive digital consultation to refine your narrative and map the technical blueprint.</p>
+                                    <p class="text-xs text-on-surface-variant opacity-60 leading-relaxed">A deep-dive
+                                        digital consultation to refine your narrative and map the technical blueprint.
+                                    </p>
                                 </div>
                             </div>
                             <!-- Step 03 -->
                             <div class="flex items-start space-x-6 group">
-                                <span class="text-xs font-bold text-secondary border border-secondary/30 px-3 py-1 bg-secondary/5">03</span>
+                                <span
+                                    class="text-xs font-bold text-secondary border border-secondary/30 px-3 py-1 bg-secondary/5">03</span>
                                 <div class="space-y-2">
                                     <h4 class="text-[11px] font-bold uppercase tracking-widest">Dermal Archiving</h4>
-                                    <p class="text-xs text-on-surface-variant opacity-60 leading-relaxed">The studio session. Clinical precision meets architectural execution in a private editorial environment.</p>
+                                    <p class="text-xs text-on-surface-variant opacity-60 leading-relaxed">The studio
+                                        session. Clinical precision meets architectural execution in a private editorial
+                                        environment.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="lg:col-span-7">
                         <div class="relative group">
-                            <div class="absolute -inset-4 border border-outline-variant/30 translate-x-4 translate-y-4 -z-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-700"></div>
+                            <div
+                                class="absolute -inset-4 border border-outline-variant/30 translate-x-4 translate-y-4 -z-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-700">
+                            </div>
                             <div class="aspect-video bg-surface-dim overflow-hidden grayscale contrast-125">
-                                <img src="../assets/images/hero_editorial_v4.png" alt="Studio Pipeline" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
+                                <img src="../assets/images/hero_editorial_v4.png" alt="Studio Pipeline"
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
                             </div>
                         </div>
                     </div>
@@ -449,11 +540,13 @@
             <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
                 <div class="relative">
                     <div class="aspect-[4/5] bg-surface-container overflow-hidden grayscale">
-                        <img src="../assets/images/work-3.png" alt="Aftercare" class="w-full h-full object-cover opacity-50">
+                        <img src="../assets/images/work-3.png" alt="Aftercare"
+                            class="w-full h-full object-cover opacity-50">
                     </div>
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div class="bg-surface p-12 space-y-6 max-w-sm text-center shadow-2xl">
-                            <h3 class="font-newsreader text-2xl font-bold italic">"Longevity is 50% Application, 50% Aftercare."</h3>
+                            <h3 class="font-newsreader text-2xl font-bold italic">"Longevity is 50% Application, 50%
+                                Aftercare."</h3>
                             <div class="w-12 h-[1px] bg-secondary mx-auto"></div>
                         </div>
                     </div>
@@ -464,10 +557,16 @@
                         <h2 class="font-newsreader text-4xl md:text-5xl font-bold">Lifetime Support</h2>
                     </div>
                     <div class="space-y-8 text-on-surface-variant leading-relaxed">
-                        <p>Our commitment doesn't end when you leave the studio. We provide ongoing support to ensure your narrative stays as sharp as the day it was written, with technical advice available at every stage of the healing process.</p>
-                        <p>From day-one cleaning protocols to long-term preservation strategies, our team is here to guide the longevity of your art. For immediate care inquiries, reach out to our technical team directly.</p>
+                        <p>Our commitment doesn't end when you leave the studio. We provide ongoing support to ensure
+                            your narrative stays as sharp as the day it was written, with technical advice available at
+                            every stage of the healing process.</p>
+                        <p>From day-one cleaning protocols to long-term preservation strategies, our team is here to
+                            guide the longevity of your art. For immediate care inquiries, reach out to our technical
+                            team directly.</p>
                     </div>
-                    <a href="contact.html" class="inline-block border-b-2 border-secondary pb-1 text-xs font-bold uppercase tracking-widest hover:text-secondary transition-colors">Consult Our Care Archivists</a>
+                    <a href="contact.html"
+                        class="inline-block border-b-2 border-secondary pb-1 text-xs font-bold uppercase tracking-widest hover:text-secondary transition-colors">Consult
+                        Our Care Archivists</a>
                 </div>
             </div>
         </section>
@@ -476,60 +575,82 @@
         <section class="py-16 bg-surface">
             <div class="max-w-4xl mx-auto px-6">
                 <div class="text-center mb-12 space-y-4">
-                    <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">Registry Inquiry</span>
-                    <h2 class="font-newsreader text-5xl md:text-6xl font-bold tracking-editorial leading-tight italic">Frequently Referenced.</h2>
+                    <span class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px]">Registry
+                        Inquiry</span>
+                    <h2 class="font-newsreader text-5xl md:text-6xl font-bold tracking-editorial leading-tight italic">
+                        Frequently Referenced.</h2>
                 </div>
 
                 <div class="space-y-4">
                     <!-- FAQ Item 01 -->
                     <details class="group border-b border-outline-variant/30">
-                        <summary class="flex justify-between items-center py-8 cursor-pointer list-none group-hover:text-secondary transition-colors">
-                            <span class="text-xs font-bold uppercase tracking-[0.2em]">What is the typical technical lead time?</span>
+                        <summary
+                            class="flex justify-between items-center py-8 cursor-pointer list-none group-hover:text-secondary transition-colors">
+                            <span class="text-xs font-bold uppercase tracking-[0.2em]">What is the typical technical
+                                lead time?</span>
                             <span class="text-secondary transition-transform duration-300 group-open:rotate-180">
                                 <i data-lucide="chevron-down" class="w-4 h-4"></i>
                             </span>
                         </summary>
-                        <div class="pb-8 text-on-surface-variant text-sm leading-relaxed opacity-70 max-w-2xl font-newsreader italic">
-                            The studio maintains a rigorous archival pipeline. Typical lead times range from 2–4 months, ensuring every commission undergoes a thorough conceptual audit and technical blueprinting phase before execution.
+                        <div
+                            class="pb-8 text-on-surface-variant text-sm leading-relaxed opacity-70 max-w-2xl font-newsreader italic">
+                            The studio maintains a rigorous archival pipeline. Typical lead times range from 2–4 months,
+                            ensuring every commission undergoes a thorough conceptual audit and technical blueprinting
+                            phase before execution.
                         </div>
                     </details>
 
                     <!-- FAQ Item 02 -->
                     <details class="group border-b border-outline-variant/30">
-                        <summary class="flex justify-between items-center py-8 cursor-pointer list-none group-hover:text-secondary transition-colors">
-                            <span class="text-xs font-bold uppercase tracking-[0.2em]">Do you offer color narratives?</span>
+                        <summary
+                            class="flex justify-between items-center py-8 cursor-pointer list-none group-hover:text-secondary transition-colors">
+                            <span class="text-xs font-bold uppercase tracking-[0.2em]">Do you offer color
+                                narratives?</span>
                             <span class="text-secondary transition-transform duration-300 group-open:rotate-180">
                                 <i data-lucide="chevron-down" class="w-4 h-4"></i>
                             </span>
                         </summary>
-                        <div class="pb-8 text-on-surface-variant text-sm leading-relaxed opacity-70 max-w-2xl font-newsreader italic">
-                            Inkwell Studio focuses exclusively on black and gray architectural work. We believe the structural integrity and archival longevity of a narrative are best preserved through the timeless logic of high-saturation monochrome.
+                        <div
+                            class="pb-8 text-on-surface-variant text-sm leading-relaxed opacity-70 max-w-2xl font-newsreader italic">
+                            Inkwell Studio focuses exclusively on black and gray architectural work. We believe the
+                            structural integrity and archival longevity of a narrative are best preserved through the
+                            timeless logic of high-saturation monochrome.
                         </div>
                     </details>
 
                     <!-- FAQ Item 03 -->
                     <details class="group border-b border-outline-variant/30">
-                        <summary class="flex justify-between items-center py-8 cursor-pointer list-none group-hover:text-secondary transition-colors">
-                            <span class="text-xs font-bold uppercase tracking-[0.2em]">Can I bring my own technical design?</span>
+                        <summary
+                            class="flex justify-between items-center py-8 cursor-pointer list-none group-hover:text-secondary transition-colors">
+                            <span class="text-xs font-bold uppercase tracking-[0.2em]">Can I bring my own technical
+                                design?</span>
                             <span class="text-secondary transition-transform duration-300 group-open:rotate-180">
                                 <i data-lucide="chevron-down" class="w-4 h-4"></i>
                             </span>
                         </summary>
-                        <div class="pb-8 text-on-surface-variant text-sm leading-relaxed opacity-70 max-w-2xl font-newsreader italic">
-                            Every tattoo is treated as a bespoke studio commission. While external references are encouraged during narrative discovery, every piece is structurally re-blueprinted by our artists to ensure anatomical flow and archival excellence.
+                        <div
+                            class="pb-8 text-on-surface-variant text-sm leading-relaxed opacity-70 max-w-2xl font-newsreader italic">
+                            Every tattoo is treated as a bespoke studio commission. While external references are
+                            encouraged during narrative discovery, every piece is structurally re-blueprinted by our
+                            artists to ensure anatomical flow and archival excellence.
                         </div>
                     </details>
 
                     <!-- FAQ Item 04 -->
                     <details class="group border-b border-outline-variant/30">
-                        <summary class="flex justify-between items-center py-8 cursor-pointer list-none group-hover:text-secondary transition-colors">
-                            <span class="text-xs font-bold uppercase tracking-[0.2em]">Is the archival session private?</span>
+                        <summary
+                            class="flex justify-between items-center py-8 cursor-pointer list-none group-hover:text-secondary transition-colors">
+                            <span class="text-xs font-bold uppercase tracking-[0.2em]">Is the archival session
+                                private?</span>
                             <span class="text-secondary transition-transform duration-300 group-open:rotate-180">
                                 <i data-lucide="chevron-down" class="w-4 h-4"></i>
                             </span>
                         </summary>
-                        <div class="pb-8 text-on-surface-variant text-sm leading-relaxed opacity-70 max-w-2xl font-newsreader italic">
-                            Yes. We have moved away from the public shop model. All sessions are conducted in a private, high-fidelity editorial studio environment, allowing for total focus and a sterile, luxury client experience.
+                        <div
+                            class="pb-8 text-on-surface-variant text-sm leading-relaxed opacity-70 max-w-2xl font-newsreader italic">
+                            Yes. We have moved away from the public shop model. All sessions are conducted in a private,
+                            high-fidelity editorial studio environment, allowing for total focus and a sterile, luxury
+                            client experience.
                         </div>
                     </details>
                 </div>
@@ -584,7 +705,8 @@
                 <div class="space-y-4 md:space-y-6">
                     <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Access</h4>
                     <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
-                        <li><a href="consultation.html" class="hover:text-secondary transition-colors">Book Session</a></li>
+                        <li><a href="consultation.html" class="hover:text-secondary transition-colors">Book Session</a>
+                        </li>
                         <li><a href="contact.html" class="hover:text-secondary transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
@@ -593,7 +715,9 @@
                 <div class="space-y-4 md:space-y-6 flex flex-col items-center md:items-start">
                     <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">The Digital Ledger</h4>
                     <div class="space-y-4 w-full flex flex-col items-center md:items-start">
-                        <p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed text-center md:text-left">Enroll for private exhibition updates.</p>
+                        <p
+                            class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed text-center md:text-left">
+                            Enroll for private exhibition updates.</p>
                         <form class="relative group flex w-full max-w-[280px]">
                             <input type="email" placeholder="EMAIL ADDRESS"
                                 class="flex-1 bg-surface-container border border-outline-variant focus:border-secondary transition-all outline-none py-2 px-4 text-[10px] font-bold tracking-widest text-on-surface placeholder:text-on-surface-variant/60">
@@ -620,4 +744,5 @@
         lucide.createIcons();
     </script>
 </body>
+
 </html>

@@ -26,16 +26,16 @@
             theme: {
                 extend: {
                     colors: {
-                        surface: 'var(--surface)',
-                        'surface-container': 'var(--surface-container)',
-                        'surface-dim': 'var(--surface-dim)',
-                        'surface-low': 'var(--surface-low)',
-                        primary: 'var(--primary)',
-                        'on-primary': 'var(--on-primary)',
-                        secondary: 'var(--secondary)',
-                        'on-surface': 'var(--on-surface)',
-                        'on-surface-variant': 'var(--on-surface-variant)',
-                        'outline-variant': 'var(--outline-variant)',
+                        surface: 'rgba(var(--surface-rgb), <alpha-value>)',
+                        'surface-container': 'rgba(var(--surface-container-rgb), <alpha-value>)',
+                        'surface-dim': 'rgba(var(--surface-dim-rgb), <alpha-value>)',
+                        'surface-low': 'rgba(var(--surface-low-rgb), <alpha-value>)',
+                        primary: 'rgba(var(--primary-rgb), <alpha-value>)',
+                        'on-primary': 'rgba(var(--on-primary-rgb), <alpha-value>)',
+                        secondary: 'rgba(var(--secondary-rgb), <alpha-value>)',
+                        'on-surface': 'rgba(var(--on-surface-rgb), <alpha-value>)',
+                        'on-surface-variant': 'rgba(var(--on-surface-variant-rgb), <alpha-value>)',
+                        'outline-variant': 'rgba(var(--outline-variant-rgb), <alpha-value>)',
                     },
                     fontFamily: {
                         newsreader: ['Newsreader', 'serif'],
@@ -89,9 +89,11 @@
                     <div
                         class="absolute top-full left-0 mt-2 w-40 bg-surface-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 shadow-xl border border-outline-variant">
                         <a href="index.html"
-                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors text-secondary">Home 1</a>
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors text-secondary">Home
+                            1</a>
                         <a href="pages/home-2.html"
-                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Home 2</a>
+                            class="block px-6 py-4 text-[10px] font-bold uppercase tracking-wider hover:bg-surface-dim transition-colors border-t border-outline-variant">Home
+                            2</a>
                     </div>
                 </div>
 
@@ -130,10 +132,14 @@
             <!-- Actions -->
             <div class="flex items-center space-x-3 md:space-x-5">
                 <!-- Direction Toggle (Hidden on Mobile, Moved to Menu) -->
-                <div id="dir-toggle" class="hidden md:flex relative bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300" data-dir="ltr">
+                <div id="dir-toggle"
+                    class="hidden md:flex relative bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300"
+                    data-dir="ltr">
                     <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
                     <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                    <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+                    <div
+                        class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
+                    </div>
                 </div>
 
                 <button id="mode-toggle" class="hidden md:block p-2 hover:bg-surface-container transition-colors"
@@ -167,24 +173,32 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="bg-surface/95 backdrop-blur-xl transition-transform duration-500 flex flex-col md:hidden p-6 overflow-y-auto">
+    <div id="mobile-menu"
+        class="bg-surface/95 backdrop-blur-xl transition-transform duration-500 flex flex-col md:hidden p-6 overflow-y-auto">
         <div class="flex items-center justify-between pb-6 border-b border-outline-variant/30">
             <span class="text-3xl font-newsreader font-bold italic text-secondary tracking-tight">Menu</span>
             <button id="close-mobile-menu" class="p-2 -me-2 bg-surface-container rounded-full" aria-label="Close Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12">
+                    </path>
                 </svg>
             </button>
         </div>
         <div class="mt-8 flex flex-col space-y-6">
             <div class="space-y-3">
-                <button class="w-full flex items-center justify-between font-newsreader text-2xl font-bold text-secondary group" data-dropdown-toggle="home">
+                <button
+                    class="w-full flex items-center justify-between font-newsreader text-2xl font-bold text-secondary group"
+                    data-dropdown-toggle="home">
                     <span>Home</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 dropdown-icon transition-transform"></i>
                 </button>
-                <div id="dropdown-home" class="mobile-dropdown-content space-y-3 ps-4 border-s border-outline-variant/50">
-                    <a href="index.html" class="block font-newsreader text-2xl font-bold italic text-secondary">Home 1</a>
-                    <a href="pages/home-2.html" class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home 2</a>
+                <div id="dropdown-home"
+                    class="mobile-dropdown-content space-y-3 ps-4 border-s border-outline-variant/50">
+                    <a href="index.html" class="block font-newsreader text-2xl font-bold italic text-secondary">Home
+                        1</a>
+                    <a href="pages/home-2.html"
+                        class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home
+                        2</a>
                 </div>
             </div>
             <a href="pages/portfolio.html" class="font-newsreader text-2xl font-bold">Portfolio</a>
@@ -193,13 +207,19 @@
             <a href="pages/contact.html" class="font-newsreader text-2xl font-bold">Contact</a>
 
             <div class="space-y-6">
-                <button class="w-full flex items-center justify-between font-newsreader text-2xl font-bold group" data-dropdown-toggle="dashboards">
+                <button class="w-full flex items-center justify-between font-newsreader text-2xl font-bold group"
+                    data-dropdown-toggle="dashboards">
                     <span>Dashboards</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 dropdown-icon transition-transform"></i>
                 </button>
-                <div id="dropdown-dashboards" class="mobile-dropdown-content space-y-4 ps-4 border-s border-outline-variant/50">
-                    <a href="pages/user-dashboard.html" class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">User Dashboard</a>
-                    <a href="pages/admin-dashboard.html" class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Admin Dashboard</a>
+                <div id="dropdown-dashboards"
+                    class="mobile-dropdown-content space-y-4 ps-4 border-s border-outline-variant/50">
+                    <a href="pages/user-dashboard.html"
+                        class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">User
+                        Dashboard</a>
+                    <a href="pages/admin-dashboard.html"
+                        class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Admin
+                        Dashboard</a>
                 </div>
             </div>
 
@@ -207,21 +227,28 @@
             <div class="space-y-6 py-6 border-y border-outline-variant/30">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold uppercase tracking-widest opacity-50">Appearence</span>
-                    <button id="mobile-mode-toggle" class="p-2 bg-surface-container rounded-full transition-colors flex items-center gap-2" aria-label="Toggle Dark Mode">
+                    <button id="mobile-mode-toggle"
+                        class="p-2 bg-surface-container rounded-full transition-colors flex items-center gap-2"
+                        aria-label="Toggle Dark Mode">
                         <!-- Moon icon -->
                         <svg class="w-4 h-4 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
-                           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                       </svg>
-                       <!-- Sun icon -->
-                       <svg class="w-4 h-4 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-                           <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
-                       </svg>
-                   </button>
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <!-- Sun icon -->
+                        <svg class="w-4 h-4 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                            </path>
+                        </svg>
+                    </button>
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold uppercase tracking-widest opacity-50">Direction</span>
-                    <div id="mobile-dir-toggle" class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300">
-                        <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+                    <div id="mobile-dir-toggle"
+                        class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300">
+                        <div
+                            class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
+                        </div>
                         <span class="ltr-label text-[8px] font-bold z-10 transition-colors">LTR</span>
                         <span class="rtl-label text-[8px] font-bold z-10 transition-colors">RTL</span>
                     </div>
@@ -250,7 +277,8 @@
             </div>
 
             <!-- Left: Narrative Column -->
-            <div class="lg:w-1/2 flex items-center justify-center relative z-10 px-6 pt-24 pb-12 lg:py-0 lg:px-24 text-center lg:text-start">
+            <div
+                class="lg:w-1/2 flex items-center justify-center relative z-10 px-6 pt-24 pb-12 lg:py-0 lg:px-24 text-center lg:text-start">
                 <div class="max-w-xl w-full space-y-8 sm:space-y-12">
                     <div class="space-y-4 sm:space-y-6">
                         <span
@@ -268,7 +296,8 @@
                         Where typography meets the skin. We treat every tattoo as a load-bearing wall in your personal
                         exhibition.
                     </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 pt-2 sm:pt-4">
+                    <div
+                        class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 pt-2 sm:pt-4">
                         <a href="pages/consultation.html"
                             class="w-full sm:w-auto bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.1em] transition-all btn-sheen hover:scale-105 text-center">Start
                             Consultation</a>
@@ -338,8 +367,8 @@
                             <span class="w-12 h-[1px] bg-secondary"></span>
                             <span>Exhibition</span>
                         </span>
-                        <h2 class="font-newsreader text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight">Selected <span
-                                class="italic text-secondary">Manuscripts.</span></h2>
+                        <h2 class="font-newsreader text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight">Selected
+                            <span class="italic text-secondary">Manuscripts.</span></h2>
                     </div>
                     <a href="pages/portfolio.html"
                         class="group flex items-center space-x-3 font-bold uppercase tracking-[0.1em] text-[9px] sm:text-[10px] border-b-2 border-outline-variant pb-2 hover:border-secondary transition-all whitespace-nowrap">
@@ -420,7 +449,8 @@
                             <span>The Process</span>
                         </span>
                         <h2 class="font-newsreader text-5xl md:text-7xl font-bold tracking-tight">The Digital-First <br>
-                            <span class="italic text-secondary">Methodology.</span></h2>
+                            <span class="italic text-secondary">Methodology.</span>
+                        </h2>
                     </div>
                     <p
                         class="text-on-surface-variant leading-relaxed text-lg italic font-newsreader opacity-70 max-w-xl">
@@ -493,100 +523,101 @@
 
         <!-- ========== ARTIST PROFILE ========== -->
         <section class="py-16 bg-surface">
-                <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
-                    <div class="relative group">
-                        <div
-                            class="absolute -inset-4 bg-secondary/5 -z-10 transition-transform duration-700 group-hover:bg-secondary/10">
-                        </div>
-                        <img src="assets/images/portrait.png" alt="Elias Thorne — Lead Artist"
-                            class="w-full aspect-[3/4] object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 shadow-2xl">
-                        <div
-                            class="absolute -bottom-4 -right-4 w-40 h-40 bg-secondary flex flex-col items-center justify-center p-6 z-20 shadow-xl border border-white/10 overflow-hidden group/badge">
-                            <div
-                                class="absolute inset-0 bg-white/10 -translate-x-full group-hover/badge:translate-x-full transition-transform duration-1000">
-                            </div>
-                            <i data-lucide="award" class="w-6 h-6 text-white/50 mb-3"></i>
-                            <p
-                                class="text-white text-[9px] font-bold uppercase tracking-[0.25em] leading-tight text-center">
-                                Master <br> Threader <br> <span class="text-white/40 block mt-1">2024 London</span>
-                            </p>
-                        </div>
+            <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-24 items-center">
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-4 bg-secondary/5 -z-10 transition-transform duration-700 group-hover:bg-secondary/10">
                     </div>
-                    <div class="space-y-12">
-                        <div class="space-y-6">
-                            <span
-                                class="text-secondary font-bold uppercase tracking-[0.3em] text-[10px] flex items-center space-x-3">
-                                <span class="w-12 h-[1px] bg-secondary"></span>
-                                <span>The Scribe</span>
-                            </span>
-                            <h2 class="font-newsreader text-5xl md:text-7xl font-bold tracking-tight text-on-surface">
-                                Elias Thorne.</h2>
-                            <p
-                                class="font-newsreader italic text-2xl md:text-3xl text-on-surface-variant leading-relaxed opacity-80">
-                                "Longevity is our metric. A tattoo should feel like it has always resided beneath your
-                                skin."
-                            </p>
-                        </div>
+                    <img src="assets/images/portrait.png" alt="Elias Thorne — Lead Artist"
+                        class="w-full aspect-[3/4] object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 shadow-2xl">
+                    <div
+                        class="absolute -bottom-4 -right-4 w-40 h-40 bg-secondary flex flex-col items-center justify-center p-6 z-20 shadow-xl border border-white/10 overflow-hidden group/badge">
                         <div
-                            class="space-y-8 text-on-surface-variant leading-relaxed text-lg font-newsreader opacity-70">
-                            <p>With over 12 years of professional practice spanning Copenhagen and London, Elias Thorne
-                                has pioneered the <span class="text-secondary opacity-100">Editorial Fine Line</span>
-                                methodology. His work is recognized for its architectural precision and narrative depth.
-                            </p>
-                            <p>Elias founded Inkwell Studio to bridge the gap between traditional craftsmanship and
-                                digital delivery systems, ensuring a seamless, permanent experience for the modern
-                                collector.</p>
+                            class="absolute inset-0 bg-white/10 -translate-x-full group-hover/badge:translate-x-full transition-transform duration-1000">
                         </div>
-                        <div class="grid grid-cols-2 gap-12 pt-12 border-t border-outline-variant">
-                            <div class="space-y-2">
-                                <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Collections
-                                </p>
-                                <p class="font-inter font-bold text-[11px] uppercase tracking-widest text-on-surface">
-                                    Fine Line, Blackwork</p>
-                            </div>
-                            <div class="space-y-2">
-                                <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Registry</p>
-                                <p class="font-inter font-bold text-[11px] uppercase tracking-widest text-on-surface">12
-                                    Years Professional</p>
-                            </div>
-                            <div class="space-y-2">
-                                <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Location</p>
-                                <p class="font-inter font-bold text-[11px] uppercase tracking-widest text-on-surface">
-                                    Hackney, London</p>
-                            </div>
-                            <div class="space-y-2">
-                                <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Status</p>
-                                <p class="font-inter font-bold text-[11px] uppercase tracking-widest text-on-surface">
-                                    Booking Q3 2024</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
-            <!-- ========== CTA SECTION ========== -->
-            <section class="py-12 bg-surface-dim text-center overflow-hidden border-t border-outline-variant/10 relative group">
-                <div
-                    class="absolute inset-0 bg-secondary/[0.02] -z-10 transition-colors group-hover:bg-secondary/[0.05]">
-                </div>
-                <div class="max-w-2xl mx-auto px-6 text-center space-y-8 relative z-10">
-                    <div class="space-y-4 md:space-y-6">
-                        <h2 class="font-newsreader text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.9] italic">
-                            Ready to Illustrate <br> Your <span class="text-secondary">Narrative?</span>
-                        </h2>
-                        <p class="text-on-surface-variant text-sm sm:text-base md:text-lg font-newsreader italic opacity-70 max-w-lg mx-auto">
-                            The first step is a digital enrollment. No travel required until your private session.
+                        <i data-lucide="award" class="w-6 h-6 text-white/50 mb-3"></i>
+                        <p
+                            class="text-white text-[9px] font-bold uppercase tracking-[0.25em] leading-tight text-center">
+                            Master <br> Threader <br> <span class="text-white/40 block mt-1">2024 London</span>
                         </p>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <a href="pages/consultation.html"
-                            class="inline-block bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all btn-sheen hover:scale-105 shadow-2xl">Initialize
-                            Enrollment</a>
+                </div>
+                <div class="space-y-12">
+                    <div class="space-y-6">
+                        <span
+                            class="text-secondary font-bold uppercase tracking-[0.3em] text-[10px] flex items-center space-x-3">
+                            <span class="w-12 h-[1px] bg-secondary"></span>
+                            <span>The Scribe</span>
+                        </span>
+                        <h2 class="font-newsreader text-5xl md:text-7xl font-bold tracking-tight text-on-surface">
+                            Elias Thorne.</h2>
+                        <p
+                            class="font-newsreader italic text-2xl md:text-3xl text-on-surface-variant leading-relaxed opacity-80">
+                            "Longevity is our metric. A tattoo should feel like it has always resided beneath your
+                            skin."
+                        </p>
+                    </div>
+                    <div class="space-y-8 text-on-surface-variant leading-relaxed text-lg font-newsreader opacity-70">
+                        <p>With over 12 years of professional practice spanning Copenhagen and London, Elias Thorne
+                            has pioneered the <span class="text-secondary opacity-100">Editorial Fine Line</span>
+                            methodology. His work is recognized for its architectural precision and narrative depth.
+                        </p>
+                        <p>Elias founded Inkwell Studio to bridge the gap between traditional craftsmanship and
+                            digital delivery systems, ensuring a seamless, permanent experience for the modern
+                            collector.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-12 pt-12 border-t border-outline-variant">
+                        <div class="space-y-2">
+                            <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Collections
+                            </p>
+                            <p class="font-inter font-bold text-[11px] uppercase tracking-widest text-on-surface">
+                                Fine Line, Blackwork</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Registry</p>
+                            <p class="font-inter font-bold text-[11px] uppercase tracking-widest text-on-surface">12
+                                Years Professional</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Location</p>
+                            <p class="font-inter font-bold text-[11px] uppercase tracking-widest text-on-surface">
+                                Hackney, London</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-[9px] font-bold uppercase tracking-[0.4em] text-secondary">Status</p>
+                            <p class="font-inter font-bold text-[11px] uppercase tracking-widest text-on-surface">
+                                Booking Q3 2024</p>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+
+
+
+        <!-- ========== CTA SECTION ========== -->
+        <section
+            class="py-12 bg-surface-dim text-center overflow-hidden border-t border-outline-variant/10 relative group">
+            <div class="absolute inset-0 bg-secondary/[0.02] -z-10 transition-colors group-hover:bg-secondary/[0.05]">
+            </div>
+            <div class="max-w-2xl mx-auto px-6 text-center space-y-8 relative z-10">
+                <div class="space-y-4 md:space-y-6">
+                    <h2
+                        class="font-newsreader text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.9] italic">
+                        Ready to Illustrate <br> Your <span class="text-secondary">Narrative?</span>
+                    </h2>
+                    <p
+                        class="text-on-surface-variant text-sm sm:text-base md:text-lg font-newsreader italic opacity-70 max-w-lg mx-auto">
+                        The first step is a digital enrollment. No travel required until your private session.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <a href="pages/consultation.html"
+                        class="inline-block bg-secondary text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-all btn-sheen hover:scale-105 shadow-2xl">Initialize
+                        Enrollment</a>
+                </div>
+            </div>
+        </section>
     </main>
     <!-- ========== FOOTER ========== -->
     <footer class="bg-surface pt-12 pb-8 md:pt-16 md:pb-10 border-t border-outline-variant">
@@ -625,8 +656,10 @@
                     <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Exhibition</h4>
                     <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
                         <li><a href="index.html" class="hover:text-secondary transition-colors">Home</a></li>
-                        <li><a href="pages/portfolio.html" class="hover:text-secondary transition-colors">Portfolio</a></li>
-                        <li><a href="pages/services.html" class="hover:text-secondary transition-colors">Services</a></li>
+                        <li><a href="pages/portfolio.html" class="hover:text-secondary transition-colors">Portfolio</a>
+                        </li>
+                        <li><a href="pages/services.html" class="hover:text-secondary transition-colors">Services</a>
+                        </li>
                         <li><a href="pages/about.html" class="hover:text-secondary transition-colors">About Us</a></li>
                     </ul>
                 </div>
@@ -635,8 +668,10 @@
                 <div class="space-y-4 md:space-y-6">
                     <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Access</h4>
                     <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
-                        <li><a href="pages/consultation.html" class="hover:text-secondary transition-colors">Book Session</a></li>
-                        <li><a href="pages/contact.html" class="hover:text-secondary transition-colors">Contact Us</a></li>
+                        <li><a href="pages/consultation.html" class="hover:text-secondary transition-colors">Book
+                                Session</a></li>
+                        <li><a href="pages/contact.html" class="hover:text-secondary transition-colors">Contact Us</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -644,7 +679,9 @@
                 <div class="space-y-4 md:space-y-6 flex flex-col items-center md:items-start">
                     <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">The Digital Ledger</h4>
                     <div class="space-y-4 w-full flex flex-col items-center md:items-start">
-                        <p class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed text-center md:text-left">Enroll for private exhibition updates.</p>
+                        <p
+                            class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed text-center md:text-left">
+                            Enroll for private exhibition updates.</p>
                         <form class="relative group flex w-full max-w-[280px]">
                             <input type="email" placeholder="EMAIL ADDRESS"
                                 class="flex-1 bg-surface-container border border-outline-variant focus:border-secondary transition-all outline-none py-2 px-4 text-[10px] font-bold tracking-widest text-on-surface placeholder:text-on-surface-variant/60">
