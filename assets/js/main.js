@@ -3,20 +3,33 @@
  * Handles Dark Mode, Navbar scroll states, and Mobile Menu.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAll() {
+    if (window.inkwellInitialized) return;
+    window.inkwellInitialized = true;
+
     initDarkMode();
     initNavbarScroll();
     initMobileDropdowns();
     initMobileMenu();
     
-    // Initialize Lucide Icons
-    if (window.lucide) {
-        window.lucide.createIcons();
+    // Initialize Lucide Icons (Wrapped to prevent blocking toggles)
+    try {
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+    } catch (e) {
+        console.warn("Lucide initialization failed, but toggles should still work.", e);
     }
 
     initDirectionToggle();
     initGalleryFilter();
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+} else {
+    initAll();
+}
 
 /**
  * Direction Toggle (RTL/LTR):

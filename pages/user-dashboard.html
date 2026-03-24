@@ -48,6 +48,20 @@
     <link rel="stylesheet" href="../assets/css/dark-mode.css">
     <link rel="stylesheet" href="../assets/css/rtl.css">
     <link rel="icon" type="image/svg+xml" href="../assets/images/logo-icon.svg">
+    
+    <!-- Custom Script -->
+    <script>
+        // Immediate theme application to prevent flash
+        (function() {
+            const storedTheme = localStorage.getItem('inkwell-theme-mode');
+            if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+            
+            const storedDir = localStorage.getItem('inkwell-studio-direction') || 'ltr';
+            document.documentElement.setAttribute('dir', storedDir);
+        })();
+    </script>
 </head>
 <body class="bg-surface text-on-surface font-inter min-h-screen flex flex-col">
     <!-- ========== SIDEBAR ========== -->
@@ -114,19 +128,20 @@
                 </button>
                 <div class="space-y-1 hidden md:block">
                     <h2 id="section-title" class="text-xs font-bold uppercase tracking-[0.3em] text-secondary">Studio Client</h2>
-                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-20">Private Client Workspace</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-40">Private Client Workspace</p>
                 </div>
             </div>
             
             <div class="flex items-center space-x-6">
-                <div class="flex items-center space-x-3 pr-6 border-r border-outline-variant">
+                <div class="flex items-center space-x-6 pr-6 border-r border-outline-variant">
+                <div id="dir-toggle" class="relative bg-surface-container rounded-full p-1 cursor-pointer w-[88px] h-8 items-center group transition-all duration-300 flex" data-dir="ltr">
+                    <span class="ltr-label text-[9px] font-bold transition-colors">LTR</span>
+                    <span class="rtl-label text-[9px] font-bold transition-colors">RTL</span>
+                    <div class="dir-knob h-6 w-10 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+                </div>
                     <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group" aria-label="Toggle Theme">
                         <i data-lucide="sun" class="w-5 h-5 opacity-40 group-hover:opacity-100 dark:block hidden"></i>
                         <i data-lucide="moon" class="w-5 h-5 opacity-40 group-hover:opacity-100 block dark:hidden"></i>
-                    </button>
-                    <button class="relative p-2 hover:bg-surface-container transition-colors group">
-                        <i data-lucide="bell" class="w-5 h-5 opacity-40 group-hover:opacity-100"></i>
-                        <span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 bg-secondary rounded-full"></span>
                     </button>
                 </div>
                 
@@ -149,8 +164,8 @@
             <section id="overview-section" class="p-8 md:p-12 space-y-20 max-w-7xl mx-auto w-full">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
                     <div class="space-y-4">
-                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Elias. <span class="italic text-secondary opacity-20 not-italic text-on-surface">Thorne.</span></h1>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface flex items-center opacity-40">
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Elias. <span class="italic text-secondary opacity-40 not-italic text-on-surface">Thorne.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface flex items-center opacity-60">
                             <span class="w-8 h-[1px] bg-secondary mr-6"></span>
                             Active Narrative Cycle: Phase II Development
                         </p>
@@ -167,7 +182,7 @@
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Active Project Queue</p>
                         <div class="flex items-baseline space-x-4">
                             <span class="font-newsreader text-6xl font-bold italic">02</span>
-                            <span class="text-[10px] uppercase tracking-[0.2em] opacity-20 font-bold italic">Active Inquiries</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] opacity-40 font-bold italic">Active Inquiries</span>
                         </div>
                     </div>
                     <div class="bg-surface-container p-12 space-y-8 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative">
@@ -177,7 +192,7 @@
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Pending Commitment</p>
                         <div class="flex items-baseline space-x-4">
                             <span class="font-newsreader text-6xl font-bold italic">£450</span>
-                            <span class="text-[10px] uppercase tracking-[0.2em] opacity-40 font-bold italic">GBP Ledger</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] opacity-60 font-bold italic">GBP Ledger</span>
                         </div>
                     </div>
                     <div class="bg-surface-container p-12 space-y-8 border border-outline-variant hover:border-secondary transition-all group overflow-hidden relative">
@@ -186,7 +201,7 @@
                         </div>
                         <p class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Next Studio Session</p>
                         <div class="flex items-baseline space-x-4">
-                            <span class="font-newsreader text-4xl font-bold italic tracking-tight uppercase">12 Oct <span class="not-italic opacity-20 font-newsreader">2024</span></span>
+                            <span class="font-newsreader text-4xl font-bold italic tracking-tight uppercase">12 Oct <span class="not-italic opacity-40 font-newsreader">2024</span></span>
                         </div>
                     </div>
                 </div>
@@ -208,15 +223,15 @@
                             <i data-lucide="clipboard-list" class="w-24 h-24"></i>
                         </div>
                         <div class="lg:col-span-4 space-y-2">
-                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Reference ID: #2041</p>
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Reference ID: #2041</p>
                             <h3 class="font-newsreader text-3xl font-bold italic tracking-tight group-hover:text-secondary transition-colors">Botanical Sleeve II</h3>
                         </div>
                         <div class="lg:col-span-3 space-y-2">
-                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Principal Artist</p>
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Principal Artist</p>
                             <p class="text-xs font-bold uppercase tracking-[0.1em]">Elias Thorne</p>
                         </div>
                         <div class="lg:col-span-3 space-y-2">
-                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-20">Current Development</p>
+                            <p class="text-[8px] font-bold uppercase tracking-widest opacity-40">Current Development</p>
                             <span class="w-fit text-[8px] font-bold uppercase tracking-[0.2em] bg-secondary/10 text-secondary border border-secondary/20 px-4 py-2">Stencil Phase</span>
                         </div>
                         <div class="lg:col-span-2 text-right">
@@ -304,22 +319,22 @@
             <section id="payments-section" class="hidden p-8 md:p-12 space-y-20 max-w-7xl mx-auto w-full">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
                     <div class="space-y-4">
-                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Deposit <span class="italic text-secondary opacity-20 not-italic text-on-surface">Ledger.</span></h1>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-40">Financial Engagement & Session Deposit Management</p>
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Deposit <span class="italic text-secondary opacity-40 not-italic text-on-surface">Ledger.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-60">Financial Engagement & Session Deposit Management</p>
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div class="p-10 bg-surface-container border border-outline-variant space-y-6 group hover:border-secondary transition-all relative overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                    <div class="p-8 md:p-10 bg-surface-container border border-outline-variant space-y-6 group hover:border-secondary transition-all relative overflow-hidden">
                         <div class="absolute top-0 right-0 p-6 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
-                            <i data-lucide="banknote" class="w-20 h-20"></i>
+                            <i data-lucide="banknote" class="w-16 h-16 md:w-20 md:h-20"></i>
                         </div>
                         <span class="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40">Total Contribution</span>
-                        <p class="font-newsreader text-5xl font-bold italic tracking-tight">£2,450.00</p>
+                        <p class="font-newsreader text-4xl md:text-5xl font-bold italic tracking-tight">£2,450.00</p>
                         <div class="w-full h-[1px] bg-outline-variant/20"></div>
-                        <p class="text-[8px] font-bold uppercase tracking-widest opacity-20 italic">Validated across 04 Narrative Cycles</p>
+                        <p class="text-[8px] font-bold uppercase tracking-widest opacity-40 italic">Validated across 04 Narrative Cycles</p>
                     </div>
-                    <div class="p-10 bg-surface-container border border-secondary shadow-2xl shadow-secondary/5 space-y-8 relative overflow-hidden group">
+                    <div class="p-8 md:p-10 bg-surface-container border border-secondary shadow-2xl shadow-secondary/5 space-y-8 relative overflow-hidden group">
                         <div class="absolute -right-4 -top-4 opacity-[0.03] group-hover:opacity-[0.1] transition-opacity">
                             <i data-lucide="alert-circle" class="w-24 h-24 text-secondary"></i>
                         </div>
@@ -336,7 +351,7 @@
                     <div class="overflow-x-auto">
                         <table class="w-full text-left">
                             <thead>
-                                <tr class="text-[10px] font-bold uppercase tracking-[0.4em] opacity-20 border-b border-outline-variant">
+                                <tr class="text-[10px] font-bold uppercase tracking-[0.4em] opacity-40 border-b border-outline-variant">
                                     <th class="py-6">Project Protocol</th>
                                     <th class="py-6">Type</th>
                                     <th class="py-6 text-right">Value</th>
@@ -370,8 +385,8 @@
             <section id="aftercare-section" class="hidden p-8 md:p-12 space-y-20 max-w-7xl mx-auto w-full">
                 <div class="flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-outline-variant pb-12">
                     <div class="space-y-4">
-                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Aftercare <span class="italic text-secondary opacity-20 not-italic text-on-surface">Guide.</span></h1>
-                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-40">Biological Preservation & Narrative Care Protocol</p>
+                        <h1 class="font-newsreader text-7xl font-bold tracking-tight">Aftercare <span class="italic text-secondary opacity-40 not-italic text-on-surface">Guide.</span></h1>
+                        <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface opacity-60">Biological Preservation & Narrative Care Protocol</p>
                     </div>
                 </div>
 
@@ -467,18 +482,20 @@
             });
         }
 
-        // Handle initial section or deep linking if needed
-        window.onload = () => {
-            showSection('overview');
-            lucide.createIcons();
-        };
-
         // Re-init icons when switching sections
         const originalShowSection = showSection;
         showSection = function(sectionId) {
             originalShowSection(sectionId);
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            showSection('overview');
+            if (window.lucide) lucide.createIcons();
+        });
     </script>
+
+    <!-- Core Logic -->
+    <script src="../assets/js/main.js"></script>
 </body>
 </html>

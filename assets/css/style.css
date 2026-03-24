@@ -11,7 +11,7 @@
   --surface-low-rgb: 255, 255, 255;
   --primary-rgb: 0, 0, 0;
   --on-primary-rgb: 255, 255, 255;
-  --secondary-rgb: 181, 38, 25; /* Blood Red */
+  --secondary-rgb: 200, 35, 20; /* Vibrant Inkwell Red */
   --on-surface-rgb: 28, 27, 27;
   --on-surface-variant-rgb: 68, 71, 72;
   --outline-variant-rgb: 196, 199, 199;
@@ -225,39 +225,58 @@ h1, h2, h3, h4, h5, h6, .editorial {
 
 
 /* Premium Direction Toggle (Pill Style) */
-#dir-toggle {
+#dir-toggle, #mobile-dir-toggle {
   direction: ltr !important; /* Force internal LTR to avoid label swapping in RTL mode */
+  display: flex !important;
+  justify-content: flex-start;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-#dir-toggle[data-dir="ltr"] .dir-knob {
-  transform: translateX(0);
+#dir-toggle[data-dir="rtl"], #mobile-dir-toggle[data-dir="rtl"] {
+  justify-content: flex-end;
 }
 
-#dir-toggle[data-dir="rtl"] .dir-knob {
-  transform: translateX(40px); /* Symmetrical displacement for 40px knob in 80px track */
+.dir-knob {
+  position: relative !important;
+  z-index: 1;
 }
 
-#dir-toggle[data-dir="ltr"] .ltr-label {
+.ltr-label, .rtl-label {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.ltr-label { left: 0; }
+.rtl-label { right: 0; }
+
+#dir-toggle[data-dir="ltr"] .ltr-label,
+#mobile-dir-toggle[data-dir="ltr"] .ltr-label {
   color: #ffffff !important;
   opacity: 1 !important;
 }
 
-#dir-toggle[data-dir="ltr"] .rtl-label {
-  color: inherit;
+#dir-toggle[data-dir="ltr"] .rtl-label,
+#mobile-dir-toggle[data-dir="ltr"] .rtl-label {
   opacity: 0.4 !important;
 }
 
-#dir-toggle[data-dir="rtl"] .rtl-label {
+#dir-toggle[data-dir="rtl"] .rtl-label,
+#mobile-dir-toggle[data-dir="rtl"] .rtl-label {
   color: #ffffff !important;
   opacity: 1 !important;
 }
 
-#dir-toggle[data-dir="rtl"] .ltr-label {
-  color: inherit;
+#dir-toggle[data-dir="rtl"] .ltr-label,
+#mobile-dir-toggle[data-dir="rtl"] .ltr-label {
   opacity: 0.4 !important;
 }
-
-
 /* Symmetrical Mobile Menu (RTL/LTR Support) */
 #mobile-menu {
   position: fixed;
