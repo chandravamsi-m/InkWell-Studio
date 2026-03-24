@@ -65,14 +65,18 @@
 </head>
 <body class="bg-surface text-on-surface font-inter min-h-screen flex flex-col">
     <!-- ========== SIDEBAR ========== -->
-    <aside id="sidebar" class="fixed top-0 bottom-0 left-0 z-50 w-64 bg-surface border-r border-outline-variant transition-transform duration-300 transform lg:translate-x-0 -translate-x-full">
-        <div class="h-20 flex items-center px-8 border-b border-outline-variant">
+    <aside id="sidebar" class="fixed top-0 bottom-0 left-0 z-50 w-72 bg-surface border-r border-outline-variant transition-transform duration-300 transform lg:translate-x-0 -translate-x-full">
+        <div class="h-20 flex items-center justify-between px-8 border-b border-outline-variant">
             <a href="../index.html" class="flex items-center transition-opacity hover:opacity-80">
                 <div class="relative flex items-center justify-center mr-2">
                     <img src="../assets/images/logo-icon.svg" alt="Inkwell Studio Logo Icon" class="w-6 h-6">
                 </div>
                 <span class="font-newsreader text-xl font-bold tracking-tight text-on-surface">Inkwell Studio</span>
             </a>
+            <!-- Close Button (Mobile Only) -->
+            <button id="close-sidebar" class="lg:hidden p-2 hover:bg-surface-container transition-colors" aria-label="Close Sidebar">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
         </div>
         
         <nav class="p-6 space-y-6">
@@ -108,19 +112,22 @@
                 </a>
             </div>
 
-            <div class="space-y-1 pt-6 border-t border-outline-variant">
-                <a href="javascript:void(0)" id="settings-link" onclick="showSection('settings')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
-                    <i data-lucide="settings" class="w-4 h-4"></i>
-                    <span>Configuration</span>
-                </a>
+                <div class="space-y-1 pt-6 border-t border-outline-variant">
+                    <a href="javascript:void(0)" id="settings-link" onclick="showSection('settings')" class="flex items-center space-x-4 px-4 py-2.5 hover:bg-surface-container transition-colors text-xs font-bold uppercase tracking-widest opacity-60 hover:opacity-100">
+                        <i data-lucide="settings" class="w-4 h-4"></i>
+                        <span>Configuration</span>
+                    </a>
+                </div>
 
-                <!-- Mobile-only Direction Toggle -->
-                <div class="lg:hidden py-4 border-t border-outline-variant/30 mt-4">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-secondary px-4 block mb-2">Direction</span>
-                    <div id="mobile-dir-toggle" class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300 mx-4" data-dir="ltr">
-                        <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
-                        <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                        <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+                <!-- Direction Toggle (Sidebar End) -->
+                <div class="px-6 py-4 border-t border-outline-variant/30 mt-auto">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-on-surface/50">Direction</span>
+                        <div id="mobile-dir-toggle" class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300" data-dir="ltr">
+                            <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
+                            <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
+                            <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -131,36 +138,34 @@
             </div>
         </nav>
     </aside>
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black/60 z-40 hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
+
 
     <!-- ========== MAIN CONTENT ========== -->
-    <main class="flex-1 lg:ml-64 min-h-screen flex flex-col pt-0 bg-surface">
+    <main class="flex-1 lg:ml-72 min-h-screen flex flex-col pt-0 bg-surface">
         
         <!-- Header -->
-        <header class="h-20 bg-surface border-b border-outline-variant px-8 flex items-center justify-between sticky top-0 z-40">
-            <div class="flex items-center space-x-6">
-                <button id="sidebar-toggle" class="lg:hidden p-2 hover:bg-surface-container transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <header class="h-20 bg-surface border-b border-outline-variant px-4 md:px-8 flex items-center justify-between sticky top-0 z-40">
+            <div class="flex items-center space-x-4 md:space-x-6">
+                <button id="sidebar-toggle" class="lg:hidden p-2 hover:bg-surface-container transition-colors" aria-label="Toggle Navigation">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
-                <div class="space-y-1 hidden md:block">
+                <div class="space-y-0.5">
                     <h2 id="section-title" class="text-xs font-bold uppercase tracking-[0.3em] text-secondary">Studio Admin</h2>
-                    <p class="text-[10px] font-bold uppercase tracking-widest opacity-40">Inkwell Studio Management Console</p>
+                    <p class="text-[9px] md:text-[10px] font-bold uppercase tracking-widest opacity-40">Inkwell Studio Management Console</p>
                 </div>
             </div>
             
             <div class="flex items-center space-x-6">
-                <div class="flex items-center space-x-6 pr-6 border-r border-outline-variant">
-                <div id="dir-toggle" class="hidden lg:flex relative bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300" data-dir="ltr">
-                    <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
-                    <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                    <div class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20"></div>
-                </div>
+                <!-- Theme Toggle (Header) -->
+                <div class="flex items-center space-x-3 md:pr-6 md:border-r border-outline-variant">
                     <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group" aria-label="Toggle Theme">
                         <i data-lucide="sun" class="w-5 h-5 opacity-40 group-hover:opacity-100 dark:block hidden"></i>
                         <i data-lucide="moon" class="w-5 h-5 opacity-40 group-hover:opacity-100 block dark:hidden"></i>
                     </button>
                 </div>
                 
-                <div class="flex items-center space-x-6 pl-2">
+                <div class="hidden md:flex items-center space-x-6 pl-2">
                     <div class="text-right hidden sm:block">
                         <p class="text-xs font-bold uppercase tracking-widest leading-none mb-1">Studio Administrator</p>
                         <p class="text-[10px] uppercase tracking-widest opacity-60">System Overseer #0001</p>
@@ -786,21 +791,58 @@
             }
         }
 
-        // Sidebar Toggle for Mobile
+        // Sidebar Toggle & Overlay Logic
         const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
         const toggle = document.getElementById('sidebar-toggle');
         
-        if (toggle && sidebar) {
+        const openSidebar = () => {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            document.body.classList.add('overflow-hidden');
+        };
+
+        const closeSidebar = () => {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.remove('opacity-100');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300);
+            document.body.classList.remove('overflow-hidden');
+        };
+
+        if (toggle && sidebar && overlay) {
             toggle.addEventListener('click', () => {
-                sidebar.classList.toggle('-translate-x-full');
+                if (sidebar.classList.contains('-translate-x-full')) {
+                    openSidebar();
+                } else {
+                    closeSidebar();
+                }
             });
+
+            overlay.addEventListener('click', closeSidebar);
+            
+            const closeBtnSidebar = document.getElementById('close-sidebar');
+            if (closeBtnSidebar) closeBtnSidebar.addEventListener('click', closeSidebar);
         }
+
+        // Auto-close on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024 && !sidebar.classList.contains('-translate-x-full')) {
+                closeSidebar();
+            }
+        });
 
         // Re-init icons when switching sections
         const originalShowSection = showSection;
         showSection = function(sectionId) {
             originalShowSection(sectionId);
             if (window.lucide) lucide.createIcons();
+            // Auto-close sidebar on mobile after selection
+            if (typeof closeSidebar === 'function' && window.innerWidth < 1024) {
+                closeSidebar();
+            }
         }
 
         window.addEventListener('scroll', () => {}); // Dummy for main.js initNavbarScroll
