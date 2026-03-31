@@ -71,6 +71,24 @@
                 </a>
             </div>
 
+            <!-- Direction & Theme Toggle -->
+            <div class="absolute top-12 end-8 lg:end-24 flex items-center space-x-2 md:space-x-3">
+                <div id="dir-toggle"
+                    class="relative bg-surface-container border border-outline-variant/30 rounded-full p-1 cursor-pointer w-[72px] h-7 items-center flex group transition-all duration-300"
+                    data-dir="ltr">
+                    <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
+                    <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
+                    <div
+                        class="dir-knob h-5 w-9 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
+                    </div>
+                </div>
+                <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group"
+                    aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="w-5 h-5 opacity-40 group-hover:opacity-100 dark:block hidden"></i>
+                    <i data-lucide="moon" class="w-5 h-5 opacity-40 group-hover:opacity-100 block dark:hidden"></i>
+                </button>
+            </div>
+
             <div class="mt-16 space-y-6 w-full max-w-md mx-auto lg:mx-0 origin-start">
                 <form id="signup-form" class="space-y-8">
                     <div class="space-y-4">
