@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pages/admin-dashboard.html
+Disallow: /pages/user-dashboard.html
+
+Sitemap: https://inkwellstudio.com/sitemap.xml
