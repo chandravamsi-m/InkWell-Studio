@@ -13,7 +13,7 @@
   --on-primary-rgb: 255, 255, 255;
   --secondary-rgb: 200, 35, 20; /* Vibrant Inkwell Red */
   --on-surface-rgb: 28, 27, 27;
-  --on-surface-variant-rgb: 68, 71, 72;
+  --on-surface-variant-rgb: 45, 48, 49;
   --outline-variant-rgb: 70, 70, 70;
 
   /* Legacy Hex fallbacks for direct var() usage */

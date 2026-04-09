@@ -10,7 +10,7 @@
   --on-primary-rgb: 0, 0, 0;
   --secondary-rgb: 239, 68, 68; /* Strategic Bright Red for Dark Mode Contrast */
   --on-surface-rgb: 240, 237, 236;
-  --on-surface-variant-rgb: 196, 199, 199;
+  --on-surface-variant-rgb: 220, 223, 224;
   --outline-variant-rgb: 196, 199, 199;
 
   /* Force re-evaluation of high-level variables in this scope */
