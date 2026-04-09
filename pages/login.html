@@ -82,7 +82,10 @@
     <main class="z-10 w-full min-h-screen grid lg:grid-cols-2">
         <!-- Brand Side (Left on Login) -->
         <div
-            class="hidden lg:flex flex-col justify-between p-16 bg-surface-dim border-e border-outline-variant relative overflow-hidden h-screen">
+            class="hidden lg:flex flex-col justify-between p-16 border-e border-outline-variant relative overflow-hidden h-screen bg-cover bg-center group"
+            style="background-image: linear-gradient(to bottom, rgba(var(--surface-dim-rgb), 0.2), rgba(var(--surface-dim-rgb), 0.4)), url('../assets/images/auth-login.png');">
+            <!-- Subtle Image Hover Effect Mask -->
+            <div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
             <div class="z-10">
                 <!-- Spacing -->
             </div>
@@ -91,7 +94,7 @@
                     <br> <span class="italic text-secondary">Narrative.</span>
                 </h2>
                 <p
-                    class="text-on-surface-variant text-sm xl:text-base leading-relaxed max-w-xs xl:max-w-sm font-medium opacity-80">
+                    class="text-on-surface text-sm xl:text-base leading-relaxed max-w-xs xl:max-w-sm font-semibold">
                     Synchronize your design cycles, session guides, and digital aftercare instructions in a secure
                     studio environment.</p>
             </div>

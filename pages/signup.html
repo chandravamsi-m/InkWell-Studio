@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up — Inkwell Studio Portal</title>
-    <meta name="description" content="Register to access your personal Inkwell Studio portal. Book sessions, review flash sheets, and synchronize your design cycles in a secure studio environment.">
+    <meta name="description"
+        content="Register to access your personal Inkwell Studio portal. Book sessions, review flash sheets, and synchronize your design cycles in a secure studio environment.">
     <link rel="canonical" href="https://inkwell.studio/pages/signup.html">
     <meta property="og:title" content="Sign Up — Inkwell Studio Portal">
-    <meta property="og:description" content="Register to access your personal Inkwell Studio portal. Book sessions, review flash sheets, and synchronize your design cycles in a secure studio environment.">
+    <meta property="og:description"
+        content="Register to access your personal Inkwell Studio portal. Book sessions, review flash sheets, and synchronize your design cycles in a secure studio environment.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://inkwell.studio/pages/signup.html">
     <meta property="og:image" content="https://inkwell.studio/assets/images/og-portal.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sign Up — Inkwell Studio Portal">
-    <meta name="twitter:description" content="Register to access your personal Inkwell Studio portal. Book sessions, review flash sheets, and synchronize your design cycles in a secure studio environment.">
+    <meta name="twitter:description"
+        content="Register to access your personal Inkwell Studio portal. Book sessions, review flash sheets, and synchronize your design cycles in a secure studio environment.">
     <meta name="twitter:image" content="https://inkwell.studio/assets/images/og-portal.jpg">
 
     <script type="application/ld+json">
@@ -115,14 +118,6 @@
                     <div class="space-y-4">
                         <div class="relative group">
                             <label
-                                class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant group-focus-within:text-secondary mb-1 block">Full
-                                Name</label>
-                            <input type="text" required
-                                class="w-full bg-transparent border-b border-outline-variant focus:border-secondary outline-none py-1.5 text-sm transition-colors"
-                                placeholder="Elias Thorne">
-                        </div>
-                        <div class="relative group">
-                            <label
                                 class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant group-focus-within:text-secondary mb-1 block">Email
                                 Address</label>
                             <input type="email" required id="email"
@@ -137,6 +132,21 @@
                                     class="w-full bg-transparent border-b border-outline-variant focus:border-secondary outline-none py-1.5 pr-8 text-sm transition-colors"
                                     placeholder="••••••••">
                                 <button type="button" onclick="togglePassword('password', this)"
+                                    class="absolute end-0 bottom-2 text-on-surface-variant hover:text-secondary transition-colors">
+                                    <i data-lucide="eye" class="w-3.5 h-3.5 eye-icon"></i>
+                                    <i data-lucide="eye-off" class="w-3.5 h-3.5 eye-off-icon hidden"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <label
+                                class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant group-focus-within:text-secondary mb-1 block">Confirm
+                                Password</label>
+                            <div class="relative">
+                                <input type="password" id="confirm-password" required
+                                    class="w-full bg-transparent border-b border-outline-variant focus:border-secondary outline-none py-1.5 pr-8 text-sm transition-colors"
+                                    placeholder="••••••••">
+                                <button type="button" onclick="togglePassword('confirm-password', this)"
                                     class="absolute end-0 bottom-2 text-on-surface-variant hover:text-secondary transition-colors">
                                     <i data-lucide="eye" class="w-3.5 h-3.5 eye-icon"></i>
                                     <i data-lucide="eye-off" class="w-3.5 h-3.5 eye-off-icon hidden"></i>
@@ -221,7 +231,12 @@
         </div>
 
         <!-- Brand Side (Right on Signup) -->
-        <div class="hidden lg:flex flex-col justify-between p-16 bg-surface-dim relative overflow-hidden h-screen">
+        <div class="hidden lg:flex flex-col justify-between p-16 border-s border-outline-variant relative overflow-hidden h-screen bg-cover bg-center group"
+            style="background-image: linear-gradient(to bottom, rgba(var(--surface-dim-rgb), 0.2), rgba(var(--surface-dim-rgb), 0.4)), url('../assets/images/auth-signup.png');">
+            <!-- Subtle Image Hover Effect Mask -->
+            <div
+                class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+            </div>
             <div class="z-10">
                 <!-- Spacing -->
             </div>
@@ -230,7 +245,7 @@
                 <h2 class="font-newsreader text-6xl xl:text-7xl font-bold leading-[0.9] tracking-tighter">Initialize
                     Your <br> <span class="italic text-secondary">Journey.</span></h2>
                 <p
-                    class="text-on-surface-variant text-sm xl:text-base leading-relaxed max-w-xs xl:max-w-sm font-medium opacity-80">
+                    class="text-on-surface text-sm xl:text-base leading-relaxed max-w-xs xl:max-w-sm font-semibold">
                     Join the inner circle. Establishing your digital presence ensures your narrative is handled with
                     editorial precision.</p>
             </div>
