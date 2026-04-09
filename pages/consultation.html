@@ -270,81 +270,283 @@
             <div class="max-w-7xl mx-auto px-6 w-full relative z-10 flex flex-col items-center text-center space-y-4">
                 <div class="space-y-4">
                     <span
-                        class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px] block animate-fade-in italic">Digital
-                        Booking Pathway • London</span>
+                        class="text-secondary font-bold uppercase tracking-[0.4em] text-[10px] block animate-fade-in italic">Private Registry • London</span>
                     <h1
                         class="font-newsreader text-5xl md:text-7xl lg:text-8xl font-bold tracking-editorial leading-none text-on-surface overflow-hidden">
                         <span class="block animate-slide-up">The <span
-                                class="italic text-secondary/40">Process.</span></span>
+                                class="italic text-secondary/40">Consultation.</span></span>
                     </h1>
                 </div>
+
                 <p
                     class="text-on-surface-variant text-lg md:text-xl lg:text-2xl font-newsreader italic leading-relaxed max-w-3xl mx-auto opacity-80 px-6">
-                    We've digitized the pre-appointment paperwork. No travel is required for your
-                    consultation—everything from design brief to deposit happens in your private dashboard.
+                    We've digitized the pre-appointment paperwork. Everything from design brief to temporal scheduling happens in this private registry.
                 </p>
             </div>
         </section>
 
-        <!-- ========== PROCESS STEPS ========== -->
-        <section class="py-16">
-            <div class="max-w-7xl mx-auto px-6 space-y-20">
-                <!-- Step 1 -->
-                <div class="grid lg:grid-cols-2 gap-20 items-center">
-                    <div class="space-y-8">
-                        <span class="font-newsreader text-8xl font-bold text-outline-variant opacity-30">01</span>
-                        <h2 class="font-newsreader text-4xl font-bold">Create Your Account</h2>
-                        <p class="text-on-surface-variant leading-relaxed max-w-md">Every client project begins with a
-                            secure account. This becomes your project's command center—where you'll manage designs,
-                            payments, and aftercare.</p>
-                        <a href="signup.html"
-                            class="inline-block border-b-2 border-secondary pb-1 text-xs font-bold uppercase tracking-widest">Sign
-                            Up Now</a>
-                    </div>
-                    <div class="aspect-video bg-surface-container grayscale overflow-hidden group">
-                        <img src="../assets/images/work-5.png" alt="Portal"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-40">
-                    </div>
-                </div>
+        <!-- ========== STUDIO REGISTRY (THE PORTAL) ========== -->
+        <section class="py-12 md:py-20 bg-surface">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- PORTAL CONTAINER -->
+                <div class="w-full max-w-4xl mx-auto">
+                    <!-- PROGRESS INDICATOR -->
+                    <div class="mb-12 max-w-2xl mx-auto px-4">
+                        <div class="flex items-center justify-between relative">
+                            <!-- Connecting Line -->
+                            <div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant/20 -translate-y-1/2 z-0"></div>
+                            <div id="progress-line" class="absolute top-1/2 left-0 w-0 h-[1px] bg-secondary -translate-y-1/2 z-0 transition-all duration-500"></div>
 
-                <!-- Step 2 -->
-                <div class="grid lg:grid-cols-2 gap-20 items-center">
-                    <div class="lg:order-last space-y-8">
-                        <span class="font-newsreader text-8xl font-bold text-outline-variant opacity-30">02</span>
-                        <h2 class="font-newsreader text-4xl font-bold">Submit Your Brief</h2>
-                        <p class="text-on-surface-variant leading-relaxed max-w-md">Our multi-step form guides you
-                            through defining the architectural layout of your piece. Upload reference images and select
-                            body placements through our interactive SVG map.</p>
+                            <!-- Step Markers -->
+                            <div class="step-marker active relative z-10 w-8 h-8 rounded-full bg-surface border border-secondary flex items-center justify-center transition-all duration-300" data-target-step="1">
+                                <span class="text-[9px] font-black text-secondary">01</span>
+                            </div>
+                            <div class="step-marker relative z-10 w-8 h-8 rounded-full bg-surface border border-outline-variant/30 flex items-center justify-center transition-all duration-300" data-target-step="2">
+                                <span class="text-[9px] font-black opacity-30 text-on-surface">02</span>
+                            </div>
+                            <div class="step-marker relative z-10 w-8 h-8 rounded-full bg-surface border border-outline-variant/30 flex items-center justify-center transition-all duration-300" data-target-step="3">
+                                <span class="text-[9px] font-black opacity-30 text-on-surface">03</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="aspect-video bg-surface-container grayscale overflow-hidden group">
-                        <img src="../assets/images/work-2.png" alt="Brief"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-40">
-                    </div>
-                </div>
 
-                <!-- Step 3 -->
-                <div class="grid lg:grid-cols-2 gap-20 items-center">
-                    <div class="space-y-8">
-                        <span class="font-newsreader text-8xl font-bold text-outline-variant opacity-30">03</span>
-                        <h2 class="font-newsreader text-4xl font-bold">Design Collaboration</h2>
-                        <p class="text-on-surface-variant leading-relaxed max-w-md">Communicate directly with your
-                            artist. Review stencils, request revisions, and finalize the narrative depth before ever
-                            stepping into the studio.</p>
-                    </div>
-                    <div class="aspect-video bg-surface-container grayscale overflow-hidden group">
-                        <img src="../assets/images/work-1.png" alt="Collaboration"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-40">
-                    </div>
-                </div>
+                    <!-- THE MULTI-STEP FORM -->
+                    <div id="booking-portal-form" class="relative min-h-[600px] text-left">
+                        
+                        <!-- STEP 1: DESIGN CONCEPT -->
+                        <div id="step-1-container" class="booking-step space-y-10 animate-fade-in transition-opacity duration-300">
+                            <div class="bg-surface-container-low border border-outline-variant/30 p-8 md:p-12 space-y-10 shadow-xl relative md:min-h-[620px] flex flex-col justify-between rounded-sm">
+                                <div class="space-y-10">
+                                    <div class="flex items-center justify-between">
+                                        <div class="space-y-1">
+                                            <span class="text-secondary font-bold uppercase tracking-[0.3em] text-[10px]">Portal Step 01</span>
+                                            <h3 class="font-newsreader text-2xl font-bold uppercase tracking-tight text-on-surface">Design Concept</h3>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-full border border-secondary/20 flex items-center justify-center">
+                                            <i data-lucide="pen-tool" class="w-4 h-4 text-secondary"></i>
+                                        </div>
+                                    </div>
 
-                <!-- Step 4 -->
-                <div class="grid lg:grid-cols-2 gap-20 items-center border-t border-outline-variant/10 pt-10">
-                    <div class="lg:col-span-12 text-center space-y-8">
-                        <h2 class="font-newsreader text-3xl md:text-5xl font-bold">Ready to be written?</h2>
-                        <div class="flex flex-wrap justify-center gap-6">
-                            <a href="signup.html"
-                                class="bg-secondary text-white px-8 py-4 text-[11px] font-bold uppercase tracking-[0.1em] transition-all btn-sheen">Open
-                                Your Portal</a>
+                                    <div class="grid md:grid-cols-2 gap-12">
+                                        <!-- Primary Choices -->
+                                        <div class="space-y-8">
+                                            <div class="space-y-4">
+                                                <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Stylistic Direction <span class="text-secondary opacity-100">*</span></label>
+                                                <div id="style-selector" class="grid grid-cols-2 gap-3">
+                                                    <button type="button" onclick="selectItem(this, 'style')" class="selectable-btn p-4 border border-outline-variant/20 text-[9px] font-bold uppercase tracking-widest opacity-60 text-center hover:opacity-100 transition-all hover:border-secondary/40 text-on-surface">Fine Line</button>
+                                                    <button type="button" onclick="selectItem(this, 'style')" class="selectable-btn p-4 border border-outline-variant/20 text-[9px] font-bold uppercase tracking-widest opacity-60 text-center hover:opacity-100 transition-all hover:border-secondary/40 text-on-surface">Blackwork</button>
+                                                    <button type="button" onclick="selectItem(this, 'style')" class="selectable-btn p-4 border border-outline-variant/20 text-[9px] font-bold uppercase tracking-widest opacity-60 text-center hover:opacity-100 transition-all hover:border-secondary/40 text-on-surface">Realism</button>
+                                                    <button type="button" onclick="selectItem(this, 'style')" class="selectable-btn p-4 border border-outline-variant/20 text-[9px] font-bold uppercase tracking-widest opacity-60 text-center hover:opacity-100 transition-all hover:border-secondary/40 text-on-surface">Illustrative</button>
+                                                </div>
+                                                <p id="style-error" class="error-label">Stylistic Direction Required</p>
+                                            </div>
+                                            
+                                            <div class="space-y-4">
+                                                <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Ink Preference</label>
+                                                <div class="flex space-x-4">
+                                                    <button type="button" onclick="selectItem(this, 'ink')" class="selectable-btn flex-1 p-3 border border-outline-variant/20 text-[9px] font-bold uppercase tracking-widest opacity-60 hover:opacity-100 text-on-surface">Monochrome</button>
+                                                    <button type="button" onclick="selectItem(this, 'ink')" class="selectable-btn flex-1 p-3 border border-outline-variant/20 text-[9px] font-bold uppercase tracking-widest opacity-60 hover:opacity-100 text-on-surface">Full Color</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Detail Registry -->
+                                        <div class="space-y-8">
+                                            <div class="space-y-4">
+                                                <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Placement Site <span class="text-secondary opacity-100">*</span></label>
+                                                <select id="placement-site" class="w-full bg-surface border border-outline-variant/30 p-4 text-[10px] font-bold tracking-widest outline-none uppercase appearance-none cursor-pointer focus:border-secondary transition-colors text-on-surface">
+                                                    <option value="">Select Anatomical Site</option>
+                                                    <option value="arm">Upper Arm / Outer</option>
+                                                    <option value="forearm">Forearm / Inner</option>
+                                                    <option value="back">Back / Composition</option>
+                                                    <option value="ribs">Ribs / Torso</option>
+                                                </select>
+                                                <p id="placement-error" class="error-label">Site Selection Required</p>
+                                            </div>
+                                            
+                                            <div class="space-y-4">
+                                                <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Estimated Dimensions (cm) <span class="text-secondary opacity-100">*</span></label>
+                                                <div class="grid grid-cols-2 gap-4">
+                                                    <input type="text" id="dim-width" placeholder="WIDTH" class="validate-input w-full bg-surface border border-outline-variant/30 p-4 text-[10px] font-bold tracking-widest outline-none uppercase focus:border-secondary transition-colors text-on-surface placeholder:text-on-surface-variant/40">
+                                                    <input type="text" id="dim-height" placeholder="HEIGHT" class="validate-input w-full bg-surface border border-outline-variant/30 p-4 text-[10px] font-bold tracking-widest outline-none uppercase focus:border-secondary transition-colors text-on-surface placeholder:text-on-surface-variant/40">
+                                                </div>
+                                                <p id="dimensions-error" class="error-label">Full Dimensions Required</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6 flex justify-end">
+                                    <button type="button" onclick="handleNavigation(2)" class="group flex items-center space-x-3 bg-secondary text-white px-8 py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen">
+                                        <span>Proceed to Calendar</span>
+                                        <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: STUDIO CALENDAR -->
+                        <div id="step-2-container" class="booking-step hidden space-y-10 animate-fade-in transition-opacity duration-300">
+                            <div class="bg-surface-container-low border border-outline-variant/30 p-8 md:p-12 space-y-10 shadow-xl relative md:min-h-[620px] flex flex-col justify-between rounded-sm">
+                                <div class="space-y-10">
+                                    <div class="flex items-center justify-between">
+                                        <div class="space-y-1">
+                                            <span class="text-secondary font-bold uppercase tracking-[0.3em] text-[10px]">Portal Step 02</span>
+                                            <h3 class="font-newsreader text-2xl font-bold uppercase tracking-tight text-on-surface">Studio Calendar</h3>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-full border border-secondary/20 flex items-center justify-center">
+                                            <i data-lucide="calendar" class="w-4 h-4 text-secondary"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-col md:grid md:grid-cols-2 gap-12 items-start">
+                                        <!-- Calendar Control -->
+                                        <div class="space-y-8 w-full max-w-sm mx-auto md:mx-0">
+                                            <div class="flex items-center justify-between">
+                                                <h4 class="font-newsreader text-lg font-bold italic uppercase text-on-surface">May 2024</h4>
+                                                <div class="flex items-center space-x-2">
+                                                    <button type="button" class="w-8 h-8 flex items-center justify-center border border-outline-variant/20 hover:border-secondary/40 transition-colors text-on-surface"><i data-lucide="chevron-left" class="w-3 h-3 opacity-40"></i></button>
+                                                    <button type="button" class="w-8 h-8 flex items-center justify-center border border-outline-variant/20 hover:border-secondary/40 transition-colors text-on-surface"><i data-lucide="chevron-right" class="w-3 h-3 opacity-40"></i></button>
+                                                </div>
+                                            </div>
+                                            <div id="calendar-grid" class="grid grid-cols-7 gap-1 text-center select-none">
+                                                <div class="text-[8px] font-black uppercase opacity-20 pb-2 text-on-surface">Mo</div>
+                                                <div class="text-[8px] font-black uppercase opacity-20 pb-2 text-on-surface">Tu</div>
+                                                <div class="text-[8px] font-black uppercase opacity-20 pb-2 text-on-surface">We</div>
+                                                <div class="text-[8px] font-black uppercase opacity-20 pb-2 text-on-surface">Th</div>
+                                                <div class="text-[8px] font-black uppercase opacity-20 pb-2 text-on-surface">Fr</div>
+                                                <div class="text-[8px] font-black uppercase opacity-20 pb-2 text-on-surface">Sa</div>
+                                                <div class="text-[8px] font-black uppercase opacity-20 pb-2 text-secondary">Su</div>
+
+                                                <!-- Days Grid (Full Month) -->
+                                                <div class="aspect-square flex items-center justify-center text-[10px] font-bold opacity-5 text-on-surface">29</div>
+                                                <div class="aspect-square flex items-center justify-center text-[10px] font-bold opacity-5 text-on-surface">30</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">01</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">02</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">03</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">04</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-secondary bg-secondary text-white cursor-pointer active-selection">05</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">06</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">07</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">08</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">09</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">10</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">11</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">12</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">13</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">14</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">15</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">16</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">17</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">18</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">19</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">20</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">21</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">22</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">23</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">24</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">25</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">26</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">27</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">28</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">29</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">30</div>
+                                                <div onclick="selectItem(this, 'date')" class="selectable-date aspect-square flex items-center justify-center text-[10px] font-bold border border-transparent hover:border-secondary/30 cursor-pointer transition-all text-on-surface">31</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slots Control -->
+                                        <div class="space-y-8 w-full max-w-sm mx-auto md:mx-0">
+                                            <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Available Slots <span class="text-secondary opacity-100">*</span></label>
+                                            <div id="slot-selector" class="grid grid-cols-2 gap-3">
+                                                <button type="button" onclick="selectItem(this, 'slot')" class="selectable-btn p-4 border border-outline-variant/30 text-[10px] font-bold uppercase tracking-widest opacity-60 hover:opacity-100 transition-all hover:border-secondary/40 text-on-surface">10:00 AM</button>
+                                                <button type="button" onclick="selectItem(this, 'slot')" class="selectable-btn p-4 border border-outline-variant/30 text-[10px] font-bold uppercase tracking-widest opacity-60 hover:opacity-100 transition-all hover:border-secondary/40 text-on-surface">14:00 PM</button>
+                                                <button type="button" onclick="selectItem(this, 'slot')" class="selectable-btn p-4 border border-outline-variant/30 text-[10px] font-bold uppercase tracking-widest opacity-60 hover:opacity-100 transition-all hover:border-secondary/40 text-on-surface">16:30 PM</button>
+                                                <button type="button" class="p-4 border border-outline-variant/10 text-[10px] font-bold uppercase tracking-widest opacity-10 cursor-not-allowed text-on-surface">Booked</button>
+                                            </div>
+                                            <p id="slot-error" class="error-label">Time Slot Selection Required</p>
+                                            <p class="text-[9px] italic opacity-40 leading-relaxed text-on-surface-variant">Please note: Times are indicative. Final studio audit will confirm the precise session length required for your brief.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6 flex justify-between">
+                                    <button type="button" onclick="goToStep(1)" class="flex items-center space-x-2 border border-outline-variant hover:border-secondary transition-all text-on-surface px-6 py-3 text-[9px] font-bold uppercase tracking-widest">
+                                        <i data-lucide="arrow-left" class="w-2.5 h-2.5"></i>
+                                        <span>Back to Concept</span>
+                                    </button>
+                                    <button type="button" onclick="handleNavigation(3)" class="group flex items-center space-x-3 bg-secondary text-white px-8 py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen">
+                                        <span>Proceed to Registry</span>
+                                        <i data-lucide="arrow-right" class="w-3 h-3 group-hover:translate-x-1 transition-transform"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: CLIENT REGISTRY -->
+                        <div id="step-3-container" class="booking-step hidden space-y-10 animate-fade-in transition-opacity duration-300">
+                            <div class="bg-surface-container-low border border-outline-variant/30 p-8 md:p-12 space-y-12 shadow-xl relative md:min-h-[620px] flex flex-col justify-between rounded-sm">
+                                <div class="space-y-12">
+                                    <div class="flex items-center justify-between">
+                                        <div class="space-y-1">
+                                            <span class="text-secondary font-bold uppercase tracking-[0.3em] text-[10px]">Portal Step 03</span>
+                                            <h3 class="font-newsreader text-2xl font-bold uppercase tracking-tight text-on-surface">Client Registry</h3>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-full border border-secondary/20 flex items-center justify-center">
+                                            <i data-lucide="user" class="w-4 h-4 text-secondary"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-10">
+                                        <div class="space-y-6">
+                                            <div class="space-y-2">
+                                                <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Client Designation <span class="text-secondary">*</span></label>
+                                                <input type="text" id="client-name" placeholder="FULL NAME" class="w-full bg-surface border border-outline-variant/30 p-4 text-[10px] font-bold tracking-widest outline-none uppercase focus:border-secondary transition-colors text-on-surface placeholder:text-on-surface-variant/40">
+                                                <p id="name-error" class="error-label">Full Name Designation Required</p>
+                                            </div>
+                                            <div class="space-y-2">
+                                                <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Registry Email <span class="text-secondary">*</span></label>
+                                                <input type="email" id="client-email" placeholder="EMAIL ADDRESS" class="w-full bg-surface border border-outline-variant/30 p-4 text-[10px] font-bold tracking-widest outline-none uppercase focus:border-secondary transition-colors text-on-surface placeholder:text-on-surface-variant/40">
+                                                <p id="email-error" class="error-label">Valid Email Registry Required</p>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Narrative Scope (Brief) <span class="text-secondary">*</span></label>
+                                            <textarea id="project-brief" rows="4" placeholder="DESCRIBE YOUR VISION IN DETAIL..." class="w-full bg-surface border border-outline-variant/30 p-6 text-[11px] font-bold tracking-widest outline-none resize-none uppercase focus:border-secondary transition-colors text-on-surface placeholder:text-on-surface-variant/40"></textarea>
+                                            <p id="brief-error" class="error-label">Project Narrative Brief Required</p>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <label class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-on-surface-variant">Conceptual References</label>
+                                            <div class="border-2 border-dashed border-outline-variant/30 p-8 text-center hover:border-secondary/50 transition-all cursor-pointer group rounded-sm">
+                                                <i data-lucide="upload-cloud" class="w-6 h-6 mx-auto mb-3 text-secondary/30 group-hover:text-secondary group-hover:scale-110 transition-all"></i>
+                                                <p class="text-[9px] font-bold uppercase tracking-widest opacity-60 text-on-surface-variant">Upload Visual Records</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-6 flex justify-between items-center">
+                                    <button type="button" onclick="goToStep(2)" class="flex items-center space-x-2 border border-outline-variant hover:border-secondary transition-all text-on-surface px-6 py-3 text-[9px] font-bold uppercase tracking-widest">
+                                        <i data-lucide="arrow-left" class="w-2.5 h-2.5"></i>
+                                        <span>Back to Calendar</span>
+                                    </button>
+                                    <button type="button" onclick="handleFinalSubmit()" class="bg-secondary text-white px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen">
+                                        Confirm Registry 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TRUST INDICATORS -->
+                    <div class="mt-20 pt-12 border-t border-outline-variant/10 flex flex-wrap justify-center gap-12 opacity-30 grayscale">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="shield-check" class="w-4 h-4 text-secondary"></i>
+                            <span class="text-[9px] font-black uppercase tracking-widest">Secure Handshake</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="clock" class="w-4 h-4 text-secondary"></i>
+                            <span class="text-[11px] font-black uppercase tracking-widest">48h Audit Process</span>
                         </div>
                     </div>
                 </div>
@@ -354,6 +556,7 @@
 
     <!-- ========== FOOTER ========== -->
     <footer class="bg-surface pt-12 pb-8 md:pt-16 md:pb-10 border-t border-outline-variant">
+        <!-- ... (footer content remains unchanged) ... -->
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8 md:gap-12 lg:gap-24 mb-6 md:mb-8">
                 <!-- Brand -->
@@ -416,7 +619,7 @@
                             <input type="email" placeholder="EMAIL ADDRESS"
                                 class="flex-1 bg-surface-container border border-outline-variant focus:border-secondary transition-all outline-none py-2 px-4 text-[10px] font-bold tracking-widest text-on-surface placeholder:text-on-surface-variant/60">
                             <button type="submit"
-                                class="bg-secondary text-white px-5 py-2 text-[9px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen whitespace-nowrap">
+                                class="bg-secondary text-white px-5 py-2 text-[9px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen">
                                 Join
                             </button>
                         </form>
@@ -432,12 +635,251 @@
         </div>
     </footer>
 
+    <!-- Local Styles for Multi-Step Transitions & Interactivity -->
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Interactive Selection States */
+        .active-selection {
+            border-color: var(--secondary) !important;
+            background-color: rgba(var(--secondary-rgb), 0.05) !important;
+            opacity: 1 !important;
+            color: var(--secondary) !important;
+        }
+
+        .selectable-date.active-selection {
+            background-color: var(--secondary) !important;
+            color: white !important;
+        }
+
+        /* Error Styling */
+        .error-highlight {
+            border-color: #ef4444 !important;
+        }
+        .error-label {
+            display: none;
+            color: #ef4444;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+        }
+        .error-label.visible {
+            display: block;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
+
+        /* Ensure calendar cells are square and responsive */
+        #calendar-grid .aspect-square {
+            aspect-ratio: 1/1;
+        }
+    </style>
+
     <!-- Core Scripts -->
     <script src="../assets/js/main.js"></script>
     <script>
         lucide.createIcons();
+
+        // State Management
+        let currentStep = 1;
+        const registryData = {
+            style: '',
+            ink: 'Monochrome',
+            placement: '',
+            width: '',
+            height: '',
+            date: '05',
+            slot: '',
+            name: '',
+            email: '',
+            brief: ''
+        };
+
+        // Selection Logic
+        function selectItem(element, type) {
+            // Remove active class from siblings
+            const parent = element.parentElement;
+            parent.querySelectorAll('.active-selection').forEach(el => {
+                el.classList.remove('active-selection');
+                // Special case for dates
+                if(type === 'date') el.classList.remove('bg-secondary', 'text-white');
+            });
+
+            // Add active class
+            element.classList.add('active-selection');
+            
+            // Save to state
+            registryData[type] = element.innerText || element.textContent;
+
+            // Visual cleanup for error highlights
+            element.classList.remove('error-highlight');
+        }
+
+        // Navigation with Validation
+        function handleNavigation(nextStep) {
+            if (validateStep(currentStep)) {
+                goToStep(nextStep);
+            }
+        }
+
+        function validateStep(step) {
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-highlight').forEach(el => el.classList.remove('error-highlight'));
+            document.querySelectorAll('.error-label').forEach(el => el.classList.remove('visible'));
+
+            if (step === 1) {
+                // Check Style
+                if (!registryData.style) {
+                    document.getElementById('style-selector').classList.add('error-highlight');
+                    document.getElementById('style-error').classList.add('visible');
+                    isValid = false;
+                }
+                // Check Placement
+                const placement = document.getElementById('placement-site');
+                if (!placement.value) {
+                    placement.classList.add('error-highlight');
+                    document.getElementById('placement-error').classList.add('visible');
+                    isValid = false;
+                }
+                // Check Dimensions
+                const w = document.getElementById('dim-width');
+                const h = document.getElementById('dim-height');
+                if (!w.value || !h.value) { 
+                    if(!w.value) w.classList.add('error-highlight');
+                    if(!h.value) h.classList.add('error-highlight');
+                    document.getElementById('dimensions-error').classList.add('visible');
+                    isValid = false; 
+                }
+            } 
+            else if (step === 2) {
+                // Check Slot
+                if (!registryData.slot) {
+                    document.getElementById('slot-selector').classList.add('error-highlight');
+                    document.getElementById('slot-error').classList.add('visible');
+                    isValid = false;
+                }
+            }
+
+            return isValid;
+        }
+
+        function handleFinalSubmit() {
+            // Clear previous errors
+            document.querySelectorAll('.error-highlight').forEach(el => el.classList.remove('error-highlight'));
+            document.querySelectorAll('.error-label').forEach(el => el.classList.remove('visible'));
+
+            const name = document.getElementById('client-name');
+            const email = document.getElementById('client-email');
+            const brief = document.getElementById('project-brief');
+            
+            let isValid = true;
+            if(!name.value) { 
+                name.classList.add('error-highlight'); 
+                document.getElementById('name-error').classList.add('visible');
+                isValid = false; 
+            }
+            if(!email.value) { 
+                email.classList.add('error-highlight'); 
+                document.getElementById('email-error').classList.add('visible');
+                isValid = false; 
+            }
+            if(!brief.value) { 
+                brief.classList.add('error-highlight'); 
+                document.getElementById('brief-error').classList.add('visible');
+                isValid = false; 
+            }
+
+            if(isValid) {
+                const modal = document.createElement('div');
+                modal.className = "fixed inset-0 z-[100] flex items-center justify-center p-6 bg-surface/80 backdrop-blur-md animate-fade-in";
+                modal.innerHTML = `
+                    <div class="bg-surface border border-outline-variant p-10 md:p-16 max-w-lg w-full text-center space-y-8 shadow-2xl">
+                        <div class="w-20 h-20 rounded-full border border-secondary/20 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="check" class="w-8 h-8 text-secondary"></i>
+                        </div>
+                        <div class="space-y-4">
+                            <h2 class="font-newsreader text-4xl font-bold tracking-tight text-on-surface italic">Consulation Recorded.</h2>
+                            <p class="text-on-surface-variant text-[11px] font-bold uppercase tracking-[0.2em] leading-relaxed opacity-70">Our auditors will review your narrative brief and anatomical site requirements within 48h. A formal invitation will follow.</p>
+                        </div>
+                        <button onclick="window.location.reload()" class="w-full max-w-[220px] mx-auto bg-secondary text-white py-4 text-[10px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen block">Close Entry</button>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                lucide.createIcons();
+            }
+        }
+
+        // Base Navigation Logic
+        function goToStep(step) {
+            currentStep = step;
+            // Hide all steps
+            document.querySelectorAll('.booking-step').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show target step
+            const targetContainer = document.getElementById(`step-${step}-container`);
+            if(targetContainer) {
+                targetContainer.classList.remove('hidden');
+            }
+
+            // Update Progress Bar
+            const progressLine = document.getElementById('progress-line');
+            if (progressLine) {
+                const widths = { 1: '0%', 2: '50%', 3: '100%' };
+                progressLine.style.width = widths[step];
+            }
+
+            // Update Markers
+            document.querySelectorAll('.step-marker').forEach((marker, index) => {
+                const markerStep = index + 1;
+                const span = marker.querySelector('span');
+                
+                if (markerStep <= step) {
+                    marker.classList.add('border-secondary');
+                    marker.classList.remove('border-outline-variant/30');
+                    if(span) {
+                        span.classList.add('text-secondary');
+                        span.classList.remove('opacity-30');
+                    }
+                } else {
+                    marker.classList.remove('border-secondary');
+                    marker.classList.add('border-outline-variant/30');
+                    if(span) {
+                        span.classList.remove('text-secondary');
+                        span.classList.add('opacity-30');
+                    }
+                }
+            });
+
+            // Re-init icons for newly shown content
+            lucide.createIcons();
+
+            // Smooth scroll to top of portal
+            const portalHeader = document.querySelector('h1');
+            if(portalHeader) {
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
     </script>
-    <!-- TODO: Link calendar schedule component -->
 </body>
 
 </html>
