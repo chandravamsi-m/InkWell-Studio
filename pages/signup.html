@@ -78,40 +78,40 @@
     <link rel="icon" type="image/svg+xml" href="../assets/images/logo-icon.svg">
 </head>
 
-<body class="bg-surface text-on-surface font-inter min-h-screen flex flex-col relative overflow-hidden">
+<body class="bg-surface text-on-surface font-inter min-h-screen flex flex-col relative overflow-x-hidden">
 
 
 
     <main class="z-10 w-full min-h-screen grid lg:grid-cols-2">
         <!-- Form Side (Left on Signup) -->
         <div
-            class="flex flex-col justify-center p-8 md:p-16 lg:p-24 bg-surface h-screen overflow-hidden relative border-e border-outline-variant">
-            <div class="absolute top-12 start-8 lg:start-24">
-                <a href="../index.html" class="flex items-center shrink-0 transition-opacity hover:opacity-80">
-                    <div class="relative flex items-center justify-center me-2">
-                        <img src="../assets/images/logo-icon.svg" alt="Inkwell Studio Logo Icon" class="w-8 h-8">
+            class="flex flex-col justify-start lg:justify-center p-8 md:p-16 lg:p-24 bg-surface min-h-screen lg:h-screen relative border-e border-outline-variant pt-32 pb-12 lg:py-0">
+            <!-- Unified Header -->
+            <div class="absolute top-0 left-0 w-full p-6 md:p-10 lg:p-12 flex items-center justify-between z-20">
+                <a href="../index.html" class="flex items-center shrink-0 transition-opacity hover:opacity-80 min-w-0">
+                    <div class="relative flex items-center justify-center me-2 shrink-0">
+                        <img src="../assets/images/logo-icon.svg" alt="Inkwell Studio Logo Icon" class="w-7 h-7 md:w-8 md:h-8">
                     </div>
-                    <span class="font-newsreader text-2xl lg:text-xl xl:text-2xl font-bold tracking-tight whitespace-nowrap">Inkwell Studio</span>
+                    <span class="font-newsreader text-lg md:text-2xl lg:text-xl xl:text-2xl font-bold tracking-tight whitespace-nowrap truncate">Inkwell Studio</span>
                 </a>
-            </div>
 
-            <!-- Direction & Theme Toggle -->
-            <div class="absolute top-12 end-8 lg:end-24 flex items-center gap-3">
-                <div id="dir-toggle"
-                    class="relative bg-surface-container border border-outline-variant/30 rounded-full cursor-pointer w-[72px] h-8 items-center flex transition-all duration-300 overflow-hidden"
-                    data-dir="ltr">
-                    <div class="absolute inset-0 flex items-center justify-between px-2.5 z-10 pointer-events-none text-[8px] font-bold">
-                        <span class="ltr-label transition-opacity duration-300">LTR</span>
-                        <span class="rtl-label transition-opacity duration-300">RTL</span>
+                <div class="flex items-center gap-2 md:gap-4">
+                    <div id="dir-toggle"
+                        class="relative bg-surface-container border border-outline-variant/30 rounded-full cursor-pointer w-[72px] h-8 items-center flex transition-all duration-300 overflow-hidden"
+                        data-dir="ltr">
+                        <div class="absolute inset-0 flex items-center justify-between px-2.5 z-10 pointer-events-none text-[8px] font-bold">
+                            <span class="ltr-label transition-opacity duration-300">LTR</span>
+                            <span class="rtl-label transition-opacity duration-300">RTL</span>
+                        </div>
+                        <div class="dir-knob absolute left-1 top-[3px] h-6 w-8 bg-secondary rounded-full transition-all duration-300 z-0 shadow-lg shadow-secondary/20">
+                        </div>
                     </div>
-                    <div class="dir-knob absolute left-1 top-[3px] h-6 w-8 bg-secondary rounded-full transition-all duration-300 z-0 shadow-lg shadow-secondary/20">
-                    </div>
+                    <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group"
+                        aria-label="Toggle Theme">
+                        <i data-lucide="sun" class="w-5 h-5 opacity-70 group-hover:opacity-100 dark:block hidden"></i>
+                        <i data-lucide="moon" class="w-5 h-5 opacity-70 group-hover:opacity-100 block dark:hidden"></i>
+                    </button>
                 </div>
-                <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group"
-                    aria-label="Toggle Theme">
-                    <i data-lucide="sun" class="w-5 h-5 opacity-70 group-hover:opacity-100 dark:block hidden"></i>
-                    <i data-lucide="moon" class="w-5 h-5 opacity-70 group-hover:opacity-100 block dark:hidden"></i>
-                </button>
             </div>
 
             <div class="mt-16 space-y-6 w-full max-w-md mx-auto lg:mx-0 origin-start">
