@@ -228,35 +228,34 @@ h1, h2, h3, h4, h5, h6, .editorial {
 
 /* Premium Direction Toggle (Pill Style) */
 #dir-toggle, #mobile-dir-toggle {
-  direction: ltr !important; /* Force internal LTR to avoid label swapping in RTL mode */
-  justify-content: flex-start;
+  direction: ltr !important; 
   transition: all 0.3s ease;
   position: relative;
 }
 
-#dir-toggle[data-dir="rtl"], #mobile-dir-toggle[data-dir="rtl"] {
-  justify-content: flex-end;
+/* Knob Movement (Mathematical Symmetry: 72px total - 32px knob - 4px gap = 36px target. Move 32px from base 4px) */
+#dir-toggle[data-dir="rtl"] .dir-knob, 
+#mobile-dir-toggle[data-dir="rtl"] .dir-knob {
+  transform: translateX(32px);
 }
 
-.dir-knob {
-  position: relative !important;
-  z-index: 1;
+#dir-toggle[data-dir="ltr"] .dir-knob, 
+#mobile-dir-toggle[data-dir="ltr"] .dir-knob {
+  transform: translateX(0);
 }
 
-.ltr-label, .rtl-label {
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  pointer-events: none;
-  color: var(--on-surface); /* theme-aware default color */
+/* Active State Highlighting */
+#dir-toggle[data-dir="rtl"] .rtl-label,
+#mobile-dir-toggle[data-dir="rtl"] .rtl-label {
+  color: #ffffff !important;
+  opacity: 1 !important;
 }
 
-.ltr-label { left: 0; }
-.rtl-label { right: 0; }
+#dir-toggle[data-dir="rtl"] .ltr-label,
+#mobile-dir-toggle[data-dir="rtl"] .ltr-label {
+  color: var(--on-surface) !important;
+  opacity: 0.4 !important;
+}
 
 #dir-toggle[data-dir="ltr"] .ltr-label,
 #mobile-dir-toggle[data-dir="ltr"] .ltr-label {
@@ -266,19 +265,19 @@ h1, h2, h3, h4, h5, h6, .editorial {
 
 #dir-toggle[data-dir="ltr"] .rtl-label,
 #mobile-dir-toggle[data-dir="ltr"] .rtl-label {
+  color: var(--on-surface) !important;
   opacity: 0.4 !important;
 }
 
-#dir-toggle[data-dir="rtl"] .rtl-label,
-#mobile-dir-toggle[data-dir="rtl"] .rtl-label {
-  color: #ffffff !important;
-  opacity: 1 !important;
+/* Internal Component Transitions */
+.dir-knob {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-#dir-toggle[data-dir="rtl"] .ltr-label,
-#mobile-dir-toggle[data-dir="rtl"] .ltr-label {
-  opacity: 0.4 !important;
+.ltr-label, .rtl-label {
+  transition: all 0.3s ease !important;
 }
+
 /* Symmetrical Mobile Menu (RTL/LTR Support) */
 #mobile-menu {
   position: fixed;

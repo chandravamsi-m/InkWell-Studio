@@ -95,21 +95,21 @@
 
     <!-- ========== NAVIGATION ========== -->
     <nav id="main-nav"
-        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 nav-transparent border-b border-outline-variant/10">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 nav-transparent backdrop-blur-sm border-b border-outline-variant/10">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-20 flex items-center justify-between gap-4">
             <!-- Logo -->
-            <a href="../index.html" class="flex items-center transition-opacity hover:opacity-80">
-                <div class="relative flex items-center justify-center mr-2">
+            <a href="../index.html" class="flex items-center shrink-0 transition-opacity hover:opacity-80">
+                <div class="relative flex items-center justify-center me-2">
                     <img src="../assets/images/logo-icon.svg" alt="Inkwell Studio Logo Icon" class="w-8 h-8">
                 </div>
-                <span class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</span>
+                <span class="font-newsreader text-xl lg:text-xl xl:text-2xl font-bold tracking-tight whitespace-nowrap">Inkwell Studio</span>
             </a>
 
             <!-- Desktop Links -->
-            <div class="hidden md:flex items-center space-x-6">
+            <div class="hidden lg:flex items-center md:gap-2 lg:gap-6 xl:gap-8">
                 <!-- Home Dropdown -->
                 <div class="relative group">
-                    <a href="../index.html"
+                    <a href="javascript:void(0)"
                         class="flex items-center space-x-1 font-semibold uppercase text-xs tracking-[0.08em] hover:text-secondary transition-colors">
                         <span>Home</span>
                         <svg class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180" fill="none"
@@ -140,37 +140,38 @@
             </div>
 
             <!-- Actions -->
-            <div class="flex items-center space-x-3 md:space-x-5">
+            <div class="flex items-center gap-2 lg:gap-2 xl:gap-5">
                 <!-- Direction Toggle -->
                 <div id="dir-toggle"
-                    class="hidden md:flex relative bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300"
+                    class="hidden lg:flex relative bg-surface-container border border-outline-variant/30 rounded-full cursor-pointer w-[72px] h-8 items-center transition-all duration-300 overflow-hidden"
                     data-dir="ltr">
-                    <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
-                    <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                    <div
-                        class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
+                    <div class="absolute inset-0 flex items-center justify-between px-2.5 z-10 pointer-events-none text-[8px] font-bold">
+                        <span class="ltr-label transition-opacity duration-300">LTR</span>
+                        <span class="rtl-label transition-opacity duration-300">RTL</span>
+                    </div>
+                    <div class="dir-knob absolute left-1 top-[3px] h-6 w-8 bg-secondary rounded-full transition-all duration-300 z-0 shadow-lg shadow-secondary/20">
                     </div>
                 </div>
 
-                <button id="mode-toggle" class="hidden md:block p-2 hover:bg-surface-container transition-colors"
+                <button id="mode-toggle" class="hidden lg:block p-2 hover:bg-surface-container transition-colors"
                     aria-label="Toggle Dark Mode">
                     <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg>
                     <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
                         <path
-                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707-.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
                         </path>
                     </svg>
                 </button>
-                <div class="hidden lg:flex items-center space-x-4">
+                <div class="hidden lg:flex items-center gap-2 xl:gap-4">
                     <a href="consultation.html"
-                        class="px-5 py-2.5 text-xs font-bold uppercase tracking-[0.08em] border border-outline-variant hover:border-secondary transition-all">Book
+                        class="px-3 xl:px-5 py-2 xl:py-2.5 text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] border border-outline-variant hover:border-secondary transition-all whitespace-nowrap">Book
                         Now</a>
                     <a href="login.html"
-                        class="bg-secondary text-white px-6 py-2.5 text-xs font-bold uppercase tracking-[0.08em] hover:brightness-110 transition-all btn-sheen">Login</a>
+                        class="bg-secondary text-white px-4 xl:px-6 py-2 xl:py-2.5 text-[10px] xl:text-xs font-bold uppercase tracking-[0.08em] hover:brightness-110 transition-all btn-sheen whitespace-nowrap">Login</a>
                 </div>
-                <button id="menu-toggle" class="md:hidden p-2" aria-label="Open Menu">
+                <button id="menu-toggle" class="lg:hidden p-2" aria-label="Open Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="M4 6h16M4 12h16M4 18h16"></path>
@@ -182,7 +183,7 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="bg-surface/95 backdrop-blur-xl transition-transform duration-500 flex flex-col md:hidden p-6 overflow-y-auto">
+        class="bg-surface/95 backdrop-blur-xl transition-transform duration-500 flex flex-col lg:hidden p-6 overflow-y-auto">
         <div class="flex items-center justify-between pb-6 border-b border-outline-variant/30">
             <span class="text-3xl font-newsreader font-bold italic text-secondary tracking-tight">Menu</span>
             <button id="close-mobile-menu" class="p-2 -me-2 bg-surface-container rounded-full" aria-label="Close Menu">
@@ -194,15 +195,15 @@
         </div>
         <div class="mt-8 flex flex-col space-y-6">
             <div class="space-y-3">
-                <button class="w-full flex items-center justify-between font-newsreader text-2xl font-bold group"
+                <button
+                    class="w-full flex items-center justify-between font-newsreader text-2xl font-bold text-secondary group"
                     data-dropdown-toggle="home">
                     <span>Home</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 dropdown-icon transition-transform"></i>
                 </button>
                 <div id="dropdown-home"
                     class="mobile-dropdown-content space-y-3 ps-4 border-s border-outline-variant/50">
-                    <a href="../index.html"
-                        class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home
+                    <a href="../index.html" class="block font-newsreader text-2xl font-bold italic text-secondary">Home
                         1</a>
                     <a href="home-2.html"
                         class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home
@@ -228,7 +229,7 @@
                         <!-- Sun icon -->
                         <svg class="w-4 h-4 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
                             <path
-                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707-.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z">
                             </path>
                         </svg>
                     </button>
@@ -236,24 +237,25 @@
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold uppercase tracking-widest opacity-50">Direction</span>
                     <div id="mobile-dir-toggle"
-                        class="relative flex bg-surface-container rounded-full p-1 cursor-pointer w-[72px] h-7 items-center group transition-all duration-300"
+                        class="relative flex bg-surface-container border border-outline-variant/30 rounded-full cursor-pointer w-[72px] h-8 items-center transition-all duration-300 overflow-hidden"
                         data-dir="ltr">
-                        <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
-                        <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                        <div
-                            class="dir-knob h-5 w-8 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
+                        <div class="absolute inset-0 flex items-center justify-between px-2.5 z-10 pointer-events-none text-[8px] font-bold">
+                            <span class="ltr-label transition-opacity duration-300">LTR</span>
+                            <span class="rtl-label transition-opacity duration-300">RTL</span>
+                        </div>
+                        <div class="dir-knob absolute left-1 top-[3px] h-6 w-8 bg-secondary rounded-full transition-all duration-300 z-0 shadow-lg shadow-secondary/20">
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Mobile Actions -->
-            <div class="flex items-center gap-3 pt-4 mt-auto">
+            <div class="flex flex-col sm:flex-row items-stretch gap-4 pt-8 mt-auto border-t border-outline-variant/30">
                 <a href="consultation.html"
-                    class="flex-1 text-center border border-outline-variant py-3 text-[10px] font-bold uppercase tracking-[0.1em] text-secondary">Book
+                    class="flex-1 text-center border border-outline-variant py-4 text-[11px] font-bold uppercase tracking-[0.2em] hover:border-secondary transition-all">Book
                     Now</a>
                 <a href="login.html"
-                    class="flex-1 text-center bg-secondary text-white py-3 text-[10px] font-bold uppercase tracking-[0.1em] btn-sheen">Login</a>
+                    class="flex-1 text-center bg-secondary text-white py-4 text-[11px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen">Login</a>
             </div>
         </div>
     </div>
@@ -556,27 +558,27 @@
 
     <!-- ========== FOOTER ========== -->
     <footer class="bg-surface pt-12 pb-8 md:pt-16 md:pb-10 border-t border-outline-variant">
-        <!-- ... (footer content remains unchanged) ... -->
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8 md:gap-12 lg:gap-24 mb-6 md:mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-8 md:gap-12 lg:gap-16 xl:gap-24 mb-6 md:mb-8">
                 <!-- Brand -->
                 <div class="space-y-4 md:space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
                     <a href="../index.html" class="flex items-center transition-opacity hover:opacity-80">
-                        <div class="relative flex items-center justify-center mr-2">
+                        <div class="relative flex items-center justify-center me-2">
                             <img src="../assets/images/logo-icon.svg" alt="Inkwell Studio Logo Icon" class="w-8 h-8">
                         </div>
-                        <span class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</span>
+                        <span class="font-newsreader text-2xl lg:text-xl xl:text-2xl font-bold tracking-tight whitespace-nowrap">Inkwell Studio</span>
                     </a>
                     <p
-                        class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant leading-relaxed opacity-70">
-                        Editorial Tattooing & <br class="hidden md:block"> Narrative Illustration.
+                        class="text-[11px] font-bold uppercase tracking-widest text-on-surface max-w-[320px] leading-relaxed">
+                        A structured approach to custom commissions, ensuring every exhibit meets the architectural
+                        standards of the studio.
                     </p>
                     <div class="flex space-x-5">
-                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                        <a href="#" class="text-on-surface hover:text-secondary transition-colors"
                             aria-label="Instagram">
                             <i data-lucide="instagram" class="w-4 h-4"></i>
                         </a>
-                        <a href="#" class="text-on-surface-variant hover:text-secondary transition-colors"
+                        <a href="#" class="text-on-surface hover:text-secondary transition-colors"
                             aria-label="Twitter">
                             <i data-lucide="twitter" class="w-4 h-4"></i>
                         </a>
@@ -593,8 +595,10 @@
                     <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
                         <li><a href="../index.html" class="hover:text-secondary transition-colors">Home</a></li>
                         <li><a href="about.html" class="hover:text-secondary transition-colors">About Us</a></li>
-                        <li><a href="portfolio.html" class="hover:text-secondary transition-colors">Portfolio</a></li>
-                        <li><a href="services.html" class="hover:text-secondary transition-colors">Services</a></li>
+                        <li><a href="portfolio.html" class="hover:text-secondary transition-colors">Portfolio</a>
+                        </li>
+                        <li><a href="services.html" class="hover:text-secondary transition-colors">Services</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -602,9 +606,10 @@
                 <div class="space-y-4 md:space-y-6">
                     <h4 class="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary">Access</h4>
                     <ul class="space-y-3 text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
-                        <li><a href="consultation.html" class="hover:text-secondary transition-colors">Book Session</a>
+                        <li><a href="consultation.html" class="hover:text-secondary transition-colors">Book
+                                Session</a></li>
+                        <li><a href="contact.html" class="hover:text-secondary transition-colors">Contact Us</a>
                         </li>
-                        <li><a href="contact.html" class="hover:text-secondary transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -615,11 +620,11 @@
                         <p
                             class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed text-center md:text-left">
                             Enroll for private exhibition updates.</p>
-                        <form class="relative group flex w-full max-w-[280px]">
+                        <form class="relative group flex flex-col lg:flex-row w-full max-w-[320px] gap-2 lg:gap-0">
                             <input type="email" placeholder="EMAIL ADDRESS"
                                 class="flex-1 bg-surface-container border border-outline-variant focus:border-secondary transition-all outline-none py-2 px-4 text-[10px] font-bold tracking-widest text-on-surface placeholder:text-on-surface-variant/60">
                             <button type="submit"
-                                class="bg-secondary text-white px-5 py-2 text-[9px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen">
+                                class="bg-secondary text-white px-5 py-2 text-[9px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen whitespace-nowrap">
                                 Join
                             </button>
                         </form>

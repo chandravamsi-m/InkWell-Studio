@@ -88,22 +88,23 @@
             class="flex flex-col justify-center p-8 md:p-16 lg:p-24 bg-surface h-screen overflow-hidden relative border-e border-outline-variant">
             <div class="absolute top-12 start-8 lg:start-24">
                 <a href="../index.html" class="flex items-center transition-opacity hover:opacity-80">
-                    <div class="relative flex items-center justify-center mr-2">
+                    <div class="relative flex items-center justify-center me-2">
                         <img src="../assets/images/logo-icon.svg" alt="Inkwell Studio Logo Icon" class="w-8 h-8">
                     </div>
-                    <span class="font-newsreader text-2xl font-bold tracking-tight">Inkwell Studio</span>
+                    <span class="font-newsreader text-2xl lg:text-xl xl:text-2xl font-bold tracking-tight whitespace-nowrap">Inkwell Studio</span>
                 </a>
             </div>
 
             <!-- Direction & Theme Toggle -->
-            <div class="absolute top-12 end-8 lg:end-24 flex items-center space-x-2 md:space-x-3">
+            <div class="absolute top-12 end-8 lg:end-24 flex items-center gap-3">
                 <div id="dir-toggle"
-                    class="relative bg-surface-container border border-outline-variant/30 rounded-full p-1 cursor-pointer w-[72px] h-7 items-center flex group transition-all duration-300"
+                    class="relative bg-surface-container border border-outline-variant/30 rounded-full cursor-pointer w-[72px] h-8 items-center flex transition-all duration-300 overflow-hidden"
                     data-dir="ltr">
-                    <span class="ltr-label text-[8px] font-bold transition-colors">LTR</span>
-                    <span class="rtl-label text-[8px] font-bold transition-colors">RTL</span>
-                    <div
-                        class="dir-knob h-5 w-9 bg-secondary rounded-full transition-all duration-300 shadow-lg shadow-secondary/20">
+                    <div class="absolute inset-0 flex items-center justify-between px-2.5 z-10 pointer-events-none text-[8px] font-bold">
+                        <span class="ltr-label transition-opacity duration-300">LTR</span>
+                        <span class="rtl-label transition-opacity duration-300">RTL</span>
+                    </div>
+                    <div class="dir-knob absolute left-1 top-[3px] h-6 w-8 bg-secondary rounded-full transition-all duration-300 z-0 shadow-lg shadow-secondary/20">
                     </div>
                 </div>
                 <button id="mode-toggle" class="p-2 hover:bg-surface-container transition-colors group"
