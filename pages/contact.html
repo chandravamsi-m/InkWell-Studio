@@ -194,14 +194,14 @@
         <div class="mt-8 flex flex-col space-y-6">
             <div class="space-y-3">
                 <button
-                    class="w-full flex items-center justify-between font-newsreader text-2xl font-bold text-secondary group"
+                    class="w-full flex items-center justify-between font-newsreader text-2xl font-bold hover:text-secondary group transition-colors"
                     data-dropdown-toggle="home">
                     <span>Home</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 dropdown-icon transition-transform"></i>
                 </button>
                 <div id="dropdown-home"
                     class="mobile-dropdown-content space-y-3 ps-4 border-s border-outline-variant/50">
-                    <a href="../index.html" class="block font-newsreader text-2xl font-bold italic text-secondary">Home
+                    <a href="../index.html" class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home
                         1</a>
                     <a href="home-2.html"
                         class="block font-newsreader text-2xl font-bold italic hover:text-secondary transition-colors">Home
@@ -528,11 +528,11 @@
                         <p
                             class="text-[10px] text-on-surface-variant opacity-50 uppercase tracking-widest leading-relaxed text-center md:text-left">
                             Enroll for private exhibition updates.</p>
-                        <form class="relative group flex flex-col lg:flex-row w-full max-w-[320px] gap-2 lg:gap-0">
+                        <form class="relative group flex flex-row w-full max-w-[320px]">
                             <input type="email" placeholder="EMAIL ADDRESS"
-                                class="flex-1 bg-surface-container border border-outline-variant focus:border-secondary transition-all outline-none py-2 px-4 text-[10px] font-bold tracking-widest text-on-surface placeholder:text-on-surface-variant/60">
+                                class="flex-1 min-w-0 bg-surface-container border border-outline-variant focus:border-secondary transition-all outline-none py-2 px-4 text-[10px] font-bold tracking-widest text-on-surface placeholder:text-on-surface-variant/60">
                             <button type="submit"
-                                class="bg-secondary text-white px-5 py-2 text-[9px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen whitespace-nowrap">
+                                class="bg-secondary text-white px-5 py-2 text-[9px] font-bold uppercase tracking-[0.2em] hover:brightness-110 transition-all btn-sheen whitespace-nowrap shrink-0">
                                 Join
                             </button>
                         </form>

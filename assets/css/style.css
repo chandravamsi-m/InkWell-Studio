@@ -301,8 +301,8 @@ h1, h2, h3, h4, h5, h6, .editorial {
 }
 
 
-/* Hard-Hide for Desktop Screens (MD Breakpoint) */
-@media (min-width: 768px) {
+/* Hard-Hide for Desktop Screens (LG Breakpoint) */
+@media (min-width: 1024px) {
   #mobile-menu {
     display: none !important;
   }

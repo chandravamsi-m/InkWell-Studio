@@ -186,7 +186,7 @@ function initMobileMenu() {
 
     // Auto-close on resize to desktop (Prevents layout bugs)
     window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768) {
+        if (window.innerWidth >= 1024) {
             closeMenu();
         }
     });
